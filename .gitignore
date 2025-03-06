@@ -16,3 +16,7 @@
 **/*.vs/
 **/*.log
 
+# 忽略obsidian
+.obsidian
+
+

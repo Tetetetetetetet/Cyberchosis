@@ -15,6 +15,50 @@ boss战为主，解密/跑酷/战斗/射击都可以插入boss战中，这样融
 
 *不要忘记LLM之神的恩惠*
 
+# Previous Works
+[2024](https://html5gameenginegroup.github.io/GTCS-Engine-Student-Projects/2024.7.NUS/index.html)
+## Rotate the Fate
+- 有点像魂斗罗
+- 技能：放电，喷火，冰冻，时间暂停，*旋转世界*
+- 有小怪有boss
+## Agent Snail
+- *玩法新颖：一种很新的平台跳跃*
+- 蜗牛不停自己飞，鼠标控制挡板，反射蜗牛
+- 很难过关
+## Qliphoth
+- Roguelike
+- 弹幕游戏，鼠标控制设计
+- 结局循环类型
+- *？也许我们可以模仿《死亡循环》*
+## Shadowed Echo
+- 平台跳跃 -> 跑酷类型
+- 崩塌的世界
+- 神秘世界观
+- 没看出什么特别的点
+## Blood Soul
+- 平板 魂类 战斗
+- 经典火堆休息，魂类爱好者之作
+- *主boss战*
+- bgm很恢弘
+## Black and White
+- 很新颖的解谜游戏
+- 场景很有风格
+- 双人游戏
+- 没看懂规则，可能black eat black, white eat white?
+## BuildNFile
+- competitive mode: 双人战斗+收集材料+建造大炮+走位躲车
+- collaboration mode: 打机器人
+## Delivery Man Simulator
+- 快递员模拟器
+- 地图控制，自动寻路，只要点下一个要去的地方就可以了
+## Mr.Deleted
+- 抽象
+- Windows界面的平台跳跃（机关，小怪，微战斗）
+- 你是一个被删除的文件，目标是回到被删除前所属的文件夹
+## Squirrel & Rabbit
+- 双人闯关跑酷
+
+
 # Material
 - [course website](https://myuwbclasses.github.io/IntroGameDev-XJTU/)
 - [assetStore](https://assetstore.unity.com/zh-CN) [free](https://assetstore.unity.com/?category=2d%2Fcharacters&price=0-0&orderBy=1)
