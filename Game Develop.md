@@ -1,19 +1,20 @@
-# Game
-## idea1
-跑酷对战
+# Game Final Design
+*主战斗，缝合各种元素的Boss型游戏*
+- 攻击方式：近/远 不限制
+- Name: **Who,What,Where**
+- Ideas
+	- 意外的陷进，e.g，会动的飞刃，突然变大的飞刃
+	- 意外的剧情，角色能力突然失效，宠物反叛
+	- 概率事件:设置意外事件，概率可根据角色生命等改变
+	- 添加交大元素/玩梗
+	- 多画风
+	- 旋转空间
+	- 新世界观
+	- 神秘剧情，开放特性
+	- 丰富道具/buff
+- Story: 魂的身世之旅在照明世界 魂苏醒了 他忘记了一切 不知道自己是谁，向哪里去，该做什么，他向前走，遇到困惑危险 发现世界 注视自己
+- Overview: 2D，上下左右移动，魔法世界
 
-## idea2
-跑酷，很多关
-通过整个游戏的条件是通过某一关
-机关是关卡之间的传送门
-
-## idea3
-boss战为主，解密/跑酷/战斗/射击都可以插入boss战中，这样融合的很丰富而且不会觉得游戏体验割裂
-
-# idea4
-加入道具，buff等，丰富战斗过程，游戏体验
-
-*不要忘记LLM之神的恩惠*
 
 # Previous Works
 [2024](https://html5gameenginegroup.github.io/GTCS-Engine-Student-Projects/2024.7.NUS/index.html)
@@ -67,16 +68,27 @@ boss战为主，解密/跑酷/战斗/射击都可以插入boss战中，这样融
 - [**CGTrader**（3D 资源)](https://www.cgtrader.com/)
 - [**Kenney.nl**（免费 2D/3D 资源)](https://www.kenney.nl/assets)
 
+# Issue
+## main camera cannot assigned to prefab
+[Unity discussion](https://discussions.unity.com/t/unable-to-assign-main-camera-to-prefab/206244)
+
+
 # Share proj
 Project->right mouse click -> export packages->import package->costom package
 
 # C\# cheat sheet
+
+## class: Time
+- `Time.realTimeSinceStartUp`
+- 
 
 ## class: Vector3
 - `.Distance`
 
 ## btw
 `[SerializeField]` 使得private variable 可见
+- constructor->awake->start->update
+- 
 
 ## class: Camara
 - `Camara.main.aspect`: aspect是主相机的宽高比
@@ -96,8 +108,9 @@ mousePosition
 `KeyCode.a/b/c/d/...`
 
 ## transform
-- transform.position
+- `transform.position`
 - `localposition`: always localposition *(relateive to the parent)*
+- `transform.localScale` 
 - 每个GameObject都自带transform
 - `transform.Translate`() -> to move object 或者 position+=(v\* time)\* transform.up\/down\/...
 - `transform.up`: *vector*, 总是指向物体的y轴正方向（随着rotate会转）
@@ -112,6 +125,9 @@ mousePosition
 一般的碰撞检测：一个碰所有$O(n)$, 所有相碰：$O(n^2)$
 ### collider
 - `Is Trigger`: whether to trigger a collision
+- ***?与不同东西collide?***-> other.CompareToTag()
+- ***经验：判断destory和Destroy()分开（放update里）***
+
 
 ## UI
 - child of Canvas
@@ -182,6 +198,25 @@ Quaternion targetRotation = Quaternion.Euler(90,90,0)
 transform.rotation = Quaternion.Slerp(transform.rotation,targetRotation,Time.deltaTime);
 ```
 
-- *to follow*: `transform.position= Host.position+OrbitRadius \* transform.right`
+- *to follow*: `transform.position= Host.position+OrbitRadius * transform.right`
 
+## code生成GameObject
+```c#
+GameObject g=new GameObject(); 
+SpriteRenderer s= g.AddComponent<SpriteRenderer>();
+s.sprite=Resouces.load<Sprite>("GreenUp");
+MyCompount m = g.AddComponunt<MyCompount>();
+g.GetComponent<SpriteRenderer>().color=Coo=Color.red;
+```
 
+## 相对zoom, 东西跟摄像头，摄像头跟东西
+- 相对zoom的数学逻辑：这个得回头看4.1 *linear algebra*
+- *摄像头在Awake()里面Init*
+- 摄像头逐渐向角色靠近 -> class TimedLerp
+-  
+
+## multi Cameras
+
+## Change Level
+- change scene
+- *very expensive*
