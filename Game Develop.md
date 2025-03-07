@@ -16,6 +16,7 @@
 - Overview: 2D，上下左右移动，魔法世界
 
 
+
 # Previous Works
 [2024](https://html5gameenginegroup.github.io/GTCS-Engine-Student-Projects/2024.7.NUS/index.html)
 ## Rotate the Fate
@@ -94,10 +95,19 @@ Project->right mouse click -> export packages->import package->costom package
 - `Camara.main.aspect`: aspect是主相机的宽高比
 - `Camera.main.gameObject`: 返回MainCamera对象 (相比之下`Camera.main`是一个component)
 - `orthographicSize`: 垂直可视范围/2
+## Camera Bounds 摄像机边界
+**关于视野需要知道的一切**
+`cam=Camera.main;`
+`cam.ViewportToWorldPoint(Vector3)`可以将视野比例(0~1)转换为对应的*世界坐标*, 0与1就是边界值
+***或者手动计算：***
+- 视野高度：`H=cam.orthographicSize*2`
+- 视野宽度：`W=H*cam.aspect`
+- 边界坐标
+	- `minX=cam.transform.position.x-W/2f`
+	- `maxX=cam.transform.position.x+W/2f`
+	- `minY=cam.transform.position.y-H/2f`
+	- `maxY=cam.transform.position.y+H/2f`
 
-## some GameObjects
-- `Camera.main.orthographicSize`: main camera size
-- 
 
 ## Input
 ```c#
@@ -208,13 +218,54 @@ s.sprite=Resouces.load<Sprite>("GreenUp");
 MyCompount m = g.AddComponunt<MyCompount>();
 g.GetComponent<SpriteRenderer>().color=Coo=Color.red;
 ```
+简单版：***做子弹***
+`Hero.cs`
+```c#
+GameObject e=Instantiate(Resources.load("Prafabs/Egg") as GameObject)
+e.transform.localPosition/rotation=...
+```
+`Egg.cs`
+```c#
+public Camera mTheCamera=null;
+//mTheCamera也可以在Hero.cs里挂载（推荐），直接给Prefab挂主相机似乎有问题(但是实验开了enabled好像也行)
+void start()
+{
+	mTheCamera=Camera.main
+	mTheCamera.enabled=true;
+	Debug.Assert(mTheCamera!=null);
+}
+```
+
+
 
 ## 相对zoom, 东西跟摄像头，摄像头跟东西
 - 相对zoom的数学逻辑：这个得回头看4.1 *linear algebra*
 - *摄像头在Awake()里面Init*
 - 摄像头逐渐向角色靠近 -> class TimedLerp
--  
+## Egg 跟摄像头
+```c#
+public class EggBehavior : MonoBehaviour
 
+{
+
+    public CameraSupport mTheCamera = null;//CameraSupport是自定义类
+    public float WorldRegion = 0.7f;
+    // Start is called before the first frame update
+    void Start()
+    {
+        Debug.Assert(mTheCamera != null);
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        CameraSupport.WorldBoundStatus status =
+		mTheCamera.CollideWorldBound(GetComponent<SpriteRenderer>().bounds, WorldRegion);
+        Debug.Log("BoundCollisionStatus = " + status);
+        if (status != CameraSupport.WorldBoundStatus.Inside)
+            mTheCamera.ClampToWorldBound(transform, WorldRegion);
+    }
+}
+```
 ## multi Cameras
 
 ## Change Level
