@@ -973,13 +973,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameStart: 0
+  sceneId: 3
   bossName: {fileID: 901595559}
   statusText: {fileID: 0}
   setPos: {x: 0, y: 0, z: 0}
   mHero: {fileID: 0}
   Boss: {fileID: 1359204753}
+  isBoss: 1
   enterEnim: 0
   mcamera: {fileID: 0}
+  ForBoss: {fileID: 0}
+  ForEnemy: {fileID: 0}
   enemyNumber: 10
 --- !u!4 &316741777
 Transform:
@@ -1631,6 +1635,7 @@ MonoBehaviour:
   zOffset: -15
   smoothRate: 0.5
   gm: {fileID: 0}
+  BossPos: {x: 0, y: 0, z: 0}
 --- !u!1 &656388654
 GameObject:
   m_ObjectHideFlags: 0
@@ -5383,7 +5388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2037763647392862864, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
       propertyPath: maxHealth
-      value: 500
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2037763647392862864, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
       propertyPath: currHealth

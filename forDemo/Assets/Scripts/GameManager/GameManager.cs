@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     public bool isBoss;//according to scene
     public bool enterEnim;
     public Camera mcamera; //自动挂"Main Camera"
+    public TextMeshProUGUI ForBoss;
+    public TextMeshProUGUI ForEnemy;
     
     public int enemyNumber=10;
     // Start is called before the first frame update
@@ -34,14 +36,22 @@ public class GameManager : MonoBehaviour
         mHero=GameObject.FindWithTag("Player");
         mcamera=util.findGameObject("Main Camera").GetComponent<Camera>();
         if(isBoss)Boss=util.findGameObject("Boss");
+        ForBoss.text="Straight up for Boss, turn left";
+        ForEnemy.text="For Practice and train, turn right";
         //bossName=GameObject.Find("BossName").GetComponent<TextMeshProUGUI>;
     }
 
     public void loseGame()
     {
+        float num=Random.Range(0,1);
         Debug.Log("quit game");
         isGameOver=true;
         //Application.Quit();
+        if(num>0.5)SceneManager.LoadScene("Lose1");
+        else
+        {
+            SceneManager.LoadScene("Lose2");
+        }
     }
     void Start()
     {

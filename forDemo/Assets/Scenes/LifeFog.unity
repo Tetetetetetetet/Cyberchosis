@@ -505,12 +505,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2037763647392862864, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
+      propertyPath: setY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2037763647392862864, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
       propertyPath: scale
       value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 2037763647392862864, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
       propertyPath: damage
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2037763647392862864, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
+      propertyPath: remoteDamage
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2314508749894620783, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
       propertyPath: m_LocalScale.x
@@ -671,6 +679,10 @@ PrefabInstance:
       propertyPath: range
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3224043490217049509, guid: 84ff27b39d2bf9345a703676fc623304, type: 3}
+      propertyPath: damage
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5373971359558638599, guid: 84ff27b39d2bf9345a703676fc623304, type: 3}
       propertyPath: m_Name
       value: Enemy2
@@ -786,6 +798,10 @@ PrefabInstance:
     - target: {fileID: 5517218929167255790, guid: fa028f012f45a8b418f2182589097ed0, type: 3}
       propertyPath: range
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5517218929167255790, guid: fa028f012f45a8b418f2182589097ed0, type: 3}
+      propertyPath: damage
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5517218929167255790, guid: fa028f012f45a8b418f2182589097ed0, type: 3}
       propertyPath: movespeed
@@ -909,6 +925,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3224043490217049509, guid: 84ff27b39d2bf9345a703676fc623304, type: 3}
+      propertyPath: damage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3224043490217049509, guid: 84ff27b39d2bf9345a703676fc623304, type: 3}
       propertyPath: movespeed
       value: 0.5
       objectReference: {fileID: 0}
@@ -1021,21 +1041,24 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 761603771}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe23af7cda954574b869c07994a75197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetPos: {x: 0, y: 0, z: -15}
+  cameraSize: 10
   p: {x: 0, y: 0, z: 0}
-  maxX: 0
-  minX: 0
-  maxY: 0
-  minY: 0
+  maxX: 999
+  minX: -999
+  maxY: 999
+  minY: -999
   xOffset: 0
-  yOffset: 0
+  yOffset: 8
   zOffset: -15
-  smoothRate: 0
+  smoothRate: 0.8
+  gm: {fileID: 0}
+  BossPos: {x: 0, y: 0, z: 0}
 --- !u!1001 &778306615
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1051,6 +1074,10 @@ PrefabInstance:
     - target: {fileID: 2781435134713755789, guid: a92fe3b68915bf543a27c52046ff448f, type: 3}
       propertyPath: range
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2781435134713755789, guid: a92fe3b68915bf543a27c52046ff448f, type: 3}
+      propertyPath: damage
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2781435134713755789, guid: a92fe3b68915bf543a27c52046ff448f, type: 3}
       propertyPath: movespeed
@@ -1120,6 +1147,10 @@ PrefabInstance:
     - target: {fileID: 5517218929167255790, guid: fa028f012f45a8b418f2182589097ed0, type: 3}
       propertyPath: range
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5517218929167255790, guid: fa028f012f45a8b418f2182589097ed0, type: 3}
+      propertyPath: damage
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5517218929167255790, guid: fa028f012f45a8b418f2182589097ed0, type: 3}
       propertyPath: movespeed
@@ -1253,6 +1284,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2781435134713755789, guid: a92fe3b68915bf543a27c52046ff448f, type: 3}
+      propertyPath: damage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2781435134713755789, guid: a92fe3b68915bf543a27c52046ff448f, type: 3}
       propertyPath: movespeed
       value: 5
       objectReference: {fileID: 0}
@@ -1378,12 +1413,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameStart: 0
+  sceneId: 0
   bossName: {fileID: 0}
   statusText: {fileID: 0}
   setPos: {x: 0, y: 0, z: 0}
-  mCamera: {fileID: 0}
-  mHero: {fileID: 0}
+  mHero: {fileID: 451076756}
   Boss: {fileID: 0}
+  isBoss: 0
+  enterEnim: 0
+  mcamera: {fileID: 0}
+  ForBoss: {fileID: 0}
+  ForEnemy: {fileID: 0}
   enemyNumber: 10
 --- !u!4 &1440905501
 Transform:
