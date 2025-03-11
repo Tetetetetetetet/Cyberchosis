@@ -130,6 +130,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2037763647392862864, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
+      propertyPath: gamemode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2314508749894620783, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -905,6 +909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPos: {x: 0, y: 0, z: -15}
+  cameraSize: 0
   p: {x: 0, y: 0, z: 0}
   maxX: 0
   minX: 0
@@ -914,6 +919,7 @@ MonoBehaviour:
   yOffset: 0
   zOffset: 0
   smoothRate: 0
+  gm: {fileID: 0}
 --- !u!1001 &1760963279
 PrefabInstance:
   m_ObjectHideFlags: 0

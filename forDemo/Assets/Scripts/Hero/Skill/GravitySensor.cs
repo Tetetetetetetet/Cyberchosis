@@ -7,12 +7,15 @@ public class GravitySensor : MonoBehaviour
     private SkillGravity currentTrap; // 当前影响该物体的陷阱
     private Rigidbody2D rb; // 物体的Rigidbody2D组件
     private float timer = 0f; // 计时器
+    public BoxCollider2D myCollider;
 
     void Start()
     {
         // 获取物体的Rigidbody2D组件
         gravm=SkillGravity.GravityManager;
+        myCollider=GetComponent<BoxCollider2D>();
         Debug.Assert(gravm!=null);
+        Debug.Assert(myCollider!=null);
         rb = GetComponent<Rigidbody2D>();
         if (rb == null)
         {

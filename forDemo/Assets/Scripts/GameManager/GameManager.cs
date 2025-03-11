@@ -11,11 +11,12 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI statusText=null;
     public static bool changedScene=false;
     public Vector3 setPos;
-    public Camera mCamera;
+    //public Camera mCamera;
     public GameObject mHero;
     public GameObject Boss;//需要手动拖拽
+    public bool enterEnim;
+    public Camera mcamera; //自动挂"Main Camera"
     
-    private int enemiesDestroyed = 0;
     public int enemyNumber=10;
     // Start is called before the first frame update
     void Awake() 
@@ -28,6 +29,8 @@ public class GameManager : MonoBehaviour
         }
         //else Destroy(gameObject);
         mHero=GameObject.FindWithTag("Player");
+        mcamera=util.findGameObject("Main Camera").GetComponent<Camera>();
+        Boss=util.findGameObject("Boss");
         //bossName=GameObject.Find("BossName").GetComponent<TextMeshProUGUI>;
     }
 
@@ -40,6 +43,11 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Debug.Assert(mHero!=null);
+        if(enterEnim)
+        {
+            mcamera.GetComponent<CameraSupport>().enterAnim();
+            Boss.GetComponent<Boss1>().setPos();
+        }
         setPos=mHero.transform.localPosition;
         gameStart=false;
         bossName.text="JiaYin.king";

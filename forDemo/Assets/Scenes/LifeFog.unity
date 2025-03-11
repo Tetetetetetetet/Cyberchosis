@@ -512,6 +512,10 @@ PrefabInstance:
       propertyPath: damage
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2037763647392862864, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
+      propertyPath: gamemode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2314508749894620783, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.5
@@ -1027,6 +1031,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPos: {x: 0, y: 0, z: -15}
+  cameraSize: 0
   p: {x: 0, y: 0, z: 0}
   maxX: 0
   minX: 0
@@ -1036,6 +1041,7 @@ MonoBehaviour:
   yOffset: 0
   zOffset: -15
   smoothRate: 0
+  gm: {fileID: 0}
 --- !u!1001 &778306615
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1381,9 +1387,10 @@ MonoBehaviour:
   bossName: {fileID: 0}
   statusText: {fileID: 0}
   setPos: {x: 0, y: 0, z: 0}
-  mCamera: {fileID: 0}
   mHero: {fileID: 0}
   Boss: {fileID: 0}
+  enterEnim: 0
+  mcamera: {fileID: 0}
   enemyNumber: 10
 --- !u!4 &1440905501
 Transform:

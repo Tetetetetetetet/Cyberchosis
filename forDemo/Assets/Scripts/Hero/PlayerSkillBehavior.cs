@@ -5,6 +5,7 @@ public partial class PlayerBehavior : MonoBehaviour
     // Start is called before the first frame update
     public DoorManager doorm=DoorManager.tDoorManager;
     public Vector3 mousePos;
+    public bool loged=false;
 
     /*
     访问各个技能，是否装载，能否发动
@@ -35,7 +36,7 @@ public partial class PlayerBehavior : MonoBehaviour
     }
     void transformDoor()
     {
-        mousePos=Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos=util.getMousePos();
         if(doorm.enabled==true&&Input.GetKeyDown(KeyCode.Mouse2))
         {
             doorm.called(mousePos.x,mousePos.x+10);
@@ -52,7 +53,11 @@ public partial class PlayerBehavior : MonoBehaviour
         else
         {
             SkillGravity trap=_trap.GetComponent<SkillGravity>();
-            Debug.Log("GravityTrap Loaded");
+            if(loged==false)
+            {
+                Debug.Log("GravityTrap Loaded");
+                loged=true;
+            }
             if(Input.GetKeyDown(KeyCode.Mouse3))
             {
                 trap.turn();

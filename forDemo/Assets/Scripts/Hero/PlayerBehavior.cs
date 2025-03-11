@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using UnityEngine.XR;
 
 public partial class PlayerBehavior : MonoBehaviour
 {
@@ -44,6 +46,10 @@ public partial class PlayerBehavior : MonoBehaviour
     private PolygonCollider2D attackCollider;
     public float timeBeforeAttack;
     public float timeAfterAttack;
+    public float originA;
+    public bool gamemode;
+    public SpriteRenderer sp;
+    public bool attacked;
     void Start()
     {
         currHealth=maxHealth;
@@ -51,65 +57,97 @@ public partial class PlayerBehavior : MonoBehaviour
         attackCollider=GetComponent<PolygonCollider2D>();
         myRigid=GetComponent<Rigidbody2D>();
         myfeet=GetComponent<BoxCollider2D>();
-        GetComponent<SpriteRenderer>().enabled=true;
         //transform.localPosition=initPos;
         transform.localScale=new Vector3(scale,scale,0);
         anim=GetComponent<Animator>();
         gm=GameManager.mGM;
         attackCollider.enabled=false;
+        sp=GetComponent<SpriteRenderer>();
+        originA=sp.color.a;
+        attacked=false;
 
         Debug.Assert(gm!=null);
+        Debug.Assert(sp!=null);
+
     }
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse4))
+        if(gamemode)
         {
-            Debug.Log("get target Key");
+            isGround=touchingGround();
+            p=transform.localPosition;
+            s=transform.localScale;
+            r=transform.localRotation;
+            action();
+            skill();
+            //Debug.Log("action done");
+            r.z=0;
+            transform.localPosition=p;
+            //Debug.Log($"final update position: p.y:{p.x}");
+            transform.localScale=s;
+            transform.localRotation=r;
+            if(currHealth<=0)
+            {
+                die();
+            }
+            if(attacked==false)
+            {
+                Color color=sp.color;
+                color.a=originA;
+                sp.color=color;
+            }
+            else
+            {
+                Color color =sp.color;
+                color.a*=originA*0.3f;
+                sp.color=color;
+            }
         }
-        isGround=touchingGround();
-        p=transform.localPosition;
-        s=transform.localScale;
-        r=transform.localRotation;
-        action();
-        skill();
-        //Debug.Log("action done");
-        r.z=0;
-        transform.localPosition=p;
-        //Debug.Log($"final update position: p.y:{p.x}");
-        transform.localScale=s;
-        transform.localRotation=r;
-        if(currHealth<=0)
+        else
         {
-        die();
+            sp.color=Color.red;
         }
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log($"player on trigger enter, {other.gameObject.GetComponent<BossAttacked>()==null}");
-        other.gameObject.GetComponent<BossAttacked>().takeDamage(damage,0);
+        Debug.Log($"Player: onTriggerEnter, other has BossAttacked is :{other.gameObject.GetComponent<Boss1>()!=null}");
+        other.gameObject.GetComponent<Boss1>().takeDamage(damage);
     }
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if(other.gameObject.name=="boss")takeDamage(10f);
+    //     void OnCollisionEnter2D(Collision2D other)
+    //{
+        //Debug.Log("Player onCollisionEnter");
+        //if(other.gameObject.name=="boss")takeDamage(10f);
         //else if(other.gameObject.CompareTag("EnemyAttack"))
         //{
             //takeDamage(6f);
             //Destroy(other.gameObject);
         //}
-    }
+    //}
 
     public void takeDamage(float damage)
     {
         currHealth-=damage;
-        bossBehavior b=gm.Boss.GetComponent<BossControl>().boss;
+        Boss1 b=gm.Boss.GetComponent<Boss1>();
+        Vector2 knockbackforce;
         if(b.transform.localPosition.x>p.x)
         {
-            myRigid.velocity=new Vector2(-attackedSpeedX,attackedSpeedY);
+            knockbackforce=new Vector2(-attackedSpeedX,attackedSpeedY);
         }
         else
         {
-            myRigid.velocity=new Vector2(attackedSpeedX,attackedSpeedY);
+            knockbackforce=new Vector2(attackedSpeedX,attackedSpeedY);
         }
+        Debug.Log("player attacked");
+        attacked=true;
+        myRigid.AddForce(knockbackforce,ForceMode2D.Impulse);
+        StartCoroutine(HitFlashEffect());
+    }
+
+    private IEnumerator HitFlashEffect()
+    {
+        attacked=true;
+        yield return new WaitForSeconds(0.1f);
+        attacked=false;
     }
 }
