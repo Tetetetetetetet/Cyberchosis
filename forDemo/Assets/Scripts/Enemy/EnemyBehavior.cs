@@ -6,13 +6,13 @@ public class EnemyBehacior : MonoBehaviour
 {
     // Start is called before the first frame update
     //需要定义player的
-    public static float currHealth = 100;
-    public static float maxHealth = 100;
+    public float currHealth = 100;
+    public float maxHealth = 100;
     private float attackTimer = 0;
     public float attackInterval = 0;
     public float movespeed = 0;
     private Vector2 start;
-    public float range=10f ;//巡逻范围
+    public float range ;//巡逻范围
     Animator anim;
     private bool movingRight = true;
     void Start()
@@ -34,8 +34,8 @@ public class EnemyBehacior : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("enter");
-        if(collision.gameObject.tag == "Player"&&Time.time-attackTimer>=attackInterval){
+        Debug.Log("enter "+collision.gameObject.tag+" "+(Time.time-attackTimer));
+        if(collision.gameObject.CompareTag("Player")&&Time.time-attackTimer>=attackInterval){
             attackTimer=Time.time;
             anim.SetTrigger("attack");
             Debug.Log("attack");
@@ -44,7 +44,7 @@ public class EnemyBehacior : MonoBehaviour
     }
     void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player"&&Time.time-attackTimer>=attackInterval){
+        if(collision.gameObject.CompareTag("Player")&&Time.time-attackTimer>=attackInterval){
             attackTimer=Time.time;
             anim.SetTrigger("attack");
             Debug.Log("attack");
