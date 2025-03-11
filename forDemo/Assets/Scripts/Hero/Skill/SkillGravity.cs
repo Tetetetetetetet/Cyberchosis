@@ -11,18 +11,19 @@ public class SkillGravity : MonoBehaviour
 
     void Awake()
     {
+        sp=GetComponent<SpriteRenderer>();
+        myCollider=GetComponent<BoxCollider2D>();
         GravityManager=this;
         Color color=sp.color;
         color.a=0f;
         sp.color=color;
-        active=false;
-        sp=GetComponent<SpriteRenderer>();
     }
     void Start()
     {
-        myCollider=GetComponent<BoxCollider2D>();
-        sp=GetComponent<SpriteRenderer>();
+        Debug.Assert(sp!=null);
+        Debug.Assert(myCollider!=null);
     }
+
     public void ApplyGravity(Rigidbody2D rb)
     {
         // 改变物体的重力加速度

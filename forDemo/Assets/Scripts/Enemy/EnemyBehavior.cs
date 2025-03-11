@@ -81,8 +81,9 @@ public class EnemyBehacior : MonoBehaviour
         }
     }
 
-    public void hit(float damage){
+    public void takeDamage(float damage){
         anim.SetTrigger("hit");
         currHealth-=damage;
     }
+
 }

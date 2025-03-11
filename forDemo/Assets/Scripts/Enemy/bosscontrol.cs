@@ -15,7 +15,7 @@ public class BossControl : MonoBehaviour
     public bool findtarget = false;
     private float timer;
     private float Dir;
-    private float updateDelta = 10f;
+    //private float updateDelta = 10f;
     private float startingX;
     public float delta = 0.5f;//距离差
     public float alpha = 5f;//boss视野
@@ -59,7 +59,7 @@ public class BossControl : MonoBehaviour
             }
         }
         findtarget = intarget();
-        Debug.Log(findtarget);
+        //Debug.Log(findtarget);
         if (findtarget)
         {
             movetotarget();
@@ -112,7 +112,7 @@ public class BossControl : MonoBehaviour
         }
 
         //hongxue(lowBattery);
-        Debug.Log($"{boss.currHealth}");
+        //Debug.Log($"{boss.currHealth}");
         if(boss.currHealth<=0)
         {
             boss.die();
