@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 8709312148883361756}
   - component: {fileID: 3224043490217049509}
   - component: {fileID: 7714328081141972758}
-  m_Layer: 0
+  - component: {fileID: 351579474374414178}
+  m_Layer: 7
   m_Name: Enemy2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -194,9 +195,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f9ddfa014f72d142b3433c0bc3abe8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currHealth: 100
+  maxHealth: 100
   attackInterval: 0
   movespeed: 5
   range: 10
+  damage: 0
 --- !u!60 &7714328081141972758
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -281,3 +285,20 @@ PolygonCollider2D:
       - {x: -0.29, y: -0.31}
       - {x: -0.29999998, y: -0.29999998}
   m_UseDelaunayMesh: 0
+--- !u!114 &351579474374414178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5373971359558638599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 508265941933c8f489bb6d0e4167c26f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloodbarPrefabPath: Prefabs/Bloodbar
+  canvas: {fileID: 0}
+  offsety: 0.5
+  offsetx: 0.5
+  text: {fileID: 0}

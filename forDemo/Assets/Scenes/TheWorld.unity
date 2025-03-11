@@ -383,7 +383,7 @@ GameObject:
   - component: {fileID: 409115734}
   - component: {fileID: 409115733}
   - component: {fileID: 409115732}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1027,6 +1027,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dialogue 2D
       objectReference: {fileID: 0}
+    - target: {fileID: 6011988201399623206, guid: a0dbeffc84669e24f994d387893a803d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6297276050750010171, guid: a0dbeffc84669e24f994d387893a803d, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.0176275
@@ -1081,11 +1085,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8557568673631317014, guid: a0dbeffc84669e24f994d387893a803d, type: 3}
       propertyPath: sentences.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8557568673631317014, guid: a0dbeffc84669e24f994d387893a803d, type: 3}
       propertyPath: sentences.Array.data[0].sentence
-      value: Hey, why don't you have a head?And where are we?
+      value: Jump?(press H)
       objectReference: {fileID: 0}
     - target: {fileID: 8557568673631317014, guid: a0dbeffc84669e24f994d387893a803d, type: 3}
       propertyPath: sentences.Array.data[1].sentence
@@ -1094,7 +1098,7 @@ PrefabInstance:
     - target: {fileID: 8557568673631317014, guid: a0dbeffc84669e24f994d387893a803d, type: 3}
       propertyPath: sentences.Array.data[0].dialogueCharacter
       value: 
-      objectReference: {fileID: 11400000, guid: 02a981cf1405b074599c725fe05fc814, type: 2}
+      objectReference: {fileID: 11400000, guid: eeb3031223de4254985b609c130ad308, type: 2}
     - target: {fileID: 8557568673631317014, guid: a0dbeffc84669e24f994d387893a803d, type: 3}
       propertyPath: sentences.Array.data[1].dialogueCharacter
       value: 
@@ -1419,11 +1423,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5119517916108161179, guid: 24a55f3ef6adac24f84ad0f251090bfa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.502
+      value: -4.56
       objectReference: {fileID: 0}
     - target: {fileID: 5119517916108161179, guid: 24a55f3ef6adac24f84ad0f251090bfa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.353
+      value: -0.35
       objectReference: {fileID: 0}
     - target: {fileID: 5119517916108161179, guid: 24a55f3ef6adac24f84ad0f251090bfa, type: 3}
       propertyPath: m_LocalPosition.z

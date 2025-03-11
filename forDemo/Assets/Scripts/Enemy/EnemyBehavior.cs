@@ -15,11 +15,22 @@ public class EnemyBehacior : MonoBehaviour
     public float range ;//巡逻范围
     Animator anim;
     private bool movingRight = true;
+    [SerializeField]
+    private float damage;
+    private float damageRange;
+    private float criticalHitChance;
     void Start()
     {
         attackTimer=Time.time;
         anim = GetComponent<Animator>();
         start = transform.position;
+        damage=Random.Range(damage,damage+damageRange);
+        if (Random.value < criticalHitChance)
+        {
+            // 暴击伤害，例如是普通伤害的两倍
+            damage*= 2;
+            Debug.Log("Critical hit!");
+        }
     }
 
     // Update is called once per frame
@@ -34,20 +45,12 @@ public class EnemyBehacior : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("enter "+collision.gameObject.tag+" "+(Time.time-attackTimer));
         if(collision.gameObject.CompareTag("Player")&&Time.time-attackTimer>=attackInterval){
             attackTimer=Time.time;
             anim.SetTrigger("attack");
             Debug.Log("attack");
-            //造成伤害 触发hit
-        }  
-    }
-    void OnTriggerStay2D(Collider2D collision)
-    {
-        if(collision.gameObject.CompareTag("Player")&&Time.time-attackTimer>=attackInterval){
-            attackTimer=Time.time;
-            anim.SetTrigger("attack");
-            Debug.Log("attack");
+            PlayerBehavior player=collision.gameObject.GetComponent<PlayerBehavior>();
+            player.takeDamage(damage);
             //造成伤害
         }        
     }
