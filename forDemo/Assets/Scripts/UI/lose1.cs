@@ -15,7 +15,7 @@ public class lose1 : MonoBehaviour
     void Update()
     {
         if(Input.GetKey(KeyCode.Space)){
-              SceneManager.LoadScene("StartScene");
+              SceneManager.LoadScene("Start Scene");
         }
         
     }

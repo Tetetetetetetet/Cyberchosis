@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public Camera mcamera; //自动挂"Main Camera"
     public TextMeshProUGUI ForBoss;
     public TextMeshProUGUI ForEnemy;
+    public TextMeshProUGUI Abillity;
     
     public int enemyNumber=10;
     // Start is called before the first frame update
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
         if(isBoss)Boss=util.findGameObject("Boss");
         ForBoss.text="Straight up for Boss, turn left";
         ForEnemy.text="For Practice and train, turn right";
+        Abillity.text="You get Random Abillity: Gravity Trap";
         //bossName=GameObject.Find("BossName").GetComponent<TextMeshProUGUI>;
     }
 
@@ -70,13 +72,14 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("StartScene");
     }
-    public void changeScene()
+    public void changeScene(int id)
     {
-        if(sceneId==1)
+        Debug.Log($"change Scene{id}");
+        if(id==2)
         {
             SceneManager.LoadScene("LifeFog");
         }
-        if(sceneId==2)
+        if(id==3)
         {
             SceneManager.LoadScene("testScene");
         }
@@ -85,6 +88,18 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Time.time>5)
+        {
+            Destroy(Abillity);
+        }
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            Application.Quit();
+        }
+        if(Input.GetKeyDown(KeyCode.Y))
+        {
+            SceneManager.LoadScene("LifeFog");
+        }
     }
 
 }

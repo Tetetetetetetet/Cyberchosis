@@ -32,14 +32,29 @@ public class BulletShootController : MonoBehaviour
     {
         // 在指定位置生成子弹
         GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
-        // 为子弹添加刚体组件（如果不存在）
+
+        // 获取或添加刚体组件
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         if (rb == null)
         {
             rb = bullet.AddComponent<Rigidbody2D>();
-        }        
-        Vector2 randomDirection = Random.insideUnitCircle.normalized;
-        rb.velocity = randomDirection * bulletSpeed;
+        }    
 
+        // 找到玩家对象
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            // 计算指向玩家的方向（单位向量）
+            Vector2 direction = (player.transform.position - transform.position).normalized;
+
+            // 让子弹朝玩家方向移动
+            rb.velocity = direction * bulletSpeed;
+        }
+        else
+        {
+            Debug.LogWarning("未找到玩家，子弹未能指向玩家！");
+        }
     }
+
+
 }

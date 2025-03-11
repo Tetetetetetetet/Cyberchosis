@@ -52,7 +52,7 @@ public partial class PlayerBehavior : MonoBehaviour
         {
             SkillGravity trap=_trap.GetComponent<SkillGravity>();
             Debug.Log("GravityTrap Loaded");
-            if(Input.GetKeyDown(KeyCode.Mouse3))
+            if(Input.GetKeyDown(KeyCode.E))
             {
                 trap.turn();
             }

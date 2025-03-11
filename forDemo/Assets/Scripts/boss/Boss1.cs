@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
@@ -58,6 +59,9 @@ public partial class Boss1 : MonoBehaviour
     public float originA;
     public BossAttack ba2;
     public BossAttack ba3;
+    public GameObject bulletGene;
+    public BulletShootController fire;
+    public float lastChangModeTime;
 
     // Start is called before the first frame update
     void Start()
@@ -91,6 +95,10 @@ public partial class Boss1 : MonoBehaviour
         attacked=false;
         originA=GetComponent<SpriteRenderer>().color.a;
         currHealth=maxHealth;
+        bulletGene=util.findGameObject("randomFire");
+        bulletGene.GetComponent<BulletShootController>().enabled=false;
+        fire=bulletGene.GetComponent<BulletShootController>();
+        lastChangModeTime=Time.time;
     }
     public void setPos()
     {
@@ -146,6 +154,11 @@ public partial class Boss1 : MonoBehaviour
                 Color co=GetComponent<SpriteRenderer>().color;
                 co.a=originA;
                 GetComponent<SpriteRenderer>().color=co;
+            }
+            if((Time.time-lastChangModeTime)>10f)
+            {
+                changeMode();
+                lastChangModeTime=Time.time;
             }
         }
    }
@@ -225,6 +238,7 @@ public partial class Boss1 : MonoBehaviour
                 flyCompo.isMoving=false;
                 changeMode();
             }
+            bulletGene.GetComponent<BulletShootController>().enabled=true;
     }
     void changeMode()
     {
@@ -238,10 +252,10 @@ public partial class Boss1 : MonoBehaviour
         {
             currmode=mode.FindAndAttack;
             flyCompo.isMoving=false;
+            fire.enabled=false;
             Debug.Log("change mode when Fly&Firing");
             return;
         }
-
         //testing
         testButton=!testButton;
     }

@@ -16,7 +16,7 @@ public class CameraSupport : MonoBehaviour
     public float smoothRate;
     public GameManager gm;
     public static Camera mCamera;
-    private int followTo;//0:hero, 1:boss
+    public int followTo;//0:hero, 1:boss
     public Vector3 BossPos;//有Boss则设置，做开场聚焦
     void Start()
     {
@@ -72,7 +72,7 @@ public class CameraSupport : MonoBehaviour
             followHero();
             p.z=-15f;
         }
-
+        p.z=-15f;
         transform.localPosition=p;
         //always
 

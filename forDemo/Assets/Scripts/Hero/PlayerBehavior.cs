@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.XR;
+using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public partial class PlayerBehavior : MonoBehaviour
 {
@@ -82,7 +84,18 @@ public partial class PlayerBehavior : MonoBehaviour
             {
                 if(transform.localPosition.x>15)
                 {
-                    gm.changeScene();
+                    gm.changeScene(2);
+                }
+                if(transform.localPosition.x<-18)
+                {
+                    SceneManager.LoadScene("TransitionScene");
+                }
+            }
+            if(gm.sceneId==2)
+            {
+                if(transform.localPosition.x<-18)
+                {
+                    gm.changeScene(2);
                 }
             }
             isGround=touchingGround();
@@ -113,10 +126,6 @@ public partial class PlayerBehavior : MonoBehaviour
                 color.a*=originA*0.3f;
                 sp.color=color;
             }
-        }
-        else
-        {
-            sp.color=Color.red;
         }
     }
     void OnTriggerEnter2D(Collider2D other)
