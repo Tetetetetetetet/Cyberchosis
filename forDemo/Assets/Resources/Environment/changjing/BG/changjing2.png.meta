@@ -1,0 +1,877 @@
+fileFormatVersion: 2
+guid: 4624a5802829c2943abb77fd73d91c35
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6760689304431383218
+    second: changjing2_0
+  - first:
+      213: 4940161363759702514
+    second: changjing2_1
+  - first:
+      213: -2206222467209073145
+    second: changjing2_2
+  - first:
+      213: 227986086061176319
+    second: changjing2_3
+  - first:
+      213: -4822132815813620994
+    second: changjing2_4
+  - first:
+      213: 4617764379430143614
+    second: changjing2_5
+  - first:
+      213: -6402994703337626305
+    second: changjing2_6
+  - first:
+      213: 1736562210075301848
+    second: changjing2_7
+  - first:
+      213: -148081466757741769
+    second: changjing2_8
+  - first:
+      213: 3237698646888727549
+    second: changjing2_9
+  - first:
+      213: -933130206752009599
+    second: changjing2_10
+  - first:
+      213: -5170762922045504537
+    second: changjing2_11
+  - first:
+      213: 5660577240865454206
+    second: changjing2_12
+  - first:
+      213: -8922897985831088914
+    second: changjing2_13
+  - first:
+      213: 4747119042597324547
+    second: changjing2_14
+  - first:
+      213: -201602280293380907
+    second: changjing2_15
+  - first:
+      213: -2246727189606240507
+    second: changjing2_16
+  - first:
+      213: 2184875874289687512
+    second: changjing2_17
+  - first:
+      213: 7441791211904376365
+    second: changjing2_18
+  - first:
+      213: 4743351568745870889
+    second: changjing2_19
+  - first:
+      213: 2874300828274449847
+    second: changjing2_20
+  - first:
+      213: 7864809200567260331
+    second: changjing2_21
+  - first:
+      213: 1783930288158223910
+    second: changjing2_22
+  - first:
+      213: 5211022451178220391
+    second: changjing2_23
+  - first:
+      213: -119351262256863859
+    second: changjing2_24
+  - first:
+      213: -4564900733237719263
+    second: changjing2_25
+  - first:
+      213: -3416208434614973502
+    second: changjing2_26
+  - first:
+      213: 3566837921780657671
+    second: changjing2_27
+  - first:
+      213: -6178996711179795912
+    second: changjing2_28
+  - first:
+      213: -2309998414246223253
+    second: changjing2_29
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: changjing2_0
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 3565
+        width: 311
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91f755e833806a74cb14721cb1a48148
+      internalID: -6760689304431383218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: changjing2_1
+      rect:
+        serializedVersion: 2
+        x: 1294
+        y: 3380
+        width: 311
+        height: 311
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c62ad8aebb35224ba82f2e4e006983e
+      internalID: 4940161363759702514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: changjing2_2
+      rect:
+        serializedVersion: 2
+        x: 2900
+        y: 3400
+        width: 313
+        height: 313
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92c50493eba99c440b0deca24515f205
+      internalID: -2206222467209073145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: changjing2_3
+      rect:
+        serializedVersion: 2
+        x: 2150
+        y: 3254
+        width: 156
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f58370dc466277e4783d718797db66e4
+      internalID: 227986086061176319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: changjing2_4
+      rect:
+        serializedVersion: 2
+        x: 2148
+        y: 3085
+        width: 211
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4653144de222ba1498d1e8fbe7b78079
+      internalID: -4822132815813620994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: changjing2_5
+      rect:
+        serializedVersion: 2
+        x: 2353
+        y: 3079
+        width: 219
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66c170de0e054444197ef3dc76a786f5
+      internalID: 4617764379430143614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: changjing2_6
+      rect:
+        serializedVersion: 2
+        x: 2581
+        y: 3176
+        width: 6
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e989d7331ce0284c85e50b382a33ad3
+      internalID: -6402994703337626305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: changjing2_7
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 2593
+        width: 312
+        height: 309
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c61ce1ecad624054c80fa0f29b9f7258
+      internalID: 1736562210075301848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: changjing2_8
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 2585
+        width: 312
+        height: 311
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36cb2c7e8a88cf24f8191d69d4b11895
+      internalID: -148081466757741769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: changjing2_9
+      rect:
+        serializedVersion: 2
+        x: 1605
+        y: 2603
+        width: 311
+        height: 313
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 647e5bd4069de5e48b5f18bae9f771cd
+      internalID: 3237698646888727549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: changjing2_10
+      rect:
+        serializedVersion: 2
+        x: 2392
+        y: 2146
+        width: 682
+        height: 693
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 060994d24c7df514e874491278f4d87c
+      internalID: -933130206752009599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: changjing2_11
+      rect:
+        serializedVersion: 2
+        x: 3048
+        y: 2780
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2baa1f41ce64a6942abde2280f9cd08f
+      internalID: -5170762922045504537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: changjing2_12
+      rect:
+        serializedVersion: 2
+        x: 3743
+        y: 2833
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66202cc8d31a34d42a6b6dc8cc7fae04
+      internalID: 5660577240865454206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: changjing2_13
+      rect:
+        serializedVersion: 2
+        x: 3288
+        y: 2447
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ba57a43db7204a478b40d8babdd6edf
+      internalID: -8922897985831088914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: changjing2_14
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 1943
+        width: 313
+        height: 311
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d37022c50ca92a0439578494ccd8dd54
+      internalID: 4747119042597324547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: changjing2_15
+      rect:
+        serializedVersion: 2
+        x: 2300
+        y: 2146
+        width: 84
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b455e2cc1ad1c7347ba4c45d5888c7a5
+      internalID: -201602280293380907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: changjing2_16
+      rect:
+        serializedVersion: 2
+        x: 3669
+        y: 2240
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 409cfcceb9f02724598da6b5062a6852
+      internalID: -2246727189606240507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: changjing2_17
+      rect:
+        serializedVersion: 2
+        x: 929
+        y: 1955
+        width: 313
+        height: 217
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bef0369821d9eb428a30619a1363cff
+      internalID: 2184875874289687512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: changjing2_18
+      rect:
+        serializedVersion: 2
+        x: 1370
+        y: 1939
+        width: 310
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe358c72363eeae45a42d0ecd3c0a553
+      internalID: 7441791211904376365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: changjing2_19
+      rect:
+        serializedVersion: 2
+        x: 1819
+        y: 1677
+        width: 313
+        height: 313
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c4c528a6ab38b04bae793e6f9ee9b1d
+      internalID: 4743351568745870889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: changjing2_20
+      rect:
+        serializedVersion: 2
+        x: 3032
+        y: 1864
+        width: 128
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 566634835e183c34d8ae1a23cc076b36
+      internalID: 2874300828274449847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: changjing2_21
+      rect:
+        serializedVersion: 2
+        x: 1264
+        y: 1488
+        width: 213
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 983228cb964103641ace2431c45176f0
+      internalID: 7864809200567260331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: changjing2_22
+      rect:
+        serializedVersion: 2
+        x: 2365
+        y: 1551
+        width: 311
+        height: 313
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a27ca30d069a8e4ba1aeb83b56c5c1d
+      internalID: 1783930288158223910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: changjing2_23
+      rect:
+        serializedVersion: 2
+        x: 3158
+        y: 1410
+        width: 313
+        height: 311
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d14d61ee02b8db2498843f90f6237196
+      internalID: 5211022451178220391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: changjing2_24
+      rect:
+        serializedVersion: 2
+        x: 1863
+        y: 1156
+        width: 212
+        height: 212
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae1362ea67cb1ee45b17766bf04fa6c5
+      internalID: -119351262256863859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: changjing2_25
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 154
+        width: 709
+        height: 324
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccb7c0a32d2480d4cbe8edf31ab17eb3
+      internalID: -4564900733237719263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: changjing2_26
+      rect:
+        serializedVersion: 2
+        x: 923
+        y: 179
+        width: 694
+        height: 274
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ad7f87fad819fa45b790b8f0de4f539
+      internalID: -3416208434614973502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: changjing2_27
+      rect:
+        serializedVersion: 2
+        x: 923
+        y: 447
+        width: 34
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 799fcc8eafe35f445bab4f1413c11850
+      internalID: 3566837921780657671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: changjing2_28
+      rect:
+        serializedVersion: 2
+        x: 1250
+        y: 443
+        width: 229
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4ac4ad9f82cf774b81c46560266f2ef
+      internalID: -6178996711179795912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: changjing2_29
+      rect:
+        serializedVersion: 2
+        x: 1924
+        y: 0
+        width: 2079
+        height: 886
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87dcee9152553004196de7e7cdbcc6ce
+      internalID: -2309998414246223253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      changjing2_0: -6760689304431383218
+      changjing2_1: 4940161363759702514
+      changjing2_10: -933130206752009599
+      changjing2_11: -5170762922045504537
+      changjing2_12: 5660577240865454206
+      changjing2_13: -8922897985831088914
+      changjing2_14: 4747119042597324547
+      changjing2_15: -201602280293380907
+      changjing2_16: -2246727189606240507
+      changjing2_17: 2184875874289687512
+      changjing2_18: 7441791211904376365
+      changjing2_19: 4743351568745870889
+      changjing2_2: -2206222467209073145
+      changjing2_20: 2874300828274449847
+      changjing2_21: 7864809200567260331
+      changjing2_22: 1783930288158223910
+      changjing2_23: 5211022451178220391
+      changjing2_24: -119351262256863859
+      changjing2_25: -4564900733237719263
+      changjing2_26: -3416208434614973502
+      changjing2_27: 3566837921780657671
+      changjing2_28: -6178996711179795912
+      changjing2_29: -2309998414246223253
+      changjing2_3: 227986086061176319
+      changjing2_4: -4822132815813620994
+      changjing2_5: 4617764379430143614
+      changjing2_6: -6402994703337626305
+      changjing2_7: 1736562210075301848
+      changjing2_8: -148081466757741769
+      changjing2_9: 3237698646888727549
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

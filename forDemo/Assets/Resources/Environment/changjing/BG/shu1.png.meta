@@ -1,0 +1,902 @@
+fileFormatVersion: 2
+guid: d717768b338486b4c9a75122015418b7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4415144758016768835
+    second: shu1_0
+  - first:
+      213: 3188494426800305072
+    second: shu1_1
+  - first:
+      213: 627522489832109815
+    second: shu1_2
+  - first:
+      213: -135410472777322820
+    second: shu1_3
+  - first:
+      213: 8320519936774365881
+    second: shu1_4
+  - first:
+      213: -8353352163786168208
+    second: shu1_5
+  - first:
+      213: -7828864268923969427
+    second: shu1_6
+  - first:
+      213: -3987412942319911033
+    second: shu1_7
+  - first:
+      213: 41056947364721965
+    second: shu1_8
+  - first:
+      213: 1467265589273005891
+    second: shu1_9
+  - first:
+      213: -8850791916987767975
+    second: shu1_10
+  - first:
+      213: 5496418284815814923
+    second: shu1_11
+  - first:
+      213: -7947815798531298815
+    second: shu1_12
+  - first:
+      213: -8258565658128771126
+    second: shu1_13
+  - first:
+      213: -877010741849497137
+    second: shu1_14
+  - first:
+      213: 8542009405084856041
+    second: shu1_15
+  - first:
+      213: -1920361461482701682
+    second: shu1_16
+  - first:
+      213: 5326024027797664159
+    second: shu1_17
+  - first:
+      213: 1199277375741855152
+    second: shu1_18
+  - first:
+      213: 6394680499630480651
+    second: shu1_19
+  - first:
+      213: 7825190514478565483
+    second: shu1_20
+  - first:
+      213: -8706969754367752274
+    second: shu1_21
+  - first:
+      213: -3362152302531554044
+    second: shu1_22
+  - first:
+      213: -8283235293731430942
+    second: shu1_23
+  - first:
+      213: -2472405314650115865
+    second: shu1_24
+  - first:
+      213: -3190175190898509128
+    second: shu1_25
+  - first:
+      213: 1383039459845217012
+    second: shu1_26
+  - first:
+      213: -5356405106393423034
+    second: shu1_27
+  - first:
+      213: -7708802710018287927
+    second: shu1_28
+  - first:
+      213: 559738245832285236
+    second: shu1_29
+  - first:
+      213: -3701776365235339592
+    second: shu1_30
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: shu1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2041
+        width: 2706
+        height: 1927
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e466773bb6df484ab8366376a4cf410
+      internalID: -4415144758016768835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shu1_1
+      rect:
+        serializedVersion: 2
+        x: 2869
+        y: 3880
+        width: 98
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91516a90d50aa8d4393c2ce1d424c935
+      internalID: 3188494426800305072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shu1_2
+      rect:
+        serializedVersion: 2
+        x: 2975
+        y: 3891
+        width: 4
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c099c05dd2708074b94573052d5b13db
+      internalID: 627522489832109815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shu1_3
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 3895
+        width: 8
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abcd677b44b0d654b80e7cfe43fdd187
+      internalID: -135410472777322820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shu1_4
+      rect:
+        serializedVersion: 2
+        x: 3018
+        y: 3895
+        width: 27
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dfb47befa40d604a8ee485b91a2f0fe
+      internalID: 8320519936774365881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shu1_5
+      rect:
+        serializedVersion: 2
+        x: 3063
+        y: 3888
+        width: 26
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c6f787d62d98654da802ed35a6b6f18
+      internalID: -8353352163786168208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shu1_6
+      rect:
+        serializedVersion: 2
+        x: 2875
+        y: 3858
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c449732b6ff99054e9c3727f6514f31b
+      internalID: -7828864268923969427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shu1_7
+      rect:
+        serializedVersion: 2
+        x: 2888
+        y: 3866
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23d7fb4945b38b04587c9985346f4f98
+      internalID: -3987412942319911033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shu1_8
+      rect:
+        serializedVersion: 2
+        x: 2908
+        y: 3866
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f966c0dcc5919a74f928d7eb3d13fd7c
+      internalID: 41056947364721965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shu1_9
+      rect:
+        serializedVersion: 2
+        x: 2873
+        y: 2335
+        width: 908
+        height: 1511
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e884e2a3d5363d14c8d13aced3ba8f55
+      internalID: 1467265589273005891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shu1_10
+      rect:
+        serializedVersion: 2
+        x: 3177
+        y: 2327
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 670029049fcaac84aaa895b7eb54c0d9
+      internalID: -8850791916987767975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shu1_11
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 2047
+        width: 4
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5545ad9bea89a064eaf12b9f2a466858
+      internalID: 5496418284815814923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shu1_12
+      rect:
+        serializedVersion: 2
+        x: 1028
+        y: 2039
+        width: 222
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f361440fbface0247ab13345e4e24e6e
+      internalID: -7947815798531298815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shu1_13
+      rect:
+        serializedVersion: 2
+        x: 1550
+        y: 2039
+        width: 104
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d05eefac65eeedd4a94b6fbe474d39e8
+      internalID: -8258565658128771126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shu1_14
+      rect:
+        serializedVersion: 2
+        x: 1719
+        y: 2041
+        width: 23
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87dfd0b265a332d4396c0d4001b50540
+      internalID: -877010741849497137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shu1_15
+      rect:
+        serializedVersion: 2
+        x: 1913
+        y: 2041
+        width: 41
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64acacf40be8f5543adf33077a36deb4
+      internalID: 8542009405084856041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shu1_16
+      rect:
+        serializedVersion: 2
+        x: 1964
+        y: 2047
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95986ea649326ae47b5969b7c4ac9478
+      internalID: -1920361461482701682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shu1_17
+      rect:
+        serializedVersion: 2
+        x: 1980
+        y: 2041
+        width: 73
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6093974c2863c004292c3a7e30cdc9ad
+      internalID: 5326024027797664159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shu1_18
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 2041
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf66431857b073b4fbb61fde5ce15418
+      internalID: 1199277375741855152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shu1_19
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 2041
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3469171b58378ab47ab3fe47bba68346
+      internalID: 6394680499630480651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shu1_20
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 2041
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86bdd94a6e3fdf44eb10cf7ad8ff8e5f
+      internalID: 7825190514478565483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shu1_21
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 2041
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d56adacc64d09e44788021c5ca10db13
+      internalID: -8706969754367752274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shu1_22
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 2041
+        width: 14
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db0ed68aa048bf74fbc15e41ed82fa61
+      internalID: -3362152302531554044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shu1_23
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 2041
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8293bcdb2dce56346918d082007b7f12
+      internalID: -8283235293731430942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shu1_24
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 2041
+        width: 23
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed11574cf0488a6428a5b2135d49cc77
+      internalID: -2472405314650115865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shu1_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 2708
+        height: 1909
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dcd3140f704416439eb594ddbf76442
+      internalID: -3190175190898509128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shu1_26
+      rect:
+        serializedVersion: 2
+        x: 2941
+        y: 624
+        width: 30
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e193df590f1571478ce0cdf6a35c121
+      internalID: 1383039459845217012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shu1_27
+      rect:
+        serializedVersion: 2
+        x: 2943
+        y: 279
+        width: 108
+        height: 1511
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9f8fe9f18d355d46b65a1c0e22aba0e
+      internalID: -5356405106393423034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shu1_28
+      rect:
+        serializedVersion: 2
+        x: 3065
+        y: 279
+        width: 377
+        height: 1511
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c542265ff2aa5054c9d74a90a264de39
+      internalID: -7708802710018287927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shu1_29
+      rect:
+        serializedVersion: 2
+        x: 3503
+        y: 279
+        width: 139
+        height: 1511
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5d8fa98ad3a5a044ac705213f071155
+      internalID: 559738245832285236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shu1_30
+      rect:
+        serializedVersion: 2
+        x: 3656
+        y: 279
+        width: 100
+        height: 1511
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05e701c0b5434bf4b99e09b9b1f0fe6b
+      internalID: -3701776365235339592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      shu1_0: -4415144758016768835
+      shu1_1: 3188494426800305072
+      shu1_10: -8850791916987767975
+      shu1_11: 5496418284815814923
+      shu1_12: -7947815798531298815
+      shu1_13: -8258565658128771126
+      shu1_14: -877010741849497137
+      shu1_15: 8542009405084856041
+      shu1_16: -1920361461482701682
+      shu1_17: 5326024027797664159
+      shu1_18: 1199277375741855152
+      shu1_19: 6394680499630480651
+      shu1_2: 627522489832109815
+      shu1_20: 7825190514478565483
+      shu1_21: -8706969754367752274
+      shu1_22: -3362152302531554044
+      shu1_23: -8283235293731430942
+      shu1_24: -2472405314650115865
+      shu1_25: -3190175190898509128
+      shu1_26: 1383039459845217012
+      shu1_27: -5356405106393423034
+      shu1_28: -7708802710018287927
+      shu1_29: 559738245832285236
+      shu1_3: -135410472777322820
+      shu1_30: -3701776365235339592
+      shu1_4: 8320519936774365881
+      shu1_5: -8353352163786168208
+      shu1_6: -7828864268923969427
+      shu1_7: -3987412942319911033
+      shu1_8: 41056947364721965
+      shu1_9: 1467265589273005891
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,25 @@
+# 忽略所有 Unity 项目中的常见文件夹和文件
+**/Library/
+**/Temp/
+**/Obj/
+**/Build/
+**/BuildResults/
+**/AssetBundles/
+**/.vscode/
+**/Logs
+**/.plastic
+
+
+
+# 忽略 Unity 编辑器生成的文件
+**/*.csproj
+**/*.sln
+**/*.userprefs
+**/*.pidb
+**/*.vs/
+**/*.log
+
+# 忽略obsidian
+.obsidian
+
+

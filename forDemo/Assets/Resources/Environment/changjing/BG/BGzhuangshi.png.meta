@@ -1,0 +1,402 @@
+fileFormatVersion: 2
+guid: edcf3f90fe65b814f8339b57601184f1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5389252642229846810
+    second: BGzhuangshi_0
+  - first:
+      213: -3209178830933373116
+    second: BGzhuangshi_1
+  - first:
+      213: 9100797895976558294
+    second: BGzhuangshi_2
+  - first:
+      213: -5645639504500325022
+    second: BGzhuangshi_3
+  - first:
+      213: 7497043971235799505
+    second: BGzhuangshi_4
+  - first:
+      213: 270515592463990865
+    second: BGzhuangshi_5
+  - first:
+      213: -8213086488593314227
+    second: BGzhuangshi_6
+  - first:
+      213: 3924194079983183570
+    second: BGzhuangshi_7
+  - first:
+      213: -9055413607095731394
+    second: BGzhuangshi_8
+  - first:
+      213: -2259839622622709273
+    second: BGzhuangshi_9
+  - first:
+      213: 8338564886654134065
+    second: BGzhuangshi_10
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BGzhuangshi_0
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 2172
+        width: 783
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 809f1a827ee77b044bae3e4ef69f574f
+      internalID: 5389252642229846810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BGzhuangshi_1
+      rect:
+        serializedVersion: 2
+        x: 1247
+        y: 2181
+        width: 183
+        height: 481
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5195f3cd357d2c648b2ad70b543c37e4
+      internalID: -3209178830933373116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BGzhuangshi_2
+      rect:
+        serializedVersion: 2
+        x: 2243
+        y: 2394
+        width: 110
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 318d32edb34145b4ca1bfebd41d9aca6
+      internalID: 9100797895976558294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BGzhuangshi_3
+      rect:
+        serializedVersion: 2
+        x: 2259
+        y: 1932
+        width: 110
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35365feb9f390c446b405549d88ea182
+      internalID: -5645639504500325022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BGzhuangshi_4
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 1162
+        width: 710
+        height: 508
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 258bd1e4dac91364597c79e9edc2f978
+      internalID: 7497043971235799505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BGzhuangshi_5
+      rect:
+        serializedVersion: 2
+        x: 1553
+        y: 1321
+        width: 236
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 391caeb3f482a384691b962b07fb9223
+      internalID: 270515592463990865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BGzhuangshi_6
+      rect:
+        serializedVersion: 2
+        x: 2266
+        y: 1427
+        width: 9
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 243b5ce1fc14a9048ace17768b71a4ba
+      internalID: -8213086488593314227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BGzhuangshi_7
+      rect:
+        serializedVersion: 2
+        x: 2468
+        y: 1427
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18ac4154855b5744ba403a84ecc685ef
+      internalID: 3924194079983183570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BGzhuangshi_8
+      rect:
+        serializedVersion: 2
+        x: 2266
+        y: 1326
+        width: 309
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94558a112abf99d4c847c0a173a915dc
+      internalID: -9055413607095731394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BGzhuangshi_9
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 220
+        width: 678
+        height: 507
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ef86eb1dbadbdc458acd1ab16496f51
+      internalID: -2259839622622709273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BGzhuangshi_10
+      rect:
+        serializedVersion: 2
+        x: 1815
+        y: 129
+        width: 627
+        height: 581
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 226b508f5ddf11c4a859a1b8b61a9d16
+      internalID: 8338564886654134065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      BGzhuangshi_0: 5389252642229846810
+      BGzhuangshi_1: -3209178830933373116
+      BGzhuangshi_10: 8338564886654134065
+      BGzhuangshi_2: 9100797895976558294
+      BGzhuangshi_3: -5645639504500325022
+      BGzhuangshi_4: 7497043971235799505
+      BGzhuangshi_5: 270515592463990865
+      BGzhuangshi_6: -8213086488593314227
+      BGzhuangshi_7: 3924194079983183570
+      BGzhuangshi_8: -9055413607095731394
+      BGzhuangshi_9: -2259839622622709273
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

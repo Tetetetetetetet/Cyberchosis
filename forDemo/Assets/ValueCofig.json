@@ -1,0 +1,32 @@
+{
+    "Main Camera":
+    {
+        "orphagraphicsize":8,
+        "xOffset":5,
+        "yOffset":6,
+        "zOffset":-15
+    },
+    "Hero":
+    {
+        "scale":[1,1,1],
+        "localPosition":[-7,-21.49234,0],
+        "speed":10,
+        "dashCoolDown":2,
+        "dashDis":5,
+        "BoxCollider2D":
+        {
+            "offset":[0.02,0.61],
+            "size":[0.5,1.3]
+        }
+    },
+    "Key Mapping":
+    {
+        "Sword":"Mouse0",
+        "Jump":"space",
+        "Fire":"F",
+        "Bow":"Mouse1",
+        "Throw":"E",
+        "Ground Slam":"V",
+        "Crouch":"C"
+    }
+}
