@@ -44,7 +44,6 @@ public partial class PlayerBehavior : MonoBehaviour
     void gravityTrap()
     {
         GameObject _trap=GameObject.Find("SkillGravity");
-        Debug.Assert(_trap!=null);
         if(_trap==null)
         {
             return;

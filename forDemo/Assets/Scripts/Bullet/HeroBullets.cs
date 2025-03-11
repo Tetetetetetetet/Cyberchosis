@@ -1,14 +1,18 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HeroBulletBehavior : MonoBehaviour
 {
     private Camera mainCamera; // 主相机
     public float speed;
-    public GameObject mHero;
+    public PlayerBehavior mHero; //生成时自动挂载
+    public float damage;
     void Start()
     {
         // 获取主相机
+        //mHero=util.findGameObject("Hero").GetComponent<PlayerBehavior>();
         mainCamera = Camera.main;
+        damage=mHero.remoteDamage;
     }
 
     void Update()
@@ -38,7 +42,8 @@ public class HeroBulletBehavior : MonoBehaviour
         // 如果碰到Hero
         if (other.CompareTag("Boss")||other.CompareTag("Enemy"))
         {
-            other.GetComponent<BossAttacked>().takeDamage(6f,0);
+            if(mHero.gm.isBoss)other.GetComponent<Boss1>().takeDamage(damage);
+            other.GetComponent<EnemyBehacior>().takeDamage(damage);
             Destroy(gameObject);
         }
     }

@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
     //public int currScene=0;
     public bool gameStart;
     public static bool isGameOver;
+    public int sceneId;
+ 
     public TextMeshProUGUI bossName;
     public static GameManager mGM=null;
     public TextMeshProUGUI statusText=null;
@@ -14,6 +16,7 @@ public class GameManager : MonoBehaviour
     //public Camera mCamera;
     public GameObject mHero;
     public GameObject Boss;//需要手动拖拽
+    public bool isBoss;//according to scene
     public bool enterEnim;
     public Camera mcamera; //自动挂"Main Camera"
     
@@ -30,7 +33,7 @@ public class GameManager : MonoBehaviour
         //else Destroy(gameObject);
         mHero=GameObject.FindWithTag("Player");
         mcamera=util.findGameObject("Main Camera").GetComponent<Camera>();
-        Boss=util.findGameObject("Boss");
+        if(isBoss)Boss=util.findGameObject("Boss");
         //bossName=GameObject.Find("BossName").GetComponent<TextMeshProUGUI>;
     }
 
@@ -46,16 +49,27 @@ public class GameManager : MonoBehaviour
         if(enterEnim)
         {
             mcamera.GetComponent<CameraSupport>().enterAnim();
-            Boss.GetComponent<Boss1>().setPos();
+            if(isBoss)Boss.GetComponent<Boss1>().setPos();
         }
         setPos=mHero.transform.localPosition;
         gameStart=false;
-        bossName.text="JiaYin.king";
+        if(isBoss)bossName.text="JiaYin.king";
     }
 
     public void win()
     {
         SceneManager.LoadScene("StartScene");
+    }
+    public void changeScene()
+    {
+        if(sceneId==1)
+        {
+            SceneManager.LoadScene("LifeFog");
+        }
+        if(sceneId==2)
+        {
+            SceneManager.LoadScene("testScene");
+        }
     }
 
     // Update is called once per frame

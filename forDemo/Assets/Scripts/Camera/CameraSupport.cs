@@ -16,7 +16,8 @@ public class CameraSupport : MonoBehaviour
     public float smoothRate;
     public GameManager gm;
     public static Camera mCamera;
-    private int followTo=0;//0:hero, 1:boss
+    private int followTo;//0:hero, 1:boss
+    public Vector3 BossPos;//有Boss则设置，做开场聚焦
     void Start()
     {
         gm=GameManager.mGM;
@@ -52,7 +53,7 @@ public class CameraSupport : MonoBehaviour
         followTo=1;
         //Debug.Log($"p:{p},Boss:{gm.Boss.GetComponent<Transform>().transform.localPosition}");
         //p=gm.Boss.GetComponent<Transform>().transform.localPosition;
-        p=new Vector3(-10f,-17f,-15f);
+        p=BossPos;
         Invoke("startGame",1);
     }
     public void startGame()

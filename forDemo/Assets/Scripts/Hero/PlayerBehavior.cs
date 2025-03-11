@@ -6,6 +6,7 @@ public partial class PlayerBehavior : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameManager gm;
+    public Boss1 b;
     public float attackedSpeedX;
     public float attackedSpeedY;
     public float maxHealth;
@@ -42,14 +43,15 @@ public partial class PlayerBehavior : MonoBehaviour
     private Vector3 s;
     private Quaternion r;
     private Rigidbody2D myRigid;
-    private BoxCollider2D myfeet;
-    private PolygonCollider2D attackCollider;
+    public BoxCollider2D myfeet;
+    public PolygonCollider2D attackCollider;
     public float timeBeforeAttack;
     public float timeAfterAttack;
     public float originA;
     public bool gamemode;
     public SpriteRenderer sp;
     public bool attacked;
+    public float remoteDamage;
     void Start()
     {
         currHealth=maxHealth;
@@ -65,6 +67,7 @@ public partial class PlayerBehavior : MonoBehaviour
         sp=GetComponent<SpriteRenderer>();
         originA=sp.color.a;
         attacked=false;
+        gamemode=true;
 
         Debug.Assert(gm!=null);
         Debug.Assert(sp!=null);
@@ -75,6 +78,13 @@ public partial class PlayerBehavior : MonoBehaviour
     {
         if(gamemode)
         {
+            if(gm.sceneId==1)
+            {
+                if(transform.localPosition.x>15)
+                {
+                    gm.changeScene();
+                }
+            }
             isGround=touchingGround();
             p=transform.localPosition;
             s=transform.localScale;
@@ -111,8 +121,10 @@ public partial class PlayerBehavior : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log($"Player: onTriggerEnter, other has BossAttacked is :{other.gameObject.GetComponent<Boss1>()!=null}");
-        other.gameObject.GetComponent<Boss1>().takeDamage(damage);
+        if(gm.isBoss)Debug.Log($"Player: onTriggerEnter, other has BossAttacked is :{other.gameObject.GetComponent<Boss1>()!=null}");
+        if(gm.isBoss)other.gameObject.GetComponent<Boss1>().takeDamage(damage);
+        GameObject enemy=other.gameObject;
+        Debug.Log($"player: enter trigger");
     }
     //     void OnCollisionEnter2D(Collision2D other)
     //{
@@ -128,19 +140,22 @@ public partial class PlayerBehavior : MonoBehaviour
     public void takeDamage(float damage)
     {
         currHealth-=damage;
-        Boss1 b=gm.Boss.GetComponent<Boss1>();
         Vector2 knockbackforce;
-        if(b.transform.localPosition.x>p.x)
+        if(gm.isBoss)
         {
-            knockbackforce=new Vector2(-attackedSpeedX,attackedSpeedY);
-        }
-        else
-        {
-            knockbackforce=new Vector2(attackedSpeedX,attackedSpeedY);
+            b=gm.Boss.GetComponent<Boss1>();
+            if(b.transform.localPosition.x>p.x)
+            {
+                knockbackforce=new Vector2(-attackedSpeedX,attackedSpeedY);
+            }
+            else
+            {
+                knockbackforce=new Vector2(attackedSpeedX,attackedSpeedY);
+            }
+            myRigid.AddForce(knockbackforce,ForceMode2D.Impulse);
         }
         Debug.Log("player attacked");
         attacked=true;
-        myRigid.AddForce(knockbackforce,ForceMode2D.Impulse);
         StartCoroutine(HitFlashEffect());
     }
 

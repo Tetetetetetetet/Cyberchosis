@@ -9,7 +9,7 @@ public class EnemyHealthBar : MonoBehaviour
     public float offsetx=0.5f;
     public Text text;
 
-    private GameObject bloodbarInstance; // 实例化的血条对象
+    public GameObject bloodbarInstance; // 实例化的血条对象
     private Slider bloodbarSlider; // 血条滑块
     EnemyBehacior enemy;
     
@@ -38,7 +38,7 @@ public class EnemyHealthBar : MonoBehaviour
 
         // 初始化血条位置
         UpdateBloodbarPosition();
-        Transform blackground = bloodbarPrefab.transform.Find("blackground");
+        Transform blackground = bloodbarPrefab.transform.Find("Background");
         Transform healthText = blackground.Find("HealthText");
         text = healthText.GetComponent<Text>();
 
@@ -66,10 +66,16 @@ public class EnemyHealthBar : MonoBehaviour
             bloodbarInstance.transform.SetParent(canvas.transform, false);
         }
     }
-    void UpdateBloodValue(){
+    string UpdateBloodValue()
+    {
         float EnemyPercent = enemy.currHealth / enemy.maxHealth;
         bloodbarSlider.value = EnemyPercent;
         text.text = enemy.currHealth.ToString("0") + "/" + enemy.maxHealth.ToString("0");
+        if(EnemyPercent<=0f)
+        {
+            Destroy(bloodbarInstance);
+        }
+        return text.text;
     }
 
 }

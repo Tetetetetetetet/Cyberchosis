@@ -22,7 +22,7 @@ public partial class PlayerBehavior : MonoBehaviour
      }
      void checkJump()
      {
-          if(Input.GetKeyDown(KeyCode.H))
+          if(Input.GetKeyDown(KeyCode.W))
           {
                if(isGround)
                {
@@ -63,6 +63,7 @@ public partial class PlayerBehavior : MonoBehaviour
                anim.SetBool("Idle",true);
           }
      }
+
      void sword()
      {
           if(Input.GetKeyDown(KeyCode.Mouse0))
@@ -124,7 +125,7 @@ public partial class PlayerBehavior : MonoBehaviour
           e.transform.localPosition=transform.localPosition;
           Vector3 dirc=(Camera.main.ScreenToWorldPoint(Input.mousePosition)-p);
           e.transform.up=dirc.normalized;
-          e.GetComponent<HeroBulletBehavior>().mHero=gameObject;
+          e.GetComponent<HeroBulletBehavior>().mHero=gameObject.GetComponent<PlayerBehavior>();
      }
      /*
      checkDash(): unfinished, bug实在离谱

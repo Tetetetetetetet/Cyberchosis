@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyBehacior : MonoBehaviour
@@ -19,12 +20,16 @@ public class EnemyBehacior : MonoBehaviour
     private float damage;
     private float damageRange;
     private float criticalHitChance;
+    public PlayerBehavior mHero;
+    public GameManager gm;
     void Start()
     {
         attackTimer=Time.time;
         anim = GetComponent<Animator>();
         start = transform.position;
         damage=Random.Range(damage,damage+damageRange);
+        gm=GameObject.Find("GameManager").GetComponent<GameManager>();
+        mHero=gm.mHero.GetComponent<PlayerBehavior>();
         if (Random.value < criticalHitChance)
         {
             // 暴击伤害，例如是普通伤害的两倍
@@ -39,19 +44,29 @@ public class EnemyBehacior : MonoBehaviour
         patrol();
         if(currHealth<=0){
             anim.SetTrigger("Dead");
+            Destroy(GetComponent<EnemyHealthBar>().bloodbarInstance);
             Destroy(gameObject);
         }
 
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Player")&&Time.time-attackTimer>=attackInterval){
-            attackTimer=Time.time;
-            anim.SetTrigger("attack");
-            Debug.Log("attack");
-            PlayerBehavior player=collision.gameObject.GetComponent<PlayerBehavior>();
-            player.takeDamage(damage);
-            //造成伤害
+        Debug.Log("Enemy enter trigger");
+        if(collision.gameObject.CompareTag("Player"))
+        {
+           //造成伤害
+            if(Time.time-attackTimer>=attackInterval&&collision==mHero.myfeet)
+            {
+                attackTimer=Time.time;
+                anim.SetTrigger("attack");
+                Debug.Log("attack");
+                PlayerBehavior player=collision.gameObject.GetComponent<PlayerBehavior>();
+                player.takeDamage(damage);
+            }
+            else if(collision==mHero.attackCollider)
+            {
+                takeDamage(mHero.damage);
+            }
         }        
     }
     //巡逻

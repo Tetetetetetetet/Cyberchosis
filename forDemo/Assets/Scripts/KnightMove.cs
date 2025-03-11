@@ -5,7 +5,7 @@ public class KnightMove : MonoBehaviour
     public Animator animator;
     private Rigidbody2D mHeroPhysics;
     [SerializeField] private float mSpeed = 3f;
-    bool jump=false;
+    //bool jump=false;
     // Start is called before the first frame update
     void Start()
     {
