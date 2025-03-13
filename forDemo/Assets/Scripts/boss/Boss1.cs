@@ -21,7 +21,6 @@ public partial class Boss1 : MonoBehaviour
     public bool flag;
     public bool isGround;
     private Vector3 mousepos;
-    public GameObject hero;
     public MoveToTarget flyCompo;
     public float moveSpeed;
     public int timeBeforeAttack;
@@ -61,11 +60,10 @@ public partial class Boss1 : MonoBehaviour
     {
         gm=GameManager.mGM;
         flyCompo=GetComponent<MoveToTarget>();
-        hero=gm.mHero;
+        mHero=gm.mHero;
         anim=GetComponent<Animator>();
         myfeet=GetComponent<BoxCollider2D>();
         myRigid=GetComponent<Rigidbody2D>();
-        mHero=gm.mHero;
         myRigid.velocity=new Vector2(0,0);
         transform.localScale=new Vector3(-scale,scale,0);
         flag=true;
@@ -186,7 +184,7 @@ public partial class Boss1 : MonoBehaviour
     void FindAndAttack()
     {
         Vector3 p=transform.localPosition;
-        Vector3 targetpos=hero.transform.localPosition;
+        Vector3 targetpos=mHero.transform.localPosition;
         float dis=Mathf.Abs(p.x-targetpos.x);
         if(dis>minDis)
         {

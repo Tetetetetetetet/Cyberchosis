@@ -72,29 +72,27 @@ public partial class PlayerBehavior : MonoBehaviour
 
      void sword()
      {
-          if(Input.GetKeyDown(KeyCode.Mouse0))
+          if(Input.GetKeyDown(KeyCode.J))
           {
                anim.SetTrigger("SwordAttack");
-               StartCoroutine(startSwordAttack());
+               //StartCoroutine(startSwordAttack());
           }
 
      }
 
-     IEnumerator startSwordAttack()
-     {
-          //Debug.Log("Start Attack");
-          yield return new WaitForSeconds(timeBeforeAttack);
-          attackCollider.enabled=true;
-          //Debug.Log("HitBox Enable");
-          StartCoroutine(disableHitBox());
-     }
-     IEnumerator disableHitBox()
-     {
-          //Debug.Log("HitBox start disable");
-          yield return new WaitForSeconds(timeAfterAttack);
-          attackCollider.enabled=false;
-          //Debug.Log("Hitbox disabled");
-     }
+//     IEnumerator startSwordAttack()
+     //{
+          ////Debug.Log("Start Attack");
+          //yield return new WaitForSeconds(timeBeforeAttack);
+          ////Debug.Log("HitBox Enable");
+          //StartCoroutine(disableHitBox());
+     //}
+     //IEnumerator disableHitBox()
+     //{
+          ////Debug.Log("HitBox start disable");
+          //yield return new WaitForSeconds(timeAfterAttack);
+          ////Debug.Log("Hitbox disabled");
+     //}
 
      void checkCrouch()
      {
@@ -227,13 +225,14 @@ public partial class PlayerBehavior : MonoBehaviour
      }
      public void onFrameSword()
      {
+          //Debug.Log("hero sword attack");
           HeroSwordBehavior hsb=mySword.GetComponent<HeroSwordBehavior>();
-          hsb.enabled=true;
+          hsb.sword.enabled=true;
      }
      public void onFrameSworded()
      {
           HeroSwordBehavior hsb=mySword.GetComponent<HeroSwordBehavior>();
-          hsb.enabled=false;
+          hsb.sword.enabled=false;
      } 
      void action()
      {

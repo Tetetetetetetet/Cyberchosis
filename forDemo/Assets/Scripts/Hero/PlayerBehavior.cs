@@ -5,16 +5,14 @@ using UnityEngine.SceneManagement;
 public partial class PlayerBehavior : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameManager gm;
-    public Boss1 b;
     public float attackedSpeedX;
     public float attackedSpeedY;
     public float maxHealth;
     public float currHealth;
     public float damage;
+    public float remoteDamage;
 
     public static GameObject mHero;
-    public GameObject mySword; // 可能需要手动拖
 
     public bool setY;
     public bool noRotate;
@@ -49,27 +47,26 @@ public partial class PlayerBehavior : MonoBehaviour
     private Quaternion r;
     private Rigidbody2D myRigid;
     public BoxCollider2D myfeet;
-    public PolygonCollider2D attackCollider;
     public float timeBeforeAttack;
     public float timeAfterAttack;
     public float originA;
     public bool gamemode;
     public SpriteRenderer sp;
     public bool attacked;
+    public GameObject mySword; // 可能需要手动拖
+    public GameManager gm;
+    public Boss1 b;
     public bool canSkill1,canSkill2,canSkill3;
-    public float remoteDamage;
     void Start()
     {
         currHealth=maxHealth;
         leftJumpTimes=maxJumpTimes;
-        attackCollider=GetComponent<PolygonCollider2D>();
-        myRigid=GetComponent<Rigidbody2D>();
-        myfeet=GetComponent<BoxCollider2D>();
+        myRigid=gameObject.GetComponent<Rigidbody2D>();
+        myfeet=gameObject.GetComponent<BoxCollider2D>();
         //transform.localPosition=initPos;
         transform.localScale=new Vector3(scale,scale,0);
         anim=GetComponent<Animator>();
         gm=GameManager.mGM;
-        attackCollider.enabled=false;
         sp=GetComponent<SpriteRenderer>();
         originA=sp.color.a;
         attacked=false;
@@ -134,13 +131,13 @@ public partial class PlayerBehavior : MonoBehaviour
             }
         }
     }
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if(gm.isBoss)Debug.Log($"Player: onTriggerEnter, other has BossAttacked is :{other.gameObject.GetComponent<Boss1>()!=null}");
-        if(gm.isBoss&&other.gameObject.CompareTag("Boss"))other.gameObject.GetComponent<Boss1>().takeDamage(damage);
-        GameObject enemy=other.gameObject;
-        Debug.Log($"player: enter trigger");
-    }
+    //void OnTriggerEnter2D(Collider2D other)
+    //{
+        //if(gm.isBoss)Debug.Log($"Player: onTriggerEnter, other has BossAttacked is :{other.gameObject.GetComponent<Boss1>()!=null}");
+        //if(gm.isBoss&&other.gameObject.CompareTag("Boss"))other.gameObject.GetComponent<Boss1>().takeDamage(damage);
+        //GameObject enemy=other.gameObject;
+        //Debug.Log($"player: enter trigger");
+    //}
     //     void OnCollisionEnter2D(Collision2D other)
     //{
         //Debug.Log("Player onCollisionEnter");

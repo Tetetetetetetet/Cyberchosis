@@ -32,6 +32,7 @@ public class HeroSwordBehavior : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Boss"))
         {
+            Debug.Log("hero attack boss");
             other.GetComponent<Boss1>().takeDamage(damage);
         }
         if(other.gameObject.CompareTag("Enemy"))
