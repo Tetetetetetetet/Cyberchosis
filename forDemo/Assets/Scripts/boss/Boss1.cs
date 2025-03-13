@@ -54,6 +54,7 @@ public partial class Boss1 : MonoBehaviour
     public GameObject bulletGene;
     public BulletShootController fire;
     public float lastChangModeTime;
+    public float accumDamage;
 
     // Start is called before the first frame update
     void Start()
@@ -79,6 +80,7 @@ public partial class Boss1 : MonoBehaviour
         attackLastTime=-999f;
         isFlyFiring=false;
         isAttacking=false;
+        accumDamage=0;
         //testing
         currmode=mode.FindAndAttack;
         flyCompo.speed=moveSpeed;
@@ -174,6 +176,11 @@ public partial class Boss1 : MonoBehaviour
         currHealth-=damage;
         if(currHealth<=0)anim.SetBool("isdead",true);
         StartCoroutine(HitFlashEffect());
+        if(accumDamage>=50&&currmode==mode.FindAndAttack)
+        {
+            changeMode();
+            accumDamage=0;
+        }
     }
     private IEnumerator HitFlashEffect()
     {
@@ -240,20 +247,19 @@ public partial class Boss1 : MonoBehaviour
         if(currmode==mode.FindAndAttack)
         {
             //currmode=mode.FlyAndFiring;
-            currmode=mode.FindAndAttack;
-            if(debugflag)Debug.Log($"change mode, now: {currmode}");
+            currmode=mode.FlyAndFiring;
+            //if(debugflag)Debug.Log($"change mode, now: {currmode}");
             return;
         }
-        if(currmode==mode.FlyAndFiring)
+        else if(currmode==mode.FlyAndFiring)
         {
             currmode=mode.FindAndAttack;
             flyCompo.isMoving=false;
             fire.enabled=false;
-            Debug.Log("change mode when Fly&Firing");
+            //Debug.Log("change mode when Fly&Firing");
             return;
         }
         //testing
-        testButton=!testButton;
     }
     public void ableCo1()
     {
