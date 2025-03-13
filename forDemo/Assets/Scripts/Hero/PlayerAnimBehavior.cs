@@ -206,8 +206,8 @@ public partial class PlayerBehavior : MonoBehaviour
                myRigid.isKinematic=true;
                myfeet.isTrigger=true;
                lastRollAt=Time.time;
-               if(Mathf.Abs(Time.time-lastRollAt)>rollCooldown&&(anim.GetBool("isRun")||anim.GetBool("Idle")))
                timedis=Mathf.Abs(Time.time-lastRollAt);
+               if(Mathf.Abs(Time.time-lastRollAt)>rollCooldown&&(anim.GetBool("isRun")||anim.GetBool("Idle")))
                {
                }
           }

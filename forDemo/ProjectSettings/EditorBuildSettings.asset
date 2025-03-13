@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/LifeFog.unity
     guid: 83032295d33db91428ac3de1afe97b5f
   - enabled: 1
-    path: Assets/Scenes/testScene.unity
+    path: Assets/Scenes/BossWJY.unity
     guid: c8ce3efc05e532f4798d463c8fa63fc5
   - enabled: 1
     path: Assets/Scenes/Lose1.unity

@@ -584,13 +584,17 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 748861775
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8969623251882098895, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4707632203573925909, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
       insertIndex: -1
       addedObject: {fileID: 451076757}
+    - targetCorrespondingSourceObject: {fileID: 4707632203573925909, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 451076766}
   m_SourcePrefab: {fileID: 100100000, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
 --- !u!1 &451076756 stripped
 GameObject:
@@ -618,6 +622,21 @@ MonoBehaviour:
   endDialogueEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &451076766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451076756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3462942a19866734b8f97f9e55b03bf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkInterval: 0.5
+  gravm: {fileID: 0}
+  myCollider: {fileID: 0}
 --- !u!4 &530917461 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2521114756081740749, guid: ee87009e82c11aa429b5732949894fcc, type: 3}
@@ -952,7 +971,7 @@ GameObject:
   - component: {fileID: 761603774}
   - component: {fileID: 761603773}
   - component: {fileID: 761603772}
-  - component: {fileID: 761603775}
+  - component: {fileID: 761603776}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1003,7 +1022,7 @@ Camera:
   far clip plane: 1000
   field of view: 84
   orthographic: 1
-  orthographic size: 15
+  orthographic size: 12
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1028,13 +1047,13 @@ Transform:
   m_GameObject: {fileID: 761603771}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.2, y: 4.7, z: -10}
+  m_LocalPosition: {x: -22.2, y: 2.4, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &761603775
+--- !u!114 &761603776
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1043,22 +1062,74 @@ MonoBehaviour:
   m_GameObject: {fileID: 761603771}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe23af7cda954574b869c07994a75197, type: 3}
+  m_Script: {fileID: 11500000, guid: ed553f4e7db89f145ae5af95580a7e7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetPos: {x: 0, y: 0, z: -15}
-  cameraSize: 10
+  cameraSize: 12
   p: {x: 0, y: 0, z: 0}
   maxX: 999
   minX: -999
   maxY: 999
   minY: -999
-  xOffset: 0
-  yOffset: 8
-  zOffset: -15
-  smoothRate: 0.8
-  gm: {fileID: 0}
+  xOffset: 5
+  yOffset: 6
+  zOffset: 0
+  smoothRate: 0.5
+  gm: {fileID: 1440905502}
   BossPos: {x: 0, y: 0, z: 0}
+  initPos: {x: -16.4, y: 5, z: -15}
+  moveSpeed: 50
+  finalPosX: 156
+--- !u!1 &777187285
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 777187287}
+  - component: {fileID: 777187286}
+  m_Layer: 0
+  m_Name: SkillGravity
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &777187286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777187285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd24e580a6a39a84dbb7537c96cd6df6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 0
+  myCollider: {fileID: 0}
+  postiveGravityScale: 1
+  negtiveGravityScale: -1
+  sp: {fileID: 0}
+--- !u!4 &777187287
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777187285}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -21.050276, y: -1.3181509, z: -15.111703}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &778306615
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1392,7 +1463,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1440905501}
-  - component: {fileID: 1440905500}
+  - component: {fileID: 1440905502}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1400,31 +1471,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1440905500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1440905499}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e5a9fcf46c00c47b4d3867a8554bdd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameStart: 0
-  sceneId: 0
-  bossName: {fileID: 0}
-  statusText: {fileID: 0}
-  setPos: {x: 0, y: 0, z: 0}
-  mHero: {fileID: 451076756}
-  Boss: {fileID: 0}
-  isBoss: 0
-  enterEnim: 0
-  mcamera: {fileID: 0}
-  ForBoss: {fileID: 0}
-  ForEnemy: {fileID: 0}
-  enemyNumber: 10
 --- !u!4 &1440905501
 Transform:
   m_ObjectHideFlags: 0
@@ -1440,6 +1486,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1440905502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440905499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a702b692b984e84aadbc88ec946837c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameStart: 0
+  sceneId: 0
+  bossName: {fileID: 0}
+  statusText: {fileID: 0}
+  setPos: {x: 0, y: 0, z: 0}
+  mHero: {fileID: 451076756}
+  Boss: {fileID: 0}
+  isBoss: 0
+  isEnterAnim: 1
+  mcamera: {fileID: 0}
+  ForBoss: {fileID: 0}
+  ForEnemy: {fileID: 0}
+  Abillity: {fileID: 0}
+  enemyNumber: 10
 --- !u!1001 &1536947526
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1820,7 +1892,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6677892373308827951, guid: e7d6b8b90165a9b4598b50ac03323f22, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 2.7
+      value: -126.8
       objectReference: {fileID: 0}
     - target: {fileID: 6677892373308827951, guid: e7d6b8b90165a9b4598b50ac03323f22, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2351,3 +2423,4 @@ SceneRoots:
   - {fileID: 1292469040032562005}
   - {fileID: 1732621859}
   - {fileID: 884977027}
+  - {fileID: 777187287}
