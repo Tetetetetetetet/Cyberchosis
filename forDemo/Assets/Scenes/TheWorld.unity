@@ -131,6 +131,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2037763647392862864, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
+      propertyPath: scale
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2037763647392862864, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
       propertyPath: damage
       value: 10
       objectReference: {fileID: 0}
@@ -140,11 +144,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2314508749894620783, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 2314508749894620783, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 2314508749894620783, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
       propertyPath: m_LocalPosition.x
@@ -936,7 +940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPos: {x: 0, y: 0, z: -15}
-  cameraSize: 5
+  cameraSize: 12
   p: {x: 0, y: 0, z: 0}
   maxX: 5.5
   minX: -11
@@ -1409,7 +1413,7 @@ MonoBehaviour:
   mHero: {fileID: 0}
   Boss: {fileID: 0}
   isBoss: 0
-  enterEnim: 0
+  isEnterAnim: 0
   mcamera: {fileID: 0}
   ForBoss: {fileID: 0}
   ForEnemy: {fileID: 0}
