@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class HeroBulletBehavior : MonoBehaviour
@@ -43,7 +42,7 @@ public class HeroBulletBehavior : MonoBehaviour
         if (other.CompareTag("Boss")||other.CompareTag("Enemy"))
         {
             if(mHero.gm.isBoss)other.GetComponent<Boss1>().takeDamage(damage);
-            other.GetComponent<EnemyBehacior>().takeDamage(damage);
+            if(other.gameObject.CompareTag("Enemy"))other.GetComponent<EnemyBehacior>().takeDamage(damage);
             Destroy(gameObject);
         }
     }

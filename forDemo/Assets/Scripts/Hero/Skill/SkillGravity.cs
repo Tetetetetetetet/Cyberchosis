@@ -11,8 +11,8 @@ public class SkillGravity : MonoBehaviour
 
     void Awake()
     {
-        sp=GetComponent<SpriteRenderer>();
-        myCollider=GetComponent<BoxCollider2D>();
+        sp=gameObject.GetComponent<SpriteRenderer>();
+        myCollider=gameObject.GetComponent<BoxCollider2D>();
         GravityManager=this;
         Color color=sp.color;
         color.a=0f;

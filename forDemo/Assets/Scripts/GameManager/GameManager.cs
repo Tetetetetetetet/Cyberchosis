@@ -37,9 +37,9 @@ public class GameManager : MonoBehaviour
         mHero=GameObject.FindWithTag("Player");
         mcamera=util.findGameObject("Main Camera").GetComponent<Camera>();
         if(isBoss)Boss=util.findGameObject("Boss");
-        ForBoss.text="Straight up for Boss, turn left";
-        ForEnemy.text="For Practice and train, turn right";
-        Abillity.text="You get Random Abillity: Gravity Trap";
+        //ForBoss.text="Straight up for Boss, turn left";
+        //ForEnemy.text="For Practice and train, turn right";
+        //Abillity.text="You get Random Abillity: Gravity Trap";
         //bossName=GameObject.Find("BossName").GetComponent<TextMeshProUGUI>;
     }
 
@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
 
     public void win()
     {
-        SceneManager.LoadScene("StartScene");
+        SceneManager.LoadScene("Start Scene");
     }
     public void changeScene(int id)
     {
@@ -99,6 +99,10 @@ public class GameManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Y))
         {
             SceneManager.LoadScene("LifeFog");
+        }
+        if(isBoss&&Boss.GetComponent<Boss1>().currHealth<=0f)
+        {
+            win();
         }
     }
 

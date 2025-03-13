@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 
 public partial class PlayerBehavior : MonoBehaviour
@@ -15,10 +17,13 @@ public partial class PlayerBehavior : MonoBehaviour
        float moveIn=Input.GetAxis("Horizontal");
        if(moveIn>0)s.x=scale;
        if(moveIn<0)s.x=-scale;
-       Vector2 vel=new Vector2(moveIn*speed,myRigid.velocity.y);
-       myRigid.velocity=vel;
-       bool MoveX=Mathf.Abs(myRigid.velocity.x)>Mathf.Epsilon;
-       anim.SetBool("isRun",MoveX);
+       if(anim.GetBool("isRoll")==false)
+       {
+          Vector2 vel=new Vector2(moveIn*speed,myRigid.velocity.y);
+          myRigid.velocity=vel;
+          bool MoveX=Mathf.Abs(myRigid.velocity.x)>Mathf.Epsilon;
+          anim.SetBool("isRun",MoveX);
+       }
      }
      void checkJump()
      {
@@ -190,6 +195,35 @@ public partial class PlayerBehavior : MonoBehaviour
           anim.SetTrigger("Die");
           gm.loseGame();
      }
+     void checkRoll()
+     {
+          float timedis=Mathf.Abs(Time.time-lastRollAt);
+          if(Input.GetKeyDown(KeyCode.LeftAlt))
+          {
+               Debug.Log("start roll");
+               anim.SetBool("isRoll",true);
+               anim.SetBool("isRun",false);
+               myRigid.isKinematic=true;
+               myfeet.isTrigger=true;
+               lastRollAt=Time.time;
+               if(Mathf.Abs(Time.time-lastRollAt)>rollCooldown&&(anim.GetBool("isRun")||anim.GetBool("Idle")))
+               timedis=Mathf.Abs(Time.time-lastRollAt);
+               {
+               }
+          }
+          if(anim.GetBool("isRoll"))
+          {
+               myRigid.velocity=new Vector2(rollSpeed*s.x/Mathf.Abs(s.x),0);
+          }
+
+          if(anim.GetBool("isRoll")&&timedis>rollDuringTime)
+          {
+               anim.SetBool("isRoll",false);
+               anim.SetBool("Idle",true);
+               myRigid.isKinematic=false;
+               myfeet.isTrigger=false;
+          }
+     }
      void action()
      {
           checkRun();
@@ -201,6 +235,7 @@ public partial class PlayerBehavior : MonoBehaviour
           checkFire();
           checkGroundSlam();
           checkThrow();
+          checkRoll();
      }
 
 

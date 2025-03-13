@@ -1,7 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.XR;
-using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 
 public partial class PlayerBehavior : MonoBehaviour
@@ -36,6 +34,10 @@ public partial class PlayerBehavior : MonoBehaviour
     bool isGround;
     public Vector3 dashPos;
     private float lastDashAt;
+    public float lastRollAt;
+    public float rollCooldown;
+    public float rollSpeed;
+    public float rollDuringTime;
     public Vector3 dashStartPos;
     public int maxJumpTimes;
     public AnimatorStateInfo info;
@@ -131,7 +133,7 @@ public partial class PlayerBehavior : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if(gm.isBoss)Debug.Log($"Player: onTriggerEnter, other has BossAttacked is :{other.gameObject.GetComponent<Boss1>()!=null}");
-        if(gm.isBoss)other.gameObject.GetComponent<Boss1>().takeDamage(damage);
+        if(gm.isBoss&&other.gameObject.CompareTag("Boss"))other.gameObject.GetComponent<Boss1>().takeDamage(damage);
         GameObject enemy=other.gameObject;
         Debug.Log($"player: enter trigger");
     }

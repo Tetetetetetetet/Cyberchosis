@@ -1,13 +1,5 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
-using Unity.Mathematics;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.UIElements;
 
 public partial class Boss1 : MonoBehaviour
 {
@@ -15,7 +7,7 @@ public partial class Boss1 : MonoBehaviour
     public float minDis;
     public bool debugflag;
     public GameObject mHero; //接口：自动接Player GameObject
-    public Vector3 firingPos=new Vector3(13.7f,-6f,0f);
+    public Vector3 firingPos;
     public Rigidbody2D myRigid; //auto
     public BoxCollider2D myfeet;//auto
     public Animator anim;
@@ -40,6 +32,7 @@ public partial class Boss1 : MonoBehaviour
     public float damage3;
     public float attackCoolDown;
     public float attackLastTime;
+    public Vector3 BossPos;
 
     // for fly and firing
     public float lastFlyFireTime;
@@ -99,10 +92,11 @@ public partial class Boss1 : MonoBehaviour
         bulletGene.GetComponent<BulletShootController>().enabled=false;
         fire=bulletGene.GetComponent<BulletShootController>();
         lastChangModeTime=Time.time;
+        currmode=mode.FindAndAttack;
     }
     public void setPos()
     {
-        transform.localPosition=new Vector3(-21.10972f,-13.99191f,0f);
+        transform.localPosition=BossPos;
     }
     // Update is called once per frame
 
@@ -120,6 +114,9 @@ public partial class Boss1 : MonoBehaviour
 
         if(gm.gameStart)
         {
+            //debuging
+            //currmode=mode.FindAndAttack;
+
             //if(debugflag)Debug.Log($"curr mode: {currmode}");
             //testing
             if(currmode==mode.FindAndAttack)
@@ -146,7 +143,7 @@ public partial class Boss1 : MonoBehaviour
             if(attacked)
             {
                 Color co=GetComponent<SpriteRenderer>().color;
-                co.a*=originA*0.3f;
+                co.a*=originA*0.5f;
                 GetComponent<SpriteRenderer>().color=co;
             }
             else
@@ -244,7 +241,8 @@ public partial class Boss1 : MonoBehaviour
     {
         if(currmode==mode.FindAndAttack)
         {
-            currmode=mode.FlyAndFiring;
+            //currmode=mode.FlyAndFiring;
+            currmode=mode.FindAndAttack;
             if(debugflag)Debug.Log($"change mode, now: {currmode}");
             return;
         }
@@ -259,27 +257,27 @@ public partial class Boss1 : MonoBehaviour
         //testing
         testButton=!testButton;
     }
-    void ableCo1()
+    public void ableCo1()
     {
         ba1.mycollider.enabled=true;
     }
-    void diableCo1()
+    public void diableCo1()
     {
         ba1.mycollider.enabled=false;
     }
-    void ableCo2()
+    public void ableCo2()
     {
         ba2.mycollider.enabled=true;
     }
-    void diableCo2()
+    public void diableCo2()
     {
         ba2.mycollider.enabled=false;
     }
-    void ableCo3()
+    public void ableCo3()
     {
         ba3.mycollider.enabled=true;
     }
-    void diableCo3()
+    public void diableCo3()
     {
         ba3.mycollider.enabled=false;
         isAttacking=false;

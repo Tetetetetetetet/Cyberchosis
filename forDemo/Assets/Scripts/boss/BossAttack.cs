@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class BossAttack : MonoBehaviour
@@ -33,26 +31,26 @@ public class BossAttack : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        other.gameObject.GetComponent<PlayerBehavior>().takeDamage(damage);
+        if(other.gameObject.CompareTag("Player"))other.gameObject.GetComponent<PlayerBehavior>().takeDamage(damage);
     }
-    void onFrameEnter()
-    {
-        Debug.Log("onFrameEnter");
-        mycollider.enabled=true;
-        StartCoroutine(disableHitbox());
-    }
+    //public  void onFrameEnter()
+    //{
+        //Debug.Log("onFrameEnter");
+        //mycollider.enabled=true;
+        //StartCoroutine(disableHitbox());
+    //}
     private IEnumerator disableHitbox()
     {
         yield return new WaitForSeconds(0.1f);
         mycollider.enabled=false;
     }
-    void onFrameExit()
-    {
-        Debug.Log("onFrameExit");
-        mycollider.enabled=false;
-    }
-    void finishAttack()
-    {
-        theBoss.GetComponent<Boss1>().isAttacking=false;
-    }
+    //public void onFrameExit()
+    //{
+        //Debug.Log("onFrameExit");
+        //mycollider.enabled=false;
+    //}
+    //public void finishAttack()
+    //{
+        //theBoss.GetComponent<Boss1>().isAttacking=false;
+    //}
 }

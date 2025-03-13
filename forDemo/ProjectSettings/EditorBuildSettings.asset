@@ -5,28 +5,28 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Start Scene.unity
     guid: 794161f2ea0d35b4791a6150ce09fad9
-  - enabled: 1
+  - enabled: 0
+    path: Assets/Scenes/GameIntroduction.unity
+    guid: 4fa519b8976af5a4c978b62362c6a2a3
+  - enabled: 0
+    path: Assets/Scenes/TransitionScene.unity
+    guid: 4db2b7eb13a280f45953a7f795ff1efa
+  - enabled: 0
     path: Assets/Scenes/TheWorld.unity
     guid: be145bcd9feb67542819abd85a365288
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LifeFog.unity
     guid: 83032295d33db91428ac3de1afe97b5f
+  - enabled: 1
+    path: Assets/Scenes/testScene.unity
+    guid: c8ce3efc05e532f4798d463c8fa63fc5
   - enabled: 1
     path: Assets/Scenes/Lose1.unity
     guid: e25a96c99e6c8f94da183571e070fd52
   - enabled: 1
     path: Assets/Scenes/Lose2.unity
     guid: 92a063c412b74f94aaa891080813a6e7
-  - enabled: 1
-    path: Assets/Scenes/testScene.unity
-    guid: c8ce3efc05e532f4798d463c8fa63fc5
-  - enabled: 1
-    path: Assets/Scenes/GameIntroduction.unity
-    guid: 4fa519b8976af5a4c978b62362c6a2a3
-  - enabled: 1
-    path: Assets/Scenes/TransitionScene.unity
-    guid: 4db2b7eb13a280f45953a7f795ff1efa
   m_configObjects: {}

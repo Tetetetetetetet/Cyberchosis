@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public partial class Boss1 : MonoBehaviour
@@ -29,9 +27,9 @@ public partial class Boss1 : MonoBehaviour
 
         attackLastTime=Time.time;
         isAttacking=true;
-        ba1.anim.SetTrigger("isAttack");
-        ba2.anim.SetTrigger("isAttack");
-        ba3.anim.SetTrigger("isAttack");
+        //ba1.anim.SetTrigger("isattack");
+        //ba2.anim.SetTrigger("isattack");
+        //ba3.anim.SetTrigger("isattack");
         //StartCoroutine(StartAttack1());
     }
  //   private IEnumerator StartAttack1()

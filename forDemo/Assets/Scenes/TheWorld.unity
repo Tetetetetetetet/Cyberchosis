@@ -202,13 +202,17 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 748861775
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8969623251882098895, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4707632203573925909, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
       insertIndex: -1
       addedObject: {fileID: 468359093}
+    - targetCorrespondingSourceObject: {fileID: 4707632203573925909, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 468359102}
   m_SourcePrefab: {fileID: 100100000, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
 --- !u!1 &264025722
 GameObject:
@@ -676,6 +680,21 @@ MonoBehaviour:
   endDialogueEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &468359102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468359084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3462942a19866734b8f97f9e55b03bf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkInterval: 0.5
+  gravm: {fileID: 0}
+  myCollider: {fileID: 0}
 --- !u!4 &904572630 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6297276050750010171, guid: a0dbeffc84669e24f994d387893a803d, type: 3}
