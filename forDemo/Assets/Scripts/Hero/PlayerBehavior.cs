@@ -14,6 +14,7 @@ public partial class PlayerBehavior : MonoBehaviour
     public float damage;
 
     public static GameObject mHero;
+    public GameObject mySword; // 可能需要手动拖
 
     public bool setY;
     public bool noRotate;
@@ -55,6 +56,7 @@ public partial class PlayerBehavior : MonoBehaviour
     public bool gamemode;
     public SpriteRenderer sp;
     public bool attacked;
+    public bool canSkill1,canSkill2,canSkill3;
     public float remoteDamage;
     void Start()
     {
@@ -72,9 +74,11 @@ public partial class PlayerBehavior : MonoBehaviour
         originA=sp.color.a;
         attacked=false;
         gamemode=true;
+        mySword=util.findGameObject("HeroSwordAttack");
 
         Debug.Assert(gm!=null);
         Debug.Assert(sp!=null);
+        Debug.Assert(mySword!=null);
 
     }
     // Update is called once per frame

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Video;
 
 public partial class PlayerBehavior : MonoBehaviour
 {
@@ -224,6 +225,16 @@ public partial class PlayerBehavior : MonoBehaviour
                myfeet.isTrigger=false;
           }
      }
+     public void onFrameSword()
+     {
+          HeroSwordBehavior hsb=mySword.GetComponent<HeroSwordBehavior>();
+          hsb.enabled=true;
+     }
+     public void onFrameSworded()
+     {
+          HeroSwordBehavior hsb=mySword.GetComponent<HeroSwordBehavior>();
+          hsb.enabled=false;
+     } 
      void action()
      {
           checkRun();
