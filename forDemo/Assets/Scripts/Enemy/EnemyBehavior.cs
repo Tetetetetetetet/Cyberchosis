@@ -55,7 +55,7 @@ public class EnemyBehacior : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
            //造成伤害
-            if(Time.time-attackTimer>=attackInterval&&collision==mHero.myfeet)
+            if(Time.time-attackTimer>=attackInterval)
             {
                 attackTimer=Time.time;
                 anim.SetTrigger("attack");
