@@ -21,7 +21,6 @@ public partial class Boss1 : MonoBehaviour
     public bool flag;
     public bool isGround;
     private Vector3 mousepos;
-    public GameObject hero;
     public MoveToTarget flyCompo;
     public float moveSpeed;
     public int timeBeforeAttack;
@@ -55,17 +54,17 @@ public partial class Boss1 : MonoBehaviour
     public GameObject bulletGene;
     public BulletShootController fire;
     public float lastChangModeTime;
+    public float accumDamage;
 
     // Start is called before the first frame update
     void Start()
     {
         gm=GameManager.mGM;
         flyCompo=GetComponent<MoveToTarget>();
-        hero=gm.mHero;
+        mHero=gm.mHero;
         anim=GetComponent<Animator>();
         myfeet=GetComponent<BoxCollider2D>();
         myRigid=GetComponent<Rigidbody2D>();
-        mHero=gm.mHero;
         myRigid.velocity=new Vector2(0,0);
         transform.localScale=new Vector3(-scale,scale,0);
         flag=true;
@@ -81,6 +80,7 @@ public partial class Boss1 : MonoBehaviour
         attackLastTime=-999f;
         isFlyFiring=false;
         isAttacking=false;
+        accumDamage=0;
         //testing
         currmode=mode.FindAndAttack;
         flyCompo.speed=moveSpeed;
@@ -159,10 +159,10 @@ public partial class Boss1 : MonoBehaviour
             }
         }
    }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        Debug.Log("boss1: onTriggerEnter");
-    }
+   // private void OnTriggerEnter2D(Collider2D other)
+    //{
+        //Debug.Log("boss1: onTriggerEnter");
+    //}
     void perfomeOnce()
     {
         if(flag)
@@ -176,6 +176,11 @@ public partial class Boss1 : MonoBehaviour
         currHealth-=damage;
         if(currHealth<=0)anim.SetBool("isdead",true);
         StartCoroutine(HitFlashEffect());
+        if(accumDamage>=50&&currmode==mode.FindAndAttack)
+        {
+            changeMode();
+            accumDamage=0;
+        }
     }
     private IEnumerator HitFlashEffect()
     {
@@ -186,7 +191,7 @@ public partial class Boss1 : MonoBehaviour
     void FindAndAttack()
     {
         Vector3 p=transform.localPosition;
-        Vector3 targetpos=hero.transform.localPosition;
+        Vector3 targetpos=mHero.transform.localPosition;
         float dis=Mathf.Abs(p.x-targetpos.x);
         if(dis>minDis)
         {
@@ -242,20 +247,19 @@ public partial class Boss1 : MonoBehaviour
         if(currmode==mode.FindAndAttack)
         {
             //currmode=mode.FlyAndFiring;
-            currmode=mode.FindAndAttack;
-            if(debugflag)Debug.Log($"change mode, now: {currmode}");
+            currmode=mode.FlyAndFiring;
+            //if(debugflag)Debug.Log($"change mode, now: {currmode}");
             return;
         }
-        if(currmode==mode.FlyAndFiring)
+        else if(currmode==mode.FlyAndFiring)
         {
             currmode=mode.FindAndAttack;
             flyCompo.isMoving=false;
             fire.enabled=false;
-            Debug.Log("change mode when Fly&Firing");
+            //Debug.Log("change mode when Fly&Firing");
             return;
         }
         //testing
-        testButton=!testButton;
     }
     public void ableCo1()
     {

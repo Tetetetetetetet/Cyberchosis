@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.Jobs.LowLevel.Unsafe;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Video;
@@ -28,7 +29,7 @@ public partial class PlayerBehavior : MonoBehaviour
      }
      void checkJump()
      {
-          if(Input.GetKeyDown(KeyCode.W))
+          if(Input.GetKeyDown(KeyJump))
           {
                if(isGround)
                {
@@ -72,33 +73,32 @@ public partial class PlayerBehavior : MonoBehaviour
 
      void sword()
      {
-          if(Input.GetKeyDown(KeyCode.Mouse0))
+          if(Input.GetKeyDown(KeySword)&&((Time.time-lastSwordAttackAt)>swordCooldown))
           {
                anim.SetTrigger("SwordAttack");
-               StartCoroutine(startSwordAttack());
+               swordCooldown=Time.time;
+               //StartCoroutine(startSwordAttack());
           }
 
      }
 
-     IEnumerator startSwordAttack()
-     {
-          //Debug.Log("Start Attack");
-          yield return new WaitForSeconds(timeBeforeAttack);
-          attackCollider.enabled=true;
-          //Debug.Log("HitBox Enable");
-          StartCoroutine(disableHitBox());
-     }
-     IEnumerator disableHitBox()
-     {
-          //Debug.Log("HitBox start disable");
-          yield return new WaitForSeconds(timeAfterAttack);
-          attackCollider.enabled=false;
-          //Debug.Log("Hitbox disabled");
-     }
+//     IEnumerator startSwordAttack()
+     //{
+          ////Debug.Log("Start Attack");
+          //yield return new WaitForSeconds(timeBeforeAttack);
+          ////Debug.Log("HitBox Enable");
+          //StartCoroutine(disableHitBox());
+     //}
+     //IEnumerator disableHitBox()
+     //{
+          ////Debug.Log("HitBox start disable");
+          //yield return new WaitForSeconds(timeAfterAttack);
+          ////Debug.Log("Hitbox disabled");
+     //}
 
      void checkCrouch()
      {
-          if(Input.GetKeyDown(KeyCode.C))
+          if(Input.GetKeyDown(KeyCrouch))
           {
                anim.SetTrigger("Crouch");
           }
@@ -112,72 +112,78 @@ public partial class PlayerBehavior : MonoBehaviour
      }
      void checkComboA()
      {
-          if(Input.GetKeyDown(KeyCode.Mouse1))
+          if(Input.GetKeyDown(KeyCombo))
           {
                anim.SetTrigger("ComboAttackA");
           }
      }
      void checkFire()
      {
-          if(Input.GetKeyDown(KeyCode.F))
+          if(Input.GetKeyDown(KeyFire)&&(Time.time-lastFireAt)>fireCooldown)
           {
                anim.SetTrigger("Fire");
+               lastFireAt=Time.time;
                fire();
           }
      }
+     public Vector2 fireposOffset;
      void fire()
      {
           GameObject e=Instantiate(Resources.Load("Prefabs/HeroFire")as GameObject);
-          e.transform.localPosition=transform.localPosition;
-          Vector3 dirc=(Camera.main.ScreenToWorldPoint(Input.mousePosition)-p);
+          Vector3 epos=transform.localPosition;
+          epos.y+=fireposOffset.y;
+          epos.x+=fireposOffset.x;
+          e.transform.localPosition=epos;
+          Vector3 dirc=(util.getMousePos()-epos);
           e.transform.up=dirc.normalized;
           e.GetComponent<HeroBulletBehavior>().mHero=gameObject.GetComponent<PlayerBehavior>();
+          s.x=(gm.Boss.transform.localPosition.x-p.x)/Mathf.Abs(gm.Boss.transform.localPosition.x-p.x)*scale;
      }
      /*
      checkDash(): unfinished, bug实在离谱
      */
-     void checkDash()
-     {
-          bool isDash=anim.GetBool("isDash");
-          Debug.Log($"checkDash at {Time.time}, isDash: {isDash}");
-          if(Input.GetKeyDown(KeyCode.LeftAlt))
-          {
-               Debug.Log("got alt");
-               anim.SetBool("isDash",true);
-               isDash=true;
-               dashPos=p;
-               dashStartPos=p;
-               lastDashAt=Time.time;
-               if(s.x>0)
-               {
-                    dashPos.x+=dashDis;
-               }
-               else if(s.x<0)
-               {
-                    dashPos.x-=dashDis;
-               }
-          }
-          if(isDash)
-          {
-               info=anim.GetCurrentAnimatorStateInfo(0);
-               float percent=info.normalizedTime;
-               float x=percent*(dashPos.x-p.x)+p.x;
-               p.x=x;
-               Debug.Log($"percent: {percent}, p.x:{p.x}");
-          }
-          if(Mathf.Abs(dashPos.x-p.x)/Mathf.Abs(dashStartPos.x-p.x)<0.1)
-          {
-               Debug.Log($"dash finish, {dashStartPos.x}->{dashPos.x}, now {p.x}");
-               anim.SetBool("isDash",false);
-          }
-     }
+     //void checkDash()
+     //{
+          //bool isDash=anim.GetBool("isDash");
+          //Debug.Log($"checkDash at {Time.time}, isDash: {isDash}");
+          //if(Input.GetKeyDown(KeyCode.LeftAlt))
+          //{
+               //Debug.Log("got alt");
+               //anim.SetBool("isDash",true);
+               //isDash=true;
+               //dashPos=p;
+               //dashStartPos=p;
+               //lastDashAt=Time.time;
+               //if(s.x>0)
+               //{
+                    //dashPos.x+=dashDis;
+               //}
+               //else if(s.x<0)
+               //{
+                    //dashPos.x-=dashDis;
+               //}
+          //}
+          //if(isDash)
+          //{
+               //info=anim.GetCurrentAnimatorStateInfo(0);
+               //float percent=info.normalizedTime;
+               //float x=percent*(dashPos.x-p.x)+p.x;
+               //p.x=x;
+               //Debug.Log($"percent: {percent}, p.x:{p.x}");
+          //}
+          //if(Mathf.Abs(dashPos.x-p.x)/Mathf.Abs(dashStartPos.x-p.x)<0.1)
+          //{
+               //Debug.Log($"dash finish, {dashStartPos.x}->{dashPos.x}, now {p.x}");
+               //anim.SetBool("isDash",false);
+          //}
+     //}
      void checkBow()
      {
 
      }
      void checkThrow()
      {
-          if(Input.GetKeyDown(KeyCode.E))
+          if(Input.GetKeyDown(KeyThrow))
           {
                Debug.Log("get E");
                anim.SetTrigger("Throw");
@@ -186,7 +192,7 @@ public partial class PlayerBehavior : MonoBehaviour
 
      void checkGroundSlam()
      {
-          if(Input.GetKeyDown(KeyCode.V))
+          if(Input.GetKeyDown(KeyPlaceMagic))
           {
                anim.SetTrigger("GroundSlam");
           }
@@ -199,7 +205,7 @@ public partial class PlayerBehavior : MonoBehaviour
      void checkRoll()
      {
           float timedis=Mathf.Abs(Time.time-lastRollAt);
-          if(Input.GetKeyDown(KeyCode.LeftAlt))
+          if(Input.GetKeyDown(KeyCode.LeftAlt)&&(anim.GetBool("isRun")||anim.GetBool("Idle")))
           {
                Debug.Log("start roll");
                anim.SetBool("isRoll",true);
@@ -208,9 +214,6 @@ public partial class PlayerBehavior : MonoBehaviour
                myfeet.isTrigger=true;
                lastRollAt=Time.time;
                timedis=Mathf.Abs(Time.time-lastRollAt);
-               if(Mathf.Abs(Time.time-lastRollAt)>rollCooldown&&(anim.GetBool("isRun")||anim.GetBool("Idle")))
-               {
-               }
           }
           if(anim.GetBool("isRoll"))
           {
@@ -227,13 +230,14 @@ public partial class PlayerBehavior : MonoBehaviour
      }
      public void onFrameSword()
      {
+          //Debug.Log("hero sword attack");
           HeroSwordBehavior hsb=mySword.GetComponent<HeroSwordBehavior>();
-          hsb.enabled=true;
+          hsb.sword.enabled=true;
      }
      public void onFrameSworded()
      {
           HeroSwordBehavior hsb=mySword.GetComponent<HeroSwordBehavior>();
-          hsb.enabled=false;
+          hsb.sword.enabled=false;
      } 
      void action()
      {

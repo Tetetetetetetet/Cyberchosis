@@ -5,21 +5,26 @@ using UnityEngine.SceneManagement;
 public partial class PlayerBehavior : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameManager gm;
-    public Boss1 b;
+
+    //basis status
     public float attackedSpeedX;
     public float attackedSpeedY;
     public float maxHealth;
     public float currHealth;
     public float damage;
+    public float remoteDamage;
+    public float swordCooldown;
+    public float fireCooldown;
 
-    public static GameObject mHero;
-    public GameObject mySword; // 可能需要手动拖
-
-    public bool setY;
-    public bool noRotate;
-    public float dashDis;
-    public Animator anim=null;
+    // About Dash
+    //public float dashDis;
+    //public float dashCoolDown;
+    //public Vector3 dashPos;
+    //private float lastDashAt;
+    //public Vector3 dashStartPos;
+    //testing
+    //public bool setY;
+    //public bool noRotate;
     public float upSpeed=0f;
     public bool idleStatus=false;
     public float speed;
@@ -31,50 +36,65 @@ public partial class PlayerBehavior : MonoBehaviour
     public float scale;
     public bool canJump=true;
     public bool duringJump=false;
-    public float dashCoolDown;
     bool isGround;
-    public Vector3 dashPos;
-    private float lastDashAt;
     public float lastRollAt;
     public float rollCooldown;
     public float rollSpeed;
     public float rollDuringTime;
-    public Vector3 dashStartPos;
     public int maxJumpTimes;
     public AnimatorStateInfo info;
     public int leftJumpTimes=2;
 
     private Vector3 p;
+    public Animator anim=null;
     private Vector3 s;
     private Quaternion r;
     private Rigidbody2D myRigid;
     public BoxCollider2D myfeet;
-    public PolygonCollider2D attackCollider;
     public float timeBeforeAttack;
     public float timeAfterAttack;
     public float originA;
     public bool gamemode;
     public SpriteRenderer sp;
     public bool attacked;
+    public GameObject mySword; // 可能需要手动拖
+    public GameManager gm;
+    public Boss1 b;
+    public static GameObject mHero;
     public bool canSkill1,canSkill2,canSkill3;
-    public float remoteDamage;
+    private float lastSwordAttackAt;
+    private float lastFireAt;
     void Start()
     {
         currHealth=maxHealth;
         leftJumpTimes=maxJumpTimes;
-        attackCollider=GetComponent<PolygonCollider2D>();
-        myRigid=GetComponent<Rigidbody2D>();
-        myfeet=GetComponent<BoxCollider2D>();
+        myRigid=gameObject.GetComponent<Rigidbody2D>();
+        myfeet=gameObject.GetComponent<BoxCollider2D>();
         //transform.localPosition=initPos;
         transform.localScale=new Vector3(scale,scale,0);
         anim=GetComponent<Animator>();
         gm=GameManager.mGM;
-        attackCollider.enabled=false;
         sp=GetComponent<SpriteRenderer>();
         originA=sp.color.a;
         attacked=false;
         gamemode=true;
         mySword=util.findGameObject("HeroSwordAttack");
+        lastFireAt=-10;
+        lastRollAt=-10;
+        lastSwordAttackAt=-10;
+
+        //key mapping
+        KeyJump=KeyCode.W;
+        KeyFire=KeyCode.Mouse1;
+        KeySword=KeyCode.Mouse0;
+        KeyPlaceMagic=KeyCode.V;
+        KeyThrow=KeyCode.R;
+        KeySit=KeyCode.S;
+        KeyTurnMagic=KeyCode.E;
+        KeyCrouch=KeyCode.X;
+        KeyCombo=KeyCode.Mouse4;
+        KeyRoll=KeyCode.LeftAlt;
+
 
         Debug.Assert(gm!=null);
         Debug.Assert(sp!=null);
@@ -84,63 +104,67 @@ public partial class PlayerBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(gamemode)
+        checkChangeScene();
+        isGround = touchingGround();
+        p = transform.localPosition;
+        s = transform.localScale;
+        r = transform.localRotation;
+        action();
+        skill();
+        //Debug.Log("action done");
+        r.z = 0;
+        if (currHealth <= 0)
         {
-            if(gm.sceneId==1)
+            die();
+        }
+        if (attacked == false)
+        {
+            Color color = sp.color;
+            color.a = originA;
+            sp.color = color;
+        }
+        else
+        {
+            Color color = sp.color;
+            color.a *= originA * 0.3f;
+            sp.color = color;
+        }
+        transform.localPosition = p;
+        //Debug.Log($"final update position: p.y:{p.x}");
+        transform.localScale = s;
+        transform.localRotation = r;
+    }
+    void checkChangeScene()
+        {
+            if (gamemode)
             {
-                if(transform.localPosition.x>15)
+                if (gm.sceneId == 1)
                 {
-                    gm.changeScene(2);
+                    if (transform.localPosition.x > 15)
+                    {
+                        gm.changeScene(2);
+                    }
+                    if (transform.localPosition.x < -18)
+                    {
+                        SceneManager.LoadScene("TransitionScene");
+                    }
                 }
-                if(transform.localPosition.x<-18)
+                if (gm.sceneId == 2)
                 {
-                    SceneManager.LoadScene("TransitionScene");
+                    if (transform.localPosition.x < -18)
+                    {
+                        gm.changeScene(2);
+                    }
                 }
-            }
-            if(gm.sceneId==2)
-            {
-                if(transform.localPosition.x<-18)
-                {
-                    gm.changeScene(2);
-                }
-            }
-            isGround=touchingGround();
-            p=transform.localPosition;
-            s=transform.localScale;
-            r=transform.localRotation;
-            action();
-            skill();
-            //Debug.Log("action done");
-            r.z=0;
-            transform.localPosition=p;
-            //Debug.Log($"final update position: p.y:{p.x}");
-            transform.localScale=s;
-            transform.localRotation=r;
-            if(currHealth<=0)
-            {
-                die();
-            }
-            if(attacked==false)
-            {
-                Color color=sp.color;
-                color.a=originA;
-                sp.color=color;
-            }
-            else
-            {
-                Color color =sp.color;
-                color.a*=originA*0.3f;
-                sp.color=color;
-            }
         }
     }
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if(gm.isBoss)Debug.Log($"Player: onTriggerEnter, other has BossAttacked is :{other.gameObject.GetComponent<Boss1>()!=null}");
-        if(gm.isBoss&&other.gameObject.CompareTag("Boss"))other.gameObject.GetComponent<Boss1>().takeDamage(damage);
-        GameObject enemy=other.gameObject;
-        Debug.Log($"player: enter trigger");
-    }
+    //void OnTriggerEnter2D(Collider2D other)
+    //{
+        //if(gm.isBoss)Debug.Log($"Player: onTriggerEnter, other has BossAttacked is :{other.gameObject.GetComponent<Boss1>()!=null}");
+        //if(gm.isBoss&&other.gameObject.CompareTag("Boss"))other.gameObject.GetComponent<Boss1>().takeDamage(damage);
+        //GameObject enemy=other.gameObject;
+        //Debug.Log($"player: enter trigger");
+    //}
     //     void OnCollisionEnter2D(Collision2D other)
     //{
         //Debug.Log("Player onCollisionEnter");
@@ -151,9 +175,9 @@ public partial class PlayerBehavior : MonoBehaviour
             //Destroy(other.gameObject);
         //}
     //}
-
     public void takeDamage(float damage)
     {
+        Debug.Log($"Hero get damage: {damage}");
         currHealth-=damage;
         Vector2 knockbackforce;
         if(gm.isBoss)

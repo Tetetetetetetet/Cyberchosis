@@ -32,6 +32,44 @@ public partial class Boss1 : MonoBehaviour
         //ba3.anim.SetTrigger("isattack");
         //StartCoroutine(StartAttack1());
     }
+
+
+    void jump()
+    {
+        Debug.Log("boss jump");
+        anim.SetBool("isJump",true);
+        Vector2 v=myRigid.velocity;
+        v.y=jumpSpeed;
+        myRigid.velocity=v;
+    }
+    void jumpTran()
+    {
+        if(myRigid.velocity.y<=0)
+        {
+            anim.SetBool("isJump",false);
+            anim.SetBool("isJumpFall",true);
+        }
+        if(isGround)
+        {
+            anim.SetBool("isJumpFall",false);
+            anim.SetBool("isIdle",true);
+        }
+        else
+        {
+            anim.SetBool("isJumpFall",true);
+        }
+    }
+    void flyTo(Vector3 pos)
+    {
+        Debug.Log("boss: flyto");
+        Debug.Assert(flyCompo!=null);
+        flyCompo.StartMoving(pos);
+    }
+    void switchStatus()
+    {
+
+    }
+}
  //   private IEnumerator StartAttack1()
     //{
         //for(int i=0;i<timeBeforeAttack;i++)
@@ -72,40 +110,3 @@ public partial class Boss1 : MonoBehaviour
         //ba3.off();
         //isAttacking=false;
     //}
-
-    void jump()
-    {
-        Debug.Log("boss jump");
-        anim.SetBool("isJump",true);
-        Vector2 v=myRigid.velocity;
-        v.y=jumpSpeed;
-        myRigid.velocity=v;
-    }
-    void jumpTran()
-    {
-        if(myRigid.velocity.y<=0)
-        {
-            anim.SetBool("isJump",false);
-            anim.SetBool("isJumpFall",true);
-        }
-        if(isGround)
-        {
-            anim.SetBool("isJumpFall",false);
-            anim.SetBool("isIdle",true);
-        }
-        else
-        {
-            anim.SetBool("isJumpFall",true);
-        }
-    }
-    void flyTo(Vector3 pos)
-    {
-        Debug.Log("boss: flyto");
-        Debug.Assert(flyCompo!=null);
-        flyCompo.StartMoving(pos);
-    }
-    void switchStatus()
-    {
-
-    }
-}

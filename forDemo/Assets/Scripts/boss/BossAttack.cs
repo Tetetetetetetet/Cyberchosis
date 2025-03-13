@@ -14,6 +14,8 @@ public class BossAttack : MonoBehaviour
         mycollider.enabled=false;
         theBoss=GameManager.mGM.Boss;
         anim=GetComponent<Animator>();
+
+        Debug.Assert(theBoss!=null);
     }
 
     // Update is called once per frame
@@ -31,6 +33,7 @@ public class BossAttack : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log($"Boss Attack, damage: {damage}");
         if(other.gameObject.CompareTag("Player"))other.gameObject.GetComponent<PlayerBehavior>().takeDamage(damage);
     }
     //public  void onFrameEnter()
@@ -39,11 +42,6 @@ public class BossAttack : MonoBehaviour
         //mycollider.enabled=true;
         //StartCoroutine(disableHitbox());
     //}
-    private IEnumerator disableHitbox()
-    {
-        yield return new WaitForSeconds(0.1f);
-        mycollider.enabled=false;
-    }
     //public void onFrameExit()
     //{
         //Debug.Log("onFrameExit");

@@ -63,10 +63,6 @@ public class EnemyBehacior : MonoBehaviour
                 PlayerBehavior player=collision.gameObject.GetComponent<PlayerBehavior>();
                 player.takeDamage(damage);
             }
-            else if(collision==mHero.attackCollider)
-            {
-                takeDamage(mHero.damage);
-            }
         }        
     }
     //巡逻
