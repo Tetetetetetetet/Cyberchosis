@@ -1,3 +1,4 @@
+using System.Reflection;
 using UnityEngine;
 
 public partial class PlayerBehavior : MonoBehaviour
@@ -5,6 +6,16 @@ public partial class PlayerBehavior : MonoBehaviour
     // Start is called before the first frame update
     public DoorManager doorm=DoorManager.tDoorManager;
     public Vector3 mousePos;
+    public KeyCode KeyFire;
+    public KeyCode KeyJump;
+    public KeyCode KeySword;
+    public KeyCode KeyTurnMagic;
+    public KeyCode KeyPlaceMagic;
+    public KeyCode KeyThrow;
+    public KeyCode KeySit;
+    public KeyCode KeyCrouch;
+    public KeyCode KeyCombo;
+    public KeyCode KeyRoll;
 
     /*
     访问各个技能，是否装载，能否发动
@@ -43,8 +54,8 @@ public partial class PlayerBehavior : MonoBehaviour
     }
     void gravityTrap()
     {
-        GameObject _trap=GameObject.Find("SkillGravity");
-        if(_trap==null)
+        GameObject _trap=util.findGameObject("SkillGravity");
+        if(_trap==null||canSkill2==false)
         {
             return;
         }
@@ -56,9 +67,9 @@ public partial class PlayerBehavior : MonoBehaviour
             {
                 trap.turn();
             }
-            if(Input.GetKeyDown(KeyCode.Mouse2))
+            if(Input.GetKeyDown(KeyCode.V))
             {
-                trap.setPos(Camera.main.ScreenToWorldPoint(Input.mousePosition).x);
+                trap.setPos(p.x);
             }
         }
     }

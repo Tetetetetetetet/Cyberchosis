@@ -157,10 +157,10 @@ public partial class Boss1 : MonoBehaviour
             }
         }
    }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        Debug.Log("boss1: onTriggerEnter");
-    }
+   // private void OnTriggerEnter2D(Collider2D other)
+    //{
+        //Debug.Log("boss1: onTriggerEnter");
+    //}
     void perfomeOnce()
     {
         if(flag)
