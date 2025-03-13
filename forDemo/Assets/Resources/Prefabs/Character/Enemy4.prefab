@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5517218929167255790}
   - component: {fileID: 984079763900566635}
   - component: {fileID: 8115442781163554848}
+  - component: {fileID: -5460157516147454405}
   m_Layer: 7
   m_Name: Enemy4
   m_TagString: Enemy
@@ -201,6 +202,8 @@ MonoBehaviour:
   movespeed: 0
   range: 10
   damage: 0
+  mHero: {fileID: 0}
+  gm: {fileID: 0}
 --- !u!60 &984079763900566635
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -288,3 +291,19 @@ MonoBehaviour:
   offsety: 0.5
   offsetx: 0.5
   text: {fileID: 0}
+  bloodbarInstance: {fileID: 0}
+--- !u!114 &-5460157516147454405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4021619891066057348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 162b3776394d17a45ac95dfe27bcb653, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Rskill1: 0
+  Rskill2: 0
+  player: {fileID: 0}
