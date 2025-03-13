@@ -12,6 +12,10 @@ public class util : MonoBehaviour
     {
         return GameObject.Find(name);
     }
+    public static GameObject FindWithTag(string tag)
+    {
+        return GameObject.FindWithTag(tag);
+    }
     void Start()
     {
         

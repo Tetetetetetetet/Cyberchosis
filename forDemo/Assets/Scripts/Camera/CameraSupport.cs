@@ -25,7 +25,7 @@ public class CameraSupport : MonoBehaviour
     }
 
     // Update is called once per frame
-    void followHero()
+    public void followHero()
     {
         if(gm.mHero!= null)targetPos=gm.mHero.transform.localPosition;
         targetPos.x+=xOffset;
@@ -37,7 +37,7 @@ public class CameraSupport : MonoBehaviour
         if(p.y<=minY)p.y=minY;
         if(p.y>=maxY)p.y=maxY;
     }
-    public void enterAnim()
+    public virtual void enterAnim()
     {
         Debug.Log("enter animation");
         Camera.main.orthographicSize=5;

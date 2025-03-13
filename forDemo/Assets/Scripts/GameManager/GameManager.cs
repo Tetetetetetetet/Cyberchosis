@@ -17,8 +17,8 @@ public class GameManager : MonoBehaviour
     public GameObject mHero;
     public GameObject Boss;//需要手动拖拽
     public bool isBoss;//according to scene
-    public bool enterEnim;
-    public Camera mcamera; //自动挂"Main Camera"
+    public bool isEnterAnim;
+    public GameObject mcamera; //自动挂"Main Camera"
     public TextMeshProUGUI ForBoss;
     public TextMeshProUGUI ForEnemy;
     public TextMeshProUGUI Abillity;
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
         }
         //else Destroy(gameObject);
         mHero=GameObject.FindWithTag("Player");
-        mcamera=util.findGameObject("Main Camera").GetComponent<Camera>();
+        mcamera=util.findGameObject("Main Camera");
         if(isBoss)Boss=util.findGameObject("Boss");
         //ForBoss.text="Straight up for Boss, turn left";
         //ForEnemy.text="For Practice and train, turn right";
@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Debug.Assert(mHero!=null);
-        if(enterEnim)
+        if(isEnterAnim)
         {
             mcamera.GetComponent<CameraSupport>().enterAnim();
             if(isBoss)Boss.GetComponent<Boss1>().setPos();
@@ -68,20 +68,38 @@ public class GameManager : MonoBehaviour
         if(isBoss)bossName.text="JiaYin.king";
     }
 
-    public void win()
+    public virtual void win()
     {
         SceneManager.LoadScene("Start Scene");
     }
-    public void changeScene(int id)
+
+/// <summary>
+/// id  Scene
+/// <list type="bullet">
+/// <item>1   TheWorld</item>
+/// <item>2   LifeLog</item>
+/// <item>3   BossWJY</item>
+/// </list>
+/// </summary>
+
+    public virtual void changeScene(int id)
     {
         Debug.Log($"change Scene{id}");
+        if(id==1)
+        {
+            SceneManager.LoadScene("TheWord");
+        }
         if(id==2)
         {
             SceneManager.LoadScene("LifeFog");
         }
         if(id==3)
         {
-            SceneManager.LoadScene("testScene");
+            SceneManager.LoadScene("BossWJY");
+        }
+        if(id==4)
+        {
+
         }
     }
 
