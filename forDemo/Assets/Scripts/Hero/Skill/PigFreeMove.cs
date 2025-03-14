@@ -32,7 +32,6 @@ public class PigFreeMove : MonoBehaviour
     }
     public void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log("ce");
         // 检查触发器碰撞的物体
         if (other.gameObject.CompareTag("Player"))
         {

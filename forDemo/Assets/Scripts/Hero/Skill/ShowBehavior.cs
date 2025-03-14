@@ -16,27 +16,52 @@ public class ShowBehavior : MonoBehaviour
         
         if(Input.GetKeyDown(KeyCode.Y))
         {
-            Transform childTransform = transform.Find("Wallbig");
+            // Transform childTransform = transform.Find("Wallbig");
+            // if (childTransform != null)
+            // {
+            //     childObject = childTransform.gameObject;
+            //     //Debug.Log("Found child GameObject: " + childObject.name);
+            // if(order==2)
+            // {
+                
+            //     ShowClass.Show(childObject,0);
+            //     order=0;
+
+            // }
+            // else{
+            //     ShowClass.Show(childObject,2);
+            //     order=2;
+            // }
+            // }
+            // GameObject my=this.gameObject;
+            // if(order==2)
+            //     MyComponent.AbleBox2D(my);
+            // else MyComponent.DisableBox2D(my);
+            Showup();
+            Invoke("Showdown",2.0f);
+        }
+    }
+    public void Showup()
+    {
+        Transform childTransform = transform.Find("Wallbig");
+            if (childTransform != null)
+            {
+                
+                childObject = childTransform.gameObject;
+                ShowClass.Show(childObject,2);
+                GameObject my=this.gameObject;
+                MyComponent.AbleBox2D(my);
+            }
+    }
+    public void Showdown()
+    {
+        Transform childTransform = transform.Find("Wallbig");
             if (childTransform != null)
             {
                 childObject = childTransform.gameObject;
-                Debug.Log("Found child GameObject: " + childObject.name);
-            if(order==2)
-            {
-                
                 ShowClass.Show(childObject,0);
-                order=0;
-
+                GameObject my=this.gameObject;
+                MyComponent.DisableBox2D(my);
             }
-            else{
-                ShowClass.Show(childObject,2);
-                order=2;
-            }
-            }
-            GameObject my=this.gameObject;
-            if(order==2)
-                MyComponent.AbleBox2D(my);
-            else MyComponent.DisableBox2D(my);
-        }
     }
 }

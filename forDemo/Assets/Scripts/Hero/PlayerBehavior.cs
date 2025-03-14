@@ -15,6 +15,8 @@ public partial class PlayerBehavior : MonoBehaviour
     public float remoteDamage;
     public float swordCooldown;
     public float fireCooldown;
+    public float minX;
+    public float maxX;
 
     // About Dash
     //public float dashDis;
@@ -129,6 +131,8 @@ public partial class PlayerBehavior : MonoBehaviour
             color.a *= originA * 0.3f;
             sp.color = color;
         }
+        if(p.x>maxX)p.x=maxX;
+        if(p.x<minX)p.x=minX;   
         transform.localPosition = p;
         //Debug.Log($"final update position: p.y:{p.x}");
         transform.localScale = s;
@@ -177,25 +181,32 @@ public partial class PlayerBehavior : MonoBehaviour
     //}
     public void takeDamage(float damage)
     {
-        Debug.Log($"Hero get damage: {damage}");
-        currHealth-=damage;
-        Vector2 knockbackforce;
-        if(gm.isBoss)
+        if(anim.GetBool("isRoll")==false)
         {
-            b=gm.Boss.GetComponent<Boss1>();
-            if(b.transform.localPosition.x>p.x)
+            Debug.Log($"Hero get damage: {damage}");
+            currHealth -= damage;
+            Vector2 knockbackforce;
+            if (gm.isBoss)
             {
-                knockbackforce=new Vector2(-attackedSpeedX,attackedSpeedY);
+                b = gm.Boss.GetComponent<Boss1>();
+                if (b.transform.localPosition.x > p.x)
+                {
+                    knockbackforce = new Vector2(-attackedSpeedX, attackedSpeedY);
+                }
+                else
+                {
+                    knockbackforce = new Vector2(attackedSpeedX, attackedSpeedY);
+                }
+                myRigid.AddForce(knockbackforce, ForceMode2D.Impulse);
             }
-            else
-            {
-                knockbackforce=new Vector2(attackedSpeedX,attackedSpeedY);
-            }
-            myRigid.AddForce(knockbackforce,ForceMode2D.Impulse);
+            Debug.Log("player attacked");
+            attacked = true;
+            StartCoroutine(HitFlashEffect());
         }
-        Debug.Log("player attacked");
-        attacked=true;
-        StartCoroutine(HitFlashEffect());
+        else
+        {
+            Debug.Log("hero attacked while rolling");
+        }
     }
 
     private IEnumerator HitFlashEffect()

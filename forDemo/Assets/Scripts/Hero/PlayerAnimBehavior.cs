@@ -76,7 +76,7 @@ public partial class PlayerBehavior : MonoBehaviour
           if(Input.GetKeyDown(KeySword)&&((Time.time-lastSwordAttackAt)>swordCooldown))
           {
                anim.SetTrigger("SwordAttack");
-               swordCooldown=Time.time;
+               lastSwordAttackAt=Time.time;
                //StartCoroutine(startSwordAttack());
           }
 

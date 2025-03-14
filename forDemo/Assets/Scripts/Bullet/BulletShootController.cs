@@ -11,7 +11,7 @@ public class BulletShootController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        this.enabled=false;
     }
 
     // Update is called once per frame
@@ -46,6 +46,7 @@ public class BulletShootController : MonoBehaviour
         {
             // 计算指向玩家的方向（单位向量）
             Vector2 direction = (player.transform.position - transform.position).normalized;
+            bullet.transform.up=direction.normalized;
 
             // 让子弹朝玩家方向移动
             rb.velocity = direction * bulletSpeed;

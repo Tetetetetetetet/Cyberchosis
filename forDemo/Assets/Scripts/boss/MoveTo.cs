@@ -40,8 +40,8 @@ public class MoveToTarget : MonoBehaviour
     {
         Vector2 direction = (targetPosition - rb.position).normalized; // 计算方向
         float step = speed * Time.fixedDeltaTime; // 计算本帧移动的步长
-        //Vector2 newPosition = rb.position + direction * step; // 计算新位置
-        Vector2 newPosition=Vector2.Lerp(rb.position,targetPosition,moveRatio);
+        Vector2 newPosition = rb.position + direction * step; // 计算新位置
+        //Vector2 newPosition=Vector2.Lerp(rb.position,targetPosition,moveRatio);
         leftDis=Vector3.Distance(rb.position, targetPosition);
 
 

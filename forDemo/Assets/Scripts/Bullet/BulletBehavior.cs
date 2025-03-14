@@ -35,6 +35,6 @@ public class BulletBehavior : MonoBehaviour
             other.GetComponent<PlayerBehavior>().takeDamage(6f);
             // 销毁子弹
         }
-        Destroy(gameObject);
+        if(!other.CompareTag("Boss"))Destroy(gameObject);
     }
 }
