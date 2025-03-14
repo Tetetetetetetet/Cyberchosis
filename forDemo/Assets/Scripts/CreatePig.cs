@@ -7,6 +7,7 @@ public class CreatePig : MonoBehaviour
     // Start is called before the first frame update
     public bool isActive;
     public int maxPigNum;
+    public float interval;
     void Start()
     {
         isActive=false;
@@ -21,7 +22,7 @@ public class CreatePig : MonoBehaviour
         {
             GameObject e=this.gameObject;
             Vector3 p=e.transform.localPosition;
-            MakePigBoss.Pig(p.x,maxPigNum);
+            MakePigBoss.Pig(p.x,maxPigNum,interval);
             isActive=false;
         }
     }

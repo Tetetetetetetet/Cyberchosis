@@ -65,13 +65,6 @@ public partial class Boss1 : MonoBehaviour
         //...
         if ((Time.time - lastFlyFireTime) > flyFireDuringTime && isAttacking == false)
         {
-            isFlyFiring = false;
-            lastFlyFireFinishTime = Time.time;
-            flyCompo.stay = false;
-            flyCompo.isMoving = false;
-            //myRigid.gravityScale = gravityScale;
-            fire.enabled = false;
-            myfeet.isTrigger = false;
             changeMode();
         }
         bulletGene.GetComponent<BulletShootController>().enabled = true;
@@ -98,11 +91,10 @@ public partial class Boss1 : MonoBehaviour
             flyTo(firingPos);
             pigCreator.GetComponent<CreatePig>().isActive = true;
             lastPigAt = Time.time;
-
         }
         if ((Time.time - lastPigAt) > pigDuringTime)
         {
-            finishFlyAndPig();
+            changeMode();
         }
     }
     void finishFlyAndPig()

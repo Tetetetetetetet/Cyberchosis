@@ -157,7 +157,7 @@ public partial class Boss1 : MonoBehaviour
                 //flag=true;
             //}
 
-            if(Input.GetKeyDown(KeyCode.U))
+            if(Input.GetKeyDown(KeyCode.Tilde))
             {
                 changeMode();
             }
@@ -223,7 +223,7 @@ public partial class Boss1 : MonoBehaviour
         if(currmode==mode.FindAndAttack)
         {
             //currmode=mode.FlyAndFiring;
-            bool flag=Random.value>0.1f;
+            bool flag=Random.value>0.6f;
             Debug.Log($"change mode flag: {flag}");
             if(flag)currmode=mode.FlyAndFiring;
             else currmode=mode.FlyAndPig;
@@ -232,12 +232,20 @@ public partial class Boss1 : MonoBehaviour
         }
         else if(currmode==mode.FlyAndFiring)
         {
+            isFlyFiring = false;
+            lastFlyFireFinishTime = Time.time;
+            flyCompo.stay = false;
+            flyCompo.isMoving = false;
+            //myRigid.gravityScale = gravityScale;
+            fire.enabled = false;
+            myfeet.isTrigger = false;
             currmode=mode.FindAndAttack;
             //Debug.Log("change mode when Fly&Firing");
             return;
         }
         else if(currmode==mode.FlyAndPig)
         {
+            finishFlyAndPig();
             currmode=mode.FindAndAttack;
             return;
         }

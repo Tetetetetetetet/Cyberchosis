@@ -6,7 +6,7 @@ using UnityEngine;
 public class MakePigBoss : MonoBehaviour 
 
 {
-    public static void Pig(float f,int num)
+    public static void Pig(float f,int num,float interval)
     {
         
         float FloorY=-20.9f;
@@ -18,10 +18,10 @@ public class MakePigBoss : MonoBehaviour
         if(p.x<-15.0f)
             p.x=-15.0f;
         p.y=FloorY;
-        for(int i=1;i<=5;i++)
+        for(int i=1;i<=num;i++)
         {
             GameObject x = Instantiate(Resources.Load("Prefabs/AngryPig") as GameObject);
-            p.x-=4.5f;
+            p.x-=interval;
             x.transform.localPosition=p;
 
         }
