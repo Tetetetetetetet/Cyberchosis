@@ -135,6 +135,7 @@ public partial class PlayerBehavior : MonoBehaviour
           epos.x+=fireposOffset.x;
           e.transform.localPosition=epos;
           Vector3 dirc=(util.getMousePos()-epos);
+          dirc.z=0;
           e.transform.up=dirc.normalized;
           e.GetComponent<HeroBulletBehavior>().mHero=gameObject.GetComponent<PlayerBehavior>();
           s.x=(gm.Boss.transform.localPosition.x-p.x)/Mathf.Abs(gm.Boss.transform.localPosition.x-p.x)*scale;

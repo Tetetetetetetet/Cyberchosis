@@ -16,7 +16,7 @@ public class CreatePig : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("MakePig");
+        //Debug.Log("MakePig");
         //perform once
         if(isActive)
         {

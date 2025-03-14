@@ -4,9 +4,12 @@ public class ShowBehavior : MonoBehaviour
 {
     // Start is called before the first frame update
     public int order=0;
+    public bool onSignal;
+    public bool isActive;
     void Start()
     {
-        
+        onSignal=false;
+        isActive=false;
     }
 
     GameObject childObject;
@@ -14,8 +17,12 @@ public class ShowBehavior : MonoBehaviour
     void Update()
     {
         
-        if(Input.GetKeyDown(KeyCode.Y))
+        //if(Input.GetKeyDown(KeyCode.Y))
+        if(onSignal==true&&isActive==false)
         {
+            isActive=true;
+            Showup();
+        }
             // Transform childTransform = transform.Find("Wallbig");
             // if (childTransform != null)
             // {
@@ -37,12 +44,11 @@ public class ShowBehavior : MonoBehaviour
             // if(order==2)
             //     MyComponent.AbleBox2D(my);
             // else MyComponent.DisableBox2D(my);
-            Showup();
-            Invoke("Showdown",2.0f);
-        }
+            //Invoke("Showdown",2.0f);
     }
     public void Showup()
     {
+        Debug.Log("wall showup");
         Transform childTransform = transform.Find("Wallbig");
             if (childTransform != null)
             {
@@ -55,6 +61,7 @@ public class ShowBehavior : MonoBehaviour
     }
     public void Showdown()
     {
+        Debug.Log("wall showdown");
         Transform childTransform = transform.Find("Wallbig");
             if (childTransform != null)
             {

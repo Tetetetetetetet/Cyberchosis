@@ -66,6 +66,7 @@ public partial class PlayerBehavior : MonoBehaviour
     public bool canSkill1,canSkill2,canSkill3;
     private float lastSwordAttackAt;
     private float lastFireAt;
+    private Color originColor;
     void Start()
     {
         currHealth=maxHealth;
@@ -84,6 +85,7 @@ public partial class PlayerBehavior : MonoBehaviour
         lastFireAt=-10;
         lastRollAt=-10;
         lastSwordAttackAt=-10;
+        originColor=sp.color;
 
         //key mapping
         KeyJump=KeyCode.W;
@@ -119,18 +121,22 @@ public partial class PlayerBehavior : MonoBehaviour
         {
             die();
         }
-        if (attacked == false)
+        if (attacked == true)
         {
-            Color color = sp.color;
-            color.a = originA;
+            Color color = originColor;
+            color.a = originA*0.3f;
+            sp.color = color;
+        }
+        else if(anim.GetBool("isRoll"))
+        {
+            Color color=Color.black;
             sp.color = color;
         }
         else
         {
-            Color color = sp.color;
-            color.a *= originA * 0.3f;
-            sp.color = color;
+            sp.color=originColor;
         }
+
         if(p.x>maxX)p.x=maxX;
         if(p.x<minX)p.x=minX;   
         transform.localPosition = p;
@@ -200,7 +206,6 @@ public partial class PlayerBehavior : MonoBehaviour
                 myRigid.AddForce(knockbackforce, ForceMode2D.Impulse);
             }
             Debug.Log("player attacked");
-            attacked = true;
             StartCoroutine(HitFlashEffect());
         }
         else

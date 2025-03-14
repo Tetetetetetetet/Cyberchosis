@@ -105,4 +105,16 @@ public partial class Boss1 : MonoBehaviour
         flyCompo.isMoving = false;
         changeMode();
     }
+
+    void divide()
+    {
+        stage=1;
+        Debug.Assert(mwall!=null);
+        mwall.GetComponent<ShowBehavior>().onSignal=true;
+    }
+
+    void phantom()
+    {
+
+    }
 }

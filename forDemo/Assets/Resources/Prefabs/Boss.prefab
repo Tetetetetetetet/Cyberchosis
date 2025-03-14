@@ -10,12 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1868635461616813194}
   - component: {fileID: 2670133233882425046}
-  - component: {fileID: 1176571558053050637}
   - component: {fileID: 9119422389543062281}
   - component: {fileID: 377714074360264008}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BossAttack3
-  m_TagString: Untagged
+  m_TagString: EnemyAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,27 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &1176571558053050637
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1188871474737234923}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d0d57328e9c8f504fb5c30a2455bd42c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!60 &9119422389543062281
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -207,8 +185,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63650b1907bed9f48b796ada5495f5e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mycollider: {fileID: 0}
-  theBoss: {fileID: 0}
+  mycollider: {fileID: 9119422389543062281}
+  theBoss: {fileID: 2477134709994912472}
   damage: 0
   anim: {fileID: 0}
 --- !u!1 &2477134709994912472
@@ -226,9 +204,9 @@ GameObject:
   - component: {fileID: 7869500602288078327}
   - component: {fileID: 6199168012246556053}
   - component: {fileID: 3830535060041891264}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -242,13 +220,14 @@ Transform:
   m_GameObject: {fileID: 2477134709994912472}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -21.6, y: -13.58, z: 0}
+  m_LocalPosition: {x: -9.68, y: -13.87, z: 0}
   m_LocalScale: {x: -15, y: 15, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4528159375115566354}
   - {fileID: 8257325452494694101}
   - {fileID: 1868635461616813194}
+  - {fileID: 604317820941279896}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7098418017157303457
@@ -315,46 +294,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 685199638c6e44d4b8680328bae24a1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gm: {fileID: 0}
+  maxHealth: 1000
+  currHealth: 1000
+  walkSpeed: 10
   minDis: 4
-  debugflag: 1
-  mHero: {fileID: 0}
-  firingPos: {x: 13.7, y: -4, z: 0}
-  myRigid: {fileID: 0}
-  myfeet: {fileID: 0}
-  anim: {fileID: 0}
-  walkSpeed: 15
-  maxHealth: 100
-  currHealth: 0
   jumpSpeed: 20
   scale: 15
   attackRange: 7
-  attacked: 0
-  flag: 0
-  isGround: 0
-  hero: {fileID: 0}
-  flyCompo: {fileID: 0}
   moveSpeed: 20
+  rFiringPos: {x: 0, y: -6, z: 0}
+  lFiringPos: {x: -23, y: -6, z: 0}
+  flyFireDuringTime: 20
+  flyFireCooldown: 3
+  pigDuringTime: 10
+  lastPigAt: 0
+  isFlyPig: 0
   timeBeforeAttack: 31
   timeBetweenAttack: 12
   timeDuringAttack: 4
   damage1: 10
   damage2: 10
   damage3: 10
-  attackCoolDown: 6
+  attackCoolDown: 4
   attackLastTime: 0
-  lastFlyFireTime: 0
-  flyFireDuringTime: 10
-  lastFlyFireFinishTime: 0
-  flyFireCooldown: 3
-  isFlyFiring: 0
+  gravityScale: 8
   isAttacking: 0
+  debugflag: 0
+  mHero: {fileID: 0}
+  firingPos: {x: 13.7, y: -4, z: 0}
+  myRigid: {fileID: 0}
+  myfeet: {fileID: 0}
+  anim: {fileID: 0}
+  gm: {fileID: 0}
+  pigCreator: {fileID: 0}
+  flyCompo: {fileID: 0}
+  mwall: {fileID: 0}
+  attacked: 0
+  flag: 0
+  isGround: 0
+  BossPos: {x: -9.3, y: -13.37, z: 0}
+  lastFlyFireTime: 0
+  lastFlyFireFinishTime: 0
+  isFlyFiring: 0
   testButton: 0
   currmode: 0
-  ba1: {fileID: 0}
+  ba1: {fileID: 8832677598134476438}
   originA: 0
-  ba2: {fileID: 0}
-  ba3: {fileID: 0}
+  ba2: {fileID: 4323828332970916918}
+  ba3: {fileID: 377714074360264008}
+  bulletGene: {fileID: 0}
+  fire: {fileID: 0}
+  lastChangModeTime: 0
+  accumDamage: 0
+  stage: 0
 --- !u!50 &4139663422907177912
 Rigidbody2D:
   serializedVersion: 4
@@ -367,7 +359,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10000
   m_LinearDrag: 2
   m_AngularDrag: 0.05
   m_GravityScale: 100
@@ -397,9 +389,9 @@ MonoBehaviour:
   rb: {fileID: 0}
   targetPosition: {x: 0, y: 0}
   speed: 5
-  isMoving: 1
+  isMoving: 0
   stay: 0
-  moveRatio: 0.5
+  moveRatio: 0.05
   leftDis: 0
 --- !u!61 &6199168012246556053
 BoxCollider2D:
@@ -467,6 +459,53 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &8076120361396642858
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 604317820941279896}
+  - component: {fileID: 7621454433498454155}
+  m_Layer: 3
+  m_Name: BossSwordGene
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &604317820941279896
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8076120361396642858}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.113, y: -0.251, z: -9.9911785}
+  m_LocalScale: {x: -0.06666667, y: 0.06666667, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5192715564818302543}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7621454433498454155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8076120361396642858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e14fd72b0129bd543ba3e88f6b6e222e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 2433487223500080192, guid: 6b6e4fccc0ec8654bb370c31b26f7324, type: 3}
+  spawnInterval: 0.5
+  bulletSpeed: 10
 --- !u!1 &8783556355426769003
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,12 +516,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4528159375115566354}
   - component: {fileID: 3640780053696787728}
-  - component: {fileID: 5276112856404710952}
   - component: {fileID: 6876878873578171950}
   - component: {fileID: 8832677598134476438}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BossAttack1
-  m_TagString: Untagged
+  m_TagString: EnemyAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -554,27 +592,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &5276112856404710952
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8783556355426769003}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d0d57328e9c8f504fb5c30a2455bd42c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!60 &6876878873578171950
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -652,8 +669,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63650b1907bed9f48b796ada5495f5e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mycollider: {fileID: 0}
-  theBoss: {fileID: 0}
+  mycollider: {fileID: 6876878873578171950}
+  theBoss: {fileID: 2477134709994912472}
   damage: 0
   anim: {fileID: 0}
 --- !u!1 &9200987488043833881
@@ -666,12 +683,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8257325452494694101}
   - component: {fileID: 736905733681130192}
-  - component: {fileID: 294115368619686983}
   - component: {fileID: 5724613651390013277}
   - component: {fileID: 4323828332970916918}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BossAttack2
-  m_TagString: Untagged
+  m_TagString: EnemyAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -743,27 +759,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &294115368619686983
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9200987488043833881}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d0d57328e9c8f504fb5c30a2455bd42c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!60 &5724613651390013277
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -847,7 +842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63650b1907bed9f48b796ada5495f5e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mycollider: {fileID: 0}
-  theBoss: {fileID: 0}
+  mycollider: {fileID: 5724613651390013277}
+  theBoss: {fileID: 2477134709994912472}
   damage: 0
   anim: {fileID: 0}

@@ -42,6 +42,7 @@ public partial class Boss1 : MonoBehaviour
     public GameManager gm;//接口: 自动接唯一的GameManager对象的GameManager组件
     public GameObject pigCreator;
     public MoveToTarget flyCompo;
+    public GameObject mwall;
     public bool attacked;
     public bool flag;
     public bool isGround;
@@ -66,6 +67,7 @@ public partial class Boss1 : MonoBehaviour
     public BulletShootController fire;
     public float lastChangModeTime;
     public float accumDamage;
+    public int stage;
 
     // Start is called before the first frame update
     void Start()
@@ -106,6 +108,9 @@ public partial class Boss1 : MonoBehaviour
         lastChangModeTime=Time.time;
         currmode=mode.FindAndAttack;
         pigCreator=util.findGameObject("PigGene");
+        stage=0;
+
+        Debug.Assert(pigCreator!=null);
     }
     public void setPos()
     {
@@ -116,65 +121,71 @@ public partial class Boss1 : MonoBehaviour
 
     void Update()
     {
-        //always
-        isGround=myRigid.IsTouchingLayers(LayerMask.GetMask("Ground"));
-        jumpTran();
-        mousepos=util.getMousePos();
-
-        if(gm.gameStart==false)
+        if(stage==0)
         {
-            stand();
-        }
+            //always
+            isGround = myRigid.IsTouchingLayers(LayerMask.GetMask("Ground"));
+            jumpTran();
+            mousepos = util.getMousePos();
 
-        if(gm.gameStart)
-        {
-            //debuging
-            //currmode=mode.FindAndAttack;
-
-            //if(debugflag)Debug.Log($"curr mode: {currmode}");
-
-            // 行为模式
-            if(currmode==mode.FindAndAttack)
-            {
-                FindAndAttack();
-            }
-            else if(currmode==mode.stand)
+            if (gm.gameStart == false)
             {
                 stand();
             }
-            else if(currmode==mode.FlyAndFiring)
+
+            if (gm.gameStart)
             {
-                flyFiring();
-            }
-            else if(currmode==mode.FlyAndPig)
-            {
-                FlyAndPig();
-            }
-            
-           // if(Input.GetKeyDown(KeyCode.Space))
-            //{
+                //debuging
+                //currmode=mode.FindAndAttack;
+
+                //if(debugflag)Debug.Log($"curr mode: {currmode}");
+
+                // 行为模式
+                if (currmode == mode.FindAndAttack)
+                {
+                    FindAndAttack();
+                }
+                else if (currmode == mode.stand)
+                {
+                    stand();
+                }
+                else if (currmode == mode.FlyAndFiring)
+                {
+                    flyFiring();
+                }
+                else if (currmode == mode.FlyAndPig)
+                {
+                    FlyAndPig();
+                }
+
+                // if(Input.GetKeyDown(KeyCode.Space))
+                //{
                 //perfomeOnce();
                 //flag=true;
-            //}
+                //}
 
-            if(Input.GetKeyDown(KeyCode.Tilde))
-            {
-                changeMode();
-            }
+                if (Input.GetKeyDown(KeyCode.Tilde))
+                {
+                    changeMode();
+                }
 
-            // 攻击闪烁
-            if(attacked)
-            {
-                Color co=GetComponent<SpriteRenderer>().color;
-                co.a*=originA*0.5f;
-                GetComponent<SpriteRenderer>().color=co;
+                // 攻击闪烁
+                if (attacked)
+                {
+                    Color co = GetComponent<SpriteRenderer>().color;
+                    co.a *= originA * 0.5f;
+                    GetComponent<SpriteRenderer>().color = co;
+                }
+                else
+                {
+                    Color co = GetComponent<SpriteRenderer>().color;
+                    co.a = originA;
+                    GetComponent<SpriteRenderer>().color = co;
+                }
             }
-            else
-            {
-                Color co=GetComponent<SpriteRenderer>().color;
-                co.a=originA;
-                GetComponent<SpriteRenderer>().color=co;
-            }
+        }
+        else if(stage==1)
+        {
 
         }
 
@@ -186,7 +197,12 @@ public partial class Boss1 : MonoBehaviour
             Debug.Log($"mouse pos: {mousepos}");
         }
         //Debug.Log($"random value: {Random.value}");
+        if(Input.GetKeyDown(KeyCode.Y))
+        {
+            divide();
+        }
    }
+
    // private void OnTriggerEnter2D(Collider2D other)
     //{
         //Debug.Log("boss1: onTriggerEnter");
@@ -205,10 +221,14 @@ public partial class Boss1 : MonoBehaviour
         accumDamage+=damage;
         if(currHealth<=0)anim.SetBool("isdead",true);
         StartCoroutine(HitFlashEffect());
-        if(accumDamage>=50&&currmode==mode.FindAndAttack&&isAttacking==false)
+        if(accumDamage>=100&&currmode==mode.FindAndAttack&&isAttacking==false)
         {
             changeMode();
             accumDamage=0;
+        }
+        if((currHealth/maxHealth)<0.5f&&stage==0)
+        {
+            divide();
         }
     }
     private IEnumerator HitFlashEffect()

@@ -114,10 +114,10 @@ public class GameManager : MonoBehaviour
         {
             Application.Quit();
         }
-        if(Input.GetKeyDown(KeyCode.Y))
-        {
-            SceneManager.LoadScene("LifeFog");
-        }
+       // if(Input.GetKeyDown(KeyCode.Y))
+        //{
+            //SceneManager.LoadScene("LifeFog");
+        //}
         if(isBoss&&Boss.GetComponent<Boss1>().currHealth<=0f)
         {
             win();
