@@ -21,7 +21,7 @@ public class Begin : MonoBehaviour
         e.range=5f;
         EnemyHealthBar b=Enemy.GetComponent<EnemyHealthBar>();
         b.canvas=GameObject.Find("Dialogue UI");
-        Enemy.transform.localScale = new Vector3(2.5f, 2.5f,0);
+        Enemy.transform.localScale = new Vector3(5f, 5f,0);
         Destroy(cell);
         Vector3 position = new Vector3(6f, -4f, 0); // 实例化位置
         Instantiate(Enemy, position, Quaternion.identity);

@@ -19,6 +19,7 @@ public class EnemyBehacior : MonoBehaviour
     private float criticalHitChance;
     public PlayerBehavior mHero;
     public GameManager gm;
+    public Drop drop;
     void Start()
     {
         attackTimer=Time.time;
@@ -27,6 +28,7 @@ public class EnemyBehacior : MonoBehaviour
         damage=Random.Range(damage,damage+damageRange);
         gm=GameObject.Find("GameManager").GetComponent<GameManager>();
         mHero=gm.mHero.GetComponent<PlayerBehavior>();
+        drop=GetComponent<Drop>();
         if (Random.value < criticalHitChance)
         {
             // 暴击伤害，例如是普通伤害的两倍
@@ -41,6 +43,7 @@ public class EnemyBehacior : MonoBehaviour
         patrol();
         if(currHealth<=0){
             anim.SetTrigger("Dead");
+            drop.DropSkills();
             Destroy(GetComponent<EnemyHealthBar>().bloodbarInstance);
             Destroy(gameObject);
         }
@@ -52,7 +55,7 @@ public class EnemyBehacior : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
            //造成伤害
-            if(Time.time-attackTimer>=attackInterval&&collision==mHero.myfeet)
+            if(Time.time-attackTimer>=attackInterval)
             {
                 attackTimer=Time.time;
                 anim.SetTrigger("attack");
