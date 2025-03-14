@@ -96,7 +96,7 @@ public partial class Boss1 : MonoBehaviour
                 transform.localScale = new Vector3(scale, scale, 0);
             }
             flyTo(firingPos);
-            pigCreator.isActive = true;
+            pigCreator.GetComponent<CreatePig>().isActive = true;
             lastPigAt = Time.time;
 
         }
@@ -107,7 +107,7 @@ public partial class Boss1 : MonoBehaviour
     }
     void finishFlyAndPig()
     {
-        pigCreator.isActive = false;
+        pigCreator.GetComponent<CreatePig>().isActive = false;
         myfeet.isTrigger=false;
         flyCompo.stay = false;
         flyCompo.isMoving = false;

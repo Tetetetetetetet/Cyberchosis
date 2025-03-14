@@ -6,7 +6,7 @@ public class PigFreeMove : MonoBehaviour
 {
     // Start is called before the first frame update
     public float HSpeed;
-    bool dirc=true;
+    public bool dirc=false;
     public float damage;
     public Rigidbody2D myRigid;
     void Start()
@@ -32,6 +32,7 @@ public class PigFreeMove : MonoBehaviour
     }
     public void OnCollisionEnter2D(Collision2D other)
     {
+        //Debug.Log("ce");
         // 检查触发器碰撞的物体
         if (other.gameObject.CompareTag("Player"))
         {
@@ -43,6 +44,7 @@ public class PigFreeMove : MonoBehaviour
             {
                 playerBehavior.takeDamage(damage);
             }   
+            MakeDestroy();
             // if(dirc==true)
             // {
             //     Vector3 p=transform.localPosition;
@@ -57,37 +59,45 @@ public class PigFreeMove : MonoBehaviour
         }
         else
         {
-            if(other.gameObject.CompareTag("Wall"))
+            
+            if(other.gameObject.CompareTag("ground")){}
+            //else if(other.gameObject.CompareTag("Boss")){Debug.Log("COllisionwithBoss");}
+            else
             {
                 if(dirc==true) 
-            {
+                {
                 dirc=false;
                 // Vector3 p=transform.localPosition;
                 // p.x+=1.0f;
                 // transform.localPosition=p;
+                }
+                else dirc=true;
             }
-            else 
+            if(other.gameObject.CompareTag("Pig"))
             {
-                dirc=true;
-                // Vector3 p=transform.localPosition;
-                // p.x-=1.0f;
-                // transform.localPosition=p;
+                GameObject temp=other.gameObject;
+                Vector3 p=temp.transform.localPosition;
+                Vector3 q=transform.localPosition;
+                if(p.x<q.x) q.x+=0.1f;
+                else q.x-=0.1f;
+                transform.localPosition=q;
             }
-            }
+           
             
         }
     }
-    // public void OnCollisionStay2D(Collision2D other)
-    // {
-    //     Debug.Log("cs");
-    // }
-    // public void OnTriggerrEnter2D(Collider2D other)
-    // {
-    //     Debug.Log("te");
-    // }
-    // public void OnTriggerStay2D(Collider2D other)
-    // {
-    //     Debug.Log("ts");
-    // }
+    public void OnCollisionStay2D(Collision2D other)
+    {
+         GameObject temp=other.gameObject;
+                Vector3 p=temp.transform.localPosition;
+                Vector3 q=transform.localPosition;
+                if(p.x<q.x) q.x+=0.1f;
+                else q.x-=0.1f;
+                transform.localPosition=q;
+    }
+    public void MakeDestroy()
+    {
+        Destroy(this.gameObject);
+    }
   
 }

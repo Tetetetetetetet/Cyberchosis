@@ -6,7 +6,7 @@ using UnityEngine;
 public class MakePigBoss : MonoBehaviour 
 
 {
-    public static void Pig(float f)
+    public static void Pig(float f,int num)
     {
         
         float FloorY=-20.9f;

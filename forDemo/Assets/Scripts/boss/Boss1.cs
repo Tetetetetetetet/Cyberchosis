@@ -40,7 +40,7 @@ public partial class Boss1 : MonoBehaviour
     public BoxCollider2D myfeet;//auto
     public Animator anim;
     public GameManager gm;//接口: 自动接唯一的GameManager对象的GameManager组件
-    public CreatePig pigCreator;
+    public GameObject pigCreator;
     public MoveToTarget flyCompo;
     public bool attacked;
     public bool flag;
@@ -105,7 +105,7 @@ public partial class Boss1 : MonoBehaviour
         fire=bulletGene.GetComponent<BulletShootController>();
         lastChangModeTime=Time.time;
         currmode=mode.FindAndAttack;
-        pigCreator=gameObject.GetComponent<CreatePig>();
+        pigCreator=util.findGameObject("PigGene");
     }
     public void setPos()
     {
