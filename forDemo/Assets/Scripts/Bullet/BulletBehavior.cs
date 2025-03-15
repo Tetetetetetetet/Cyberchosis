@@ -36,5 +36,9 @@ public class BulletBehavior : MonoBehaviour
             Destroy(gameObject);
             // 销毁子弹
         }
+        if(other.CompareTag("HeroAttack"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

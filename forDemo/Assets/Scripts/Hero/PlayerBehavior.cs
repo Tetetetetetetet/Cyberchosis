@@ -87,6 +87,7 @@ public partial class PlayerBehavior : MonoBehaviour
         lastSwordAttackAt=-10;
         originColor=sp.color;
         mHero=this.gameObject;
+        placeMagicSignal=false;
 
         //key mapping
         KeyJump=KeyCode.W;
@@ -101,6 +102,7 @@ public partial class PlayerBehavior : MonoBehaviour
         KeyRoll=KeyCode.LeftAlt;
 
 
+
         Debug.Assert(gm!=null);
         Debug.Assert(sp!=null);
         Debug.Assert(mySword!=null);
@@ -111,6 +113,7 @@ public partial class PlayerBehavior : MonoBehaviour
     {
         checkChangeScene();
         isGround = touchingGround();
+        anim.SetBool("isGround",isGround);
         p = transform.localPosition;
         s = transform.localScale;
         r = transform.localRotation;

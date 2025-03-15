@@ -8,12 +8,13 @@ public class HeroSwordBehavior : MonoBehaviour
     // Start is called before the first frame update
     public PolygonCollider2D sword=null;
     public GameObject mHero=null;
-    public float damage=0;
+    public float damage;
 
     void Start()
     {
         sword=gameObject.GetComponent<PolygonCollider2D>();
         mHero=PlayerBehavior.mHero;
+        damage=mHero.GetComponent<PlayerBehavior>().damage;
         Debug.Assert(sword!=null);
         Debug.Assert(mHero!=null);
         Debug.Assert(damage!=0);

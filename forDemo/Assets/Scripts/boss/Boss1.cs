@@ -227,7 +227,7 @@ public partial class Boss1 : MonoBehaviour
     public void takeDamage(float damage)
     {
         currHealth-=damage;
-        accumDamage+=damage;
+        if(currmode==mode.FindAndAttack)accumDamage+=damage;
         if(currHealth<=0)anim.SetBool("isdead",true);
         StartCoroutine(HitFlashEffect());
         // for float point //

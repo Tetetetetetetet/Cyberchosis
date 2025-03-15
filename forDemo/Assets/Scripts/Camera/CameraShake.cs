@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
-    public float duration=0.05f, intensity=5.5f,tim;
+    public float duration, intensity,tim;
+    public float oDuration,oIntensity;
     bool stat=false;
     GameObject e =null;
     Vector3 p=new Vector3(0,0,0);
@@ -15,12 +16,22 @@ public class CameraShake : MonoBehaviour
     {
         onSignal=false;
         isActive=false;
+        oDuration=duration;
+        oIntensity=intensity;
     }
-
+    public void startShake()
+    {
+        onSignal=true;
+        Invoke("resetConfig",2);
+    }
+    public void resetConfig()
+    {
+        duration=oDuration;
+        intensity=oIntensity;
+    }
     // Update is called once per frame
     void Update()
     {
-        
         if(tim>0) 
         {
             //Debug.Log("SSHHAAKKEECCMMEERRAA");

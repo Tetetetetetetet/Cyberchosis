@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public partial class Boss1 : MonoBehaviour
@@ -36,6 +37,10 @@ public partial class Boss1 : MonoBehaviour
             {
                 Debug.Log("under attack range, but cool not down");
             }
+        }
+        if(bulletGene.GetComponent<BulletShootController>().enabled==true)
+        {
+            bulletGene.GetComponent<BulletShootController>().enabled=false;
         }
 
     }
@@ -109,6 +114,14 @@ public partial class Boss1 : MonoBehaviour
     void divide()
     {
         stage=1;
+        if(currmode!=mode.FindAndAttack)
+        {
+            changeMode();
+        }
+        CameraShake cs=mCamera.GetComponent<CameraShake>();
+        cs.duration=2;
+        cs.intensity=10;
+        cs.startShake();
         Debug.Assert(mwall!=null);
         mwall.GetComponent<ShowBehavior>().onSignal=true;
         if(mHero.transform.localPosition.x<-11.2f)

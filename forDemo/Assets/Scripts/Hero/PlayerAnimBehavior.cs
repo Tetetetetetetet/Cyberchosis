@@ -206,7 +206,7 @@ public partial class PlayerBehavior : MonoBehaviour
      void checkRoll()
      {
           float timedis=Mathf.Abs(Time.time-lastRollAt);
-          if(Input.GetKeyDown(KeyCode.LeftAlt)&&(anim.GetBool("isRun")||anim.GetBool("Idle")))
+          if(Input.GetKeyDown(KeyCode.LeftAlt)&&(anim.GetBool("isRun")||anim.GetBool("Idle"))&&isGround)
           {
                Debug.Log("start roll");
                anim.SetBool("isRoll",true);

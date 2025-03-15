@@ -5,6 +5,7 @@ public partial class PlayerBehavior : MonoBehaviour
 {
     // Start is called before the first frame update
     public DoorManager doorm=DoorManager.tDoorManager;
+    public bool placeMagicSignal;
     public Vector3 mousePos;
     public KeyCode KeyFire;
     public KeyCode KeyJump;
@@ -63,14 +64,19 @@ public partial class PlayerBehavior : MonoBehaviour
         {
             SkillGravity trap=_trap.GetComponent<SkillGravity>();
             Debug.Log("GravityTrap Loaded");
-            if(Input.GetKeyDown(KeyCode.E))
+            if(Input.GetKeyDown(KeyTurnMagic))
             {
                 trap.turn();
             }
-            if(Input.GetKeyDown(KeyCode.V))
+            if(placeMagicSignal)
             {
                 trap.setPos(p.x);
+                placeMagicSignal=false;
             }
         }
+    }
+    public void turnOnMagicSignal()
+    {
+        placeMagicSignal=true;
     }
 }
