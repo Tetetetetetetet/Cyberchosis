@@ -60,7 +60,7 @@ public class CameraSupport : MonoBehaviour
     {
         Debug.Log("camera: startGame");
         followTo=-1;
-        gm.gameStart=true;
+        gm.startGame();
         Camera.main.orthographicSize=cameraSize;
     }
     void Update()
