@@ -74,7 +74,7 @@ public class CameraSupport : MonoBehaviour
             if(scrpt!=null)
             {
                 float tim=scrpt.tim;
-                Debug.Log(tim);
+                //Debug.Log(tim);
                 if (tim <= 0)
                     followHero();
             }

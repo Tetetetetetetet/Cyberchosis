@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
-    
-
-     public float duration=0.05f, intensity=5.5f,tim;
+    public float duration=0.05f, intensity=5.5f,tim;
     bool stat=false;
     GameObject e =null;
     Vector3 p=new Vector3(0,0,0);
+    public bool onSignal,isActive;
+
     //GameObject cameraobject=null;
     void Start()
     {
-        
+        onSignal=false;
+        isActive=false;
     }
 
     // Update is called once per frame
@@ -30,13 +31,20 @@ public class CameraShake : MonoBehaviour
             transform.localPosition=p;
             stat=false;
         }
-        if(Input.GetKeyDown(KeyCode.R))
+        //if(Input.GetKeyDown(KeyCode.R))
+        if(onSignal==true&&isActive==false)
         {
+            isActive=true;
             stat=true;
             p=transform.localPosition;
             tim=duration;
             Debug.Log("SSHHAAKKEECCMMEERRAA");
 
+        }
+        else if(onSignal==true&&isActive==true&&tim<=0)
+        {
+            onSignal=false;
+            isActive=false;
         }
     }
     void shake()
