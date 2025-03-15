@@ -2,25 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PigFreeMove : MonoBehaviour
+public class PigFreeMove : EnemyClass
 {
     // Start is called before the first frame update
     public float HSpeed;
     public bool dirc=false;
-    public float damage;
-    public Rigidbody2D myRigid;
     void Start()
     {
-        HSpeed=5.0f;
         myRigid=GetComponent<Rigidbody2D>();
+        gm=GameManager.mGM;
+
+        Debug.Assert(gm!=null);
     }
 
     // Update is called once per frame
     void Update()
     {
         Vector3 p=transform.localPosition;
-        if(p.y!=-20.9f) p.y=-20.9f;
-        transform.localPosition=p;
+        //if(p.y!=-20.9f) p.y=-20.9f;
+        //transform.localPosition=p;
         //Debug("dirc");
         if(dirc==true)
         {
@@ -64,22 +64,15 @@ public class PigFreeMove : MonoBehaviour
             //else if(other.gameObject.CompareTag("Boss")){Debug.Log("COllisionwithBoss");}
             else
             {
-                if(dirc==true) 
-                {
-                dirc=false;
-                // Vector3 p=transform.localPosition;
-                // p.x+=1.0f;
-                // transform.localPosition=p;
-                }
-                else dirc=true;
+                dirc=!dirc; //changed 
             }
             if(other.gameObject.CompareTag("Pig"))
             {
                 GameObject temp=other.gameObject;
                 Vector3 p=temp.transform.localPosition;
                 Vector3 q=transform.localPosition;
-                if(p.x<q.x) q.x+=0.1f;
-                else q.x-=0.1f;
+                //if(p.x<q.x) q.x+=0.1f;
+                //else q.x-=0.1f;
                 transform.localPosition=q;
             }
            

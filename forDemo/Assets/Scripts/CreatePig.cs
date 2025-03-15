@@ -18,7 +18,8 @@ public class CreatePig : MonoBehaviour
     {
         //Debug.Log("MakePig");
         //perform once
-        if(isActive)
+        //if(isActive)
+        if(Input.GetKeyDown(KeyCode.L))
         {
             GameObject e=this.gameObject;
             Vector3 p=e.transform.localPosition;

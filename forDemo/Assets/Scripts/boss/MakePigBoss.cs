@@ -9,7 +9,7 @@ public class MakePigBoss : MonoBehaviour
     public static void Pig(float f,int num,float interval)
     {
         Debug.Log("generating pigs");
-        float FloorY=-20.9f;
+        float FloorY=-19.945f;
         Vector3 p;
         p= new Vector3(0,0,0);
         //GameObject e=GameObject.Find("Boss");
