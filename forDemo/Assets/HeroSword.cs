@@ -14,8 +14,6 @@ public class HeroSwordBehavior : MonoBehaviour
     {
         sword=gameObject.GetComponent<PolygonCollider2D>();
         mHero=PlayerBehavior.mHero;
-        damage=mHero.GetComponent<PlayerBehavior>().damage;
-
         Debug.Assert(sword!=null);
         Debug.Assert(mHero!=null);
         Debug.Assert(damage!=0);
@@ -26,6 +24,7 @@ public class HeroSwordBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        damage=mHero.GetComponent<PlayerBehavior>().damage;
     }
     
     void OnTriggerEnter2D(Collider2D other)

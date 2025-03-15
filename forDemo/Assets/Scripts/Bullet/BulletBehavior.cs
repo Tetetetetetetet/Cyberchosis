@@ -12,8 +12,8 @@ public class BulletBehavior : MonoBehaviour
 
     void Update()
     {
-
         // 检查子弹是否在主相机视野外
+        if(IsOutsideCameraView())Destroy(gameObject);
     }
 
     bool IsOutsideCameraView()
@@ -33,8 +33,8 @@ public class BulletBehavior : MonoBehaviour
         {
             // 调用Hero的受伤方法
             other.GetComponent<PlayerBehavior>().takeDamage(6f);
+            Destroy(gameObject);
             // 销毁子弹
         }
-        if(!other.CompareTag("Boss"))Destroy(gameObject);
     }
 }

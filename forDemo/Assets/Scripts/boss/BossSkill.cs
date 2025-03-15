@@ -111,6 +111,22 @@ public partial class Boss1 : MonoBehaviour
         stage=1;
         Debug.Assert(mwall!=null);
         mwall.GetComponent<ShowBehavior>().onSignal=true;
+        if(mHero.transform.localPosition.x<-11.2f)
+        {
+            mHero.GetComponent<PlayerBehavior>().maxX=-11.2f;
+            Vector3 p=transform.localPosition;
+            p.x=-36f;
+            transform.localPosition=p;
+            rFiringPos=lFiringPos;
+        }
+        else
+        {
+            Vector3 p=transform.localPosition;
+            p.x=16f;
+            transform.localPosition=p;
+            mHero.GetComponent<PlayerBehavior>().minX=-8.4f;
+            lFiringPos=rFiringPos;
+        }
     }
 
     void phantom()

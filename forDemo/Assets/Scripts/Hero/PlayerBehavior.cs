@@ -86,6 +86,7 @@ public partial class PlayerBehavior : MonoBehaviour
         lastRollAt=-10;
         lastSwordAttackAt=-10;
         originColor=sp.color;
+        mHero=this.gameObject;
 
         //key mapping
         KeyJump=KeyCode.W;

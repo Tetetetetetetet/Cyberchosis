@@ -46,6 +46,7 @@ public partial class Boss1 : MonoBehaviour
     public GameObject mwall;
     public GameObject FloatPoint;
     public GameObject mCamera;
+    public GameObject SwordTrap;
     public bool attacked;
     public bool flag;
     public bool isGround;
@@ -113,10 +114,12 @@ public partial class Boss1 : MonoBehaviour
         pigCreator=util.findGameObject("PigGene");
         stage=0;
         mCamera=gm.mcamera;
+        SwordTrap=util.findGameObject("SwordGeneTrap");
 
         Debug.Assert(pigCreator!=null);
         Debug.Assert(FloatPoint!=null);
         Debug.Assert(mCamera!=null);
+        Debug.Assert(SwordTrap!=null);
     }
     public void setPos()
     {
@@ -127,7 +130,7 @@ public partial class Boss1 : MonoBehaviour
 
     void Update()
     {
-        if(stage==0)
+        if(stage==0||stage==1)
         {
             //always
             isGround = myRigid.IsTouchingLayers(LayerMask.GetMask("Ground"));
@@ -190,10 +193,6 @@ public partial class Boss1 : MonoBehaviour
                 }
             }
         }
-        else if(stage==1)
-        {
-
-        }
 
         //testing
         if(Input.GetKeyDown(KeyCode.Mouse3))
@@ -206,6 +205,10 @@ public partial class Boss1 : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Y))
         {
             divide();
+        }
+        if(mHero.GetComponent<Transform>().transform.localPosition.y>-7)
+        {
+            SwordTrap.GetComponent<BulletShootController>().enabled=true;
         }
    }
 
@@ -263,6 +266,7 @@ public partial class Boss1 : MonoBehaviour
             //currmode=mode.FlyAndFiring;
             bool flag=Random.value>0.6f;
             Debug.Log($"change mode flag: {flag}");
+            flag=true;
             if(flag)currmode=mode.FlyAndFiring;
             else currmode=mode.FlyAndPig;
             //if(debugflag)Debug.Log($"change mode, now: {currmode}");
