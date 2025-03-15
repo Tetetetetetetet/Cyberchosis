@@ -76,6 +76,7 @@ public partial class Boss1 : MonoBehaviour
     }
 
 
+
     void FlyAndPig()
     {
         myfeet.isTrigger = true;
@@ -97,7 +98,12 @@ public partial class Boss1 : MonoBehaviour
             pigCreator.GetComponent<CreatePig>().isActive = true;
             lastPigAt = Time.time;
         }
-        if ((Time.time - lastPigAt) > pigDuringTime)
+        else if (gm.gameObject.GetComponent<GameManagerForScene3>().pigNum==0&&pigTimes<maxPigTimes)
+        {
+            pigCreator.GetComponent<CreatePig>().isActive=true;
+            pigTimes++;
+        }
+        else if(gm.gameObject.GetComponent<GameManagerForScene3>().pigNum==0&&pigTimes==maxPigTimes)
         {
             changeMode();
         }
@@ -108,11 +114,12 @@ public partial class Boss1 : MonoBehaviour
         myfeet.isTrigger=false;
         flyCompo.stay = false;
         flyCompo.isMoving = false;
-        changeMode();
+        isFlyPig=false;
     }
-
+public AudioController abe;
     void divide()
     {
+        abe.playFenzhi();
         stage=1;
         if(currmode!=mode.FindAndAttack)
         {
@@ -130,6 +137,10 @@ public partial class Boss1 : MonoBehaviour
             p.x=-36f;
             transform.localPosition=p;
             rFiringPos=lFiringPos;
+            Vector3 piggenePos=pigCreator.transform.localPosition;
+            piggenePos.x=-14f;
+            pigCreator.transform.localPosition=piggenePos;
+            pigCreator.GetComponent<CreatePig>().interval=5f;
         }
         else
         {
@@ -138,6 +149,7 @@ public partial class Boss1 : MonoBehaviour
             transform.localPosition=p;
             mHero.GetComponent<PlayerBehavior>().minX=-8.4f;
             lFiringPos=rFiringPos;
+            pigCreator.GetComponent<CreatePig>().interval=5f;
         }
         Invoke("changeMode",1f);
     }

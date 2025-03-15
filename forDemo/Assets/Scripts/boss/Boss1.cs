@@ -28,6 +28,8 @@ public partial class Boss1 : MonoBehaviour
     public float damage3;
     public float attackCoolDown;
     public float attackLastTime;
+    public int maxPigTimes;
+    private int pigTimes;
 
     //may use
     public float gravityScale;    
@@ -266,11 +268,19 @@ public partial class Boss1 : MonoBehaviour
         if(currmode==mode.FindAndAttack)
         {
             //currmode=mode.FlyAndFiring;
-            bool flag=Random.value>0.9f;
+            bool flag=Random.value>0.5f;
             Debug.Log($"change mode flag: {flag}");
             //flag=true;
-            if(flag)currmode=mode.FlyAndFiring;
-            else currmode=mode.FlyAndPig;
+            if(flag)
+            {
+                currmode=mode.FlyAndFiring;
+            }
+            else 
+            {
+                currmode=mode.FlyAndPig;
+                pigTimes=0;
+                abe.playDonggui();
+            }
             //if(debugflag)Debug.Log($"change mode, now: {currmode}");
             return;
         }
@@ -285,6 +295,14 @@ public partial class Boss1 : MonoBehaviour
             myfeet.isTrigger = false;
             currmode=mode.FindAndAttack;
             //Debug.Log("change mode when Fly&Firing");
+            if(mHero.transform.localPosition.x<-11.2f)
+            {
+                transform.localPosition=new Vector3(20f,-13f,0);
+            }
+            else
+            {
+                transform.localPosition=new Vector3(-40f,-13f,0);
+            }
             return;
         }
         else if(currmode==mode.FlyAndPig)
@@ -327,6 +345,7 @@ public partial class Boss1 : MonoBehaviour
     public void die()
     {
         mwall.GetComponent<ShowBehavior>().Showdown();
-        Destroy(this.gameObject);
+        this.gameObject.GetComponent<SpriteRenderer>().enabled=false;
+        //Destroy(this.gameObject);
     }
 }

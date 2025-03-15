@@ -11,6 +11,7 @@ public class PigFreeMove : EnemyClass
     {
         myRigid=GetComponent<Rigidbody2D>();
         gm=GameManager.mGM;
+        //gm.gameObject.GetComponent<GameManagerForScene3>().pigNum++;
 
         Debug.Assert(gm!=null);
     }
@@ -44,7 +45,7 @@ public class PigFreeMove : EnemyClass
             {
                 playerBehavior.takeDamage(damage);
             }   
-            Destroy(this.gameObject);
+            MakeDestroy();
             // if(dirc==true)
             // {
             //     Vector3 p=transform.localPosition;
@@ -90,7 +91,17 @@ public class PigFreeMove : EnemyClass
     }
     public void MakeDestroy()
     {
+        GameManager.mGM.gameObject.GetComponent<GameManagerForScene3>().pigNum--;
         Destroy(this.gameObject);
     }
-  
+
+    public override void takeDamage(float damage)
+    {
+        currHealth-=damage;
+        if(currHealth<=0)
+        {
+            MakeDestroy();
+        }
+    }
+
 }

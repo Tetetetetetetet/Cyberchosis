@@ -126,14 +126,16 @@ public class BossBehavior : MonoBehaviour
         s.x=-scale;
         transform.localScale=s;
         anim.SetBool("isRun",true);
+        anim.SetBool("Idle",false);
     }
-    public void runRight()
+    public virtual void runRight()
     {
         myRigid.velocity=new Vector3(moveSpeed,0,0);
         Vector3 s=transform.localScale;
         s.x=scale;
         transform.localScale=s;
         anim.SetBool("isRun",true);
+        anim.SetBool("Idle",false);
     }
 
     public void attack()

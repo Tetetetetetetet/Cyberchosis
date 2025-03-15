@@ -12,7 +12,8 @@ public class GameManagerForScene3: GameManager
     public TextMeshProUGUI heroBloodBarValue;
     public GameObject heroBloodBar;
     public GameObject heroBloodBarSlot;
-    void Awake() 
+    public int pigNum;
+    public override void Awake() 
     {
         isGameOver=false;
         if(mGM==null)
@@ -24,13 +25,15 @@ public class GameManagerForScene3: GameManager
         mHero=GameObject.FindWithTag("Player");
         mcamera=util.findGameObject("Main Camera");
         if(isBoss)Boss=util.findGameObject("Boss");
+        pigNum=0;
         //ForBoss.text="Straight up for Boss, turn left";
         //ForEnemy.text="For Practice and train, turn right";
         //Abillity.text="You get Random Abillity: Gravity Trap";
         //bossName=GameObject.Find("BossName").GetComponent<TextMeshProUGUI>;
     }
-    void Start()
+    public override void Start()
     {
+        base.Start();
         Debug.Assert(mHero!=null);
         if(isEnterAnim)
         {
@@ -59,7 +62,7 @@ public class GameManagerForScene3: GameManager
         //}
         if(isBoss&&Boss.GetComponent<Boss1>().currHealth<=0f)
         {
-            win();
+            //win();
         }
         updateHeroBlood();
         updateBossBloodBar();

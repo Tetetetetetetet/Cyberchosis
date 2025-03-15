@@ -140,6 +140,20 @@ public partial class PlayerBehavior : MonoBehaviour
           e.GetComponent<HeroBulletBehavior>().mHero=gameObject.GetComponent<PlayerBehavior>();
           s.x=(gm.Boss.transform.localPosition.x-p.x)/Mathf.Abs(gm.Boss.transform.localPosition.x-p.x)*scale;
      }
+
+     void defen()
+     {
+          if(Input.GetKeyDown(KeyDefen)&&anim.GetBool("isDefen")==false&&(Time.time-lastDefenAt)>defenCooldown&&attacked==false)
+          {
+               anim.SetBool("isDefen",true);
+               lastDefenAt=Time.time;
+               Invoke("offDefen",0.5f);
+          }
+     }
+     void offDefen()
+     {
+          anim.SetBool("isDefen",false);
+     }
      /*
      checkDash(): unfinished, bug实在离谱
      */
@@ -206,7 +220,7 @@ public partial class PlayerBehavior : MonoBehaviour
      void checkRoll()
      {
           float timedis=Mathf.Abs(Time.time-lastRollAt);
-          if(Input.GetKeyDown(KeyCode.LeftAlt)&&(anim.GetBool("isRun")||anim.GetBool("Idle"))&&isGround)
+          if(Input.GetKeyDown(KeyCode.LeftAlt)&&(anim.GetBool("isRun")||anim.GetBool("Idle"))&&isGround&&timedis>rollCooldown)
           {
                Debug.Log("start roll");
                anim.SetBool("isRoll",true);
@@ -252,6 +266,7 @@ public partial class PlayerBehavior : MonoBehaviour
           checkGroundSlam();
           checkThrow();
           checkRoll();
+          defen();
      }
 
 

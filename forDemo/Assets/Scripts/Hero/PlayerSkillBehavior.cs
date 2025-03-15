@@ -17,6 +17,7 @@ public partial class PlayerBehavior : MonoBehaviour
     public KeyCode KeyCrouch;
     public KeyCode KeyCombo;
     public KeyCode KeyRoll;
+    public KeyCode KeyDefen;
 
     /*
     访问各个技能，是否装载，能否发动

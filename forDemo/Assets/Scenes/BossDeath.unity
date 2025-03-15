@@ -131,6 +131,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5431850113135831911, guid: efdf09c551cd2b147ac07369848a97ad, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5431850113135831911, guid: efdf09c551cd2b147ac07369848a97ad, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5431850113135831911, guid: efdf09c551cd2b147ac07369848a97ad, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -750047184722822154, guid: 1914d95466e3d4341a618c35a56d5f82, type: 3}
@@ -143,24 +151,28 @@ PrefabInstance:
       value: Boss_Death
       objectReference: {fileID: 0}
     - target: {fileID: 6030325936782279674, guid: efdf09c551cd2b147ac07369848a97ad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6030325936782279674, guid: efdf09c551cd2b147ac07369848a97ad, type: 3}
       propertyPath: m_TagString
       value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: 7766881550909504729, guid: efdf09c551cd2b147ac07369848a97ad, type: 3}
       propertyPath: m_LocalScale.x
-      value: 12
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7766881550909504729, guid: efdf09c551cd2b147ac07369848a97ad, type: 3}
       propertyPath: m_LocalScale.y
-      value: 12
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7766881550909504729, guid: efdf09c551cd2b147ac07369848a97ad, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.67
+      value: -3.9
       objectReference: {fileID: 0}
     - target: {fileID: 7766881550909504729, guid: efdf09c551cd2b147ac07369848a97ad, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.06
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7766881550909504729, guid: efdf09c551cd2b147ac07369848a97ad, type: 3}
       propertyPath: m_LocalPosition.z
@@ -251,7 +263,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.4048125, y: -0.17964312}
+  m_Offset: {x: -0.38563526, y: -0.19002101}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -262,7 +274,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.29999292, y: 0.5559484}
+  m_Size: {x: 0.33804512, y: 0.5767041}
   m_EdgeRadius: 0
 --- !u!114 &479906290
 MonoBehaviour:
@@ -296,8 +308,8 @@ MonoBehaviour:
   myfeet: {fileID: 0}
   anim: {fileID: 0}
   gm: {fileID: 0}
-  FloatPoint: {fileID: 0}
-  mCamera: {fileID: 0}
+  FloatPoint: {fileID: 4469890067287303121, guid: c2b96096501c33a42a289e1a69fa51f2, type: 3}
+  mCamera: {fileID: 977288128}
   attacked: 0
   flag: 0
   isGround: 0
@@ -348,11 +360,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2818903843097013123, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.1559896
+      value: -6.13
       objectReference: {fileID: 0}
     - target: {fileID: 2818903843097013123, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.6632073
+      value: -3.31
       objectReference: {fileID: 0}
     - target: {fileID: 2818903843097013123, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
       propertyPath: m_LocalPosition.z
@@ -389,6 +401,10 @@ PrefabInstance:
     - target: {fileID: 5067910646800180729, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
       propertyPath: m_Name
       value: Hero
+      objectReference: {fileID: 0}
+    - target: {fileID: 5067910646800180729, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -428,7 +444,7 @@ MonoBehaviour:
   sceneId: 0
   setPos: {x: 0, y: 0, z: 0}
   mHero: {fileID: 0}
-  Boss: {fileID: 0}
+  Boss: {fileID: 479906288}
   isBoss: 0
   isEnterAnim: 0
   mcamera: {fileID: 0}
@@ -459,9 +475,9 @@ GameObject:
   - component: {fileID: 670414678}
   - component: {fileID: 670414677}
   - component: {fileID: 670414679}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -964,6 +980,8 @@ GameObject:
   - component: {fileID: 977288131}
   - component: {fileID: 977288130}
   - component: {fileID: 977288129}
+  - component: {fileID: 977288133}
+  - component: {fileID: 977288132}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1039,12 +1057,63 @@ Transform:
   m_GameObject: {fileID: 977288128}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -2.41, y: 1.38, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &977288132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977288128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3966cf56b2bc8846b494ff1bf87711f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0
+  intensity: 0
+  tim: 0
+  srDuration: 0
+  srIntensity: 0
+  srTim: 0
+  oDuration: 0
+  oIntensity: 0
+  A: 0
+  onSignal: 0
+  isActive: 0
+  srOnSignal: 0
+  srIsActive: 0
+--- !u!114 &977288133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977288128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe23af7cda954574b869c07994a75197, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPos: {x: 0, y: 0, z: -15}
+  cameraSize: 12
+  p: {x: 0, y: 0, z: 0}
+  maxX: 999
+  minX: -999
+  maxY: 999
+  minY: -999
+  xOffset: 0
+  yOffset: 0
+  zOffset: -15
+  smoothRate: 0
+  gm: {fileID: 0}
+  followTo: 0
+  BossPos: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

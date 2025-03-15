@@ -24,11 +24,14 @@ public class GameManager : MonoBehaviour
     public static GameManager mGM;
     // Start is called before the first frame update
 
-    public virtual void Start()
+    public virtual void Awake()
     {
         mGM=this;
         mHero=util.findGameObject("Hero");
         mcamera=util.findGameObject("Main Camera");
+    }
+    public virtual void Start()
+    {
         Debug.Assert(mGM!=null);
         Debug.Assert(mHero!=null);
         Debug.Assert(mcamera!=null);

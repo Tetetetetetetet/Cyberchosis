@@ -23,7 +23,7 @@ public class MakePigBoss : MonoBehaviour
             GameObject x = Instantiate(Resources.Load("Prefabs/AngryPig") as GameObject);
             p.x-=interval;
             x.transform.localPosition=p;
-
+            GameManager.mGM.gameObject.GetComponent<GameManagerForScene3>().pigNum++;
         }
     }
 }

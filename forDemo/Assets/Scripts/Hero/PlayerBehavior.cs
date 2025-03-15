@@ -7,6 +7,7 @@ public partial class PlayerBehavior : MonoBehaviour
     // Start is called before the first frame update
 
     //basis status
+    public AudioController aco;
     public float attackedSpeedX;
     public float attackedSpeedY;
     public float maxHealth;
@@ -15,6 +16,8 @@ public partial class PlayerBehavior : MonoBehaviour
     public float remoteDamage;
     public float swordCooldown;
     public float fireCooldown;
+    public float defenCooldown;
+    public float lastDefenAt;
     public float minX;
     public float maxX;
 
@@ -67,6 +70,7 @@ public partial class PlayerBehavior : MonoBehaviour
     private float lastSwordAttackAt;
     private float lastFireAt;
     private Color originColor;
+    public bool tanfanFlag;
     void Start()
     {
         currHealth=maxHealth;
@@ -88,10 +92,11 @@ public partial class PlayerBehavior : MonoBehaviour
         originColor=sp.color;
         mHero=this.gameObject;
         placeMagicSignal=false;
+        tanfanFlag=false;
 
         //key mapping
         KeyJump=KeyCode.W;
-        KeyFire=KeyCode.Mouse1;
+        KeyFire=KeyCode.F;
         KeySword=KeyCode.Mouse0;
         KeyPlaceMagic=KeyCode.V;
         KeyThrow=KeyCode.R;
@@ -100,12 +105,14 @@ public partial class PlayerBehavior : MonoBehaviour
         KeyCrouch=KeyCode.X;
         KeyCombo=KeyCode.Mouse4;
         KeyRoll=KeyCode.LeftAlt;
+        KeyDefen=KeyCode.Mouse1;
 
 
 
         Debug.Assert(gm!=null);
         Debug.Assert(sp!=null);
         Debug.Assert(mySword!=null);
+        Debug.Assert(aco!=null);
 
     }
     // Update is called once per frame
@@ -191,9 +198,9 @@ public partial class PlayerBehavior : MonoBehaviour
     //}
     public void takeDamage(float damage)
     {
-        if(anim.GetBool("isRoll")==false)
+        if(anim.GetBool("isRoll")==false&&anim.GetBool("isDefen")==false)
         {
-            Debug.Log($"Hero get damage: {damage}");
+            //Debug.Log($"Hero get damage: {damage}");
             currHealth -= damage;
             Vector2 knockbackforce;
             if (gm.isBoss)
@@ -212,16 +219,30 @@ public partial class PlayerBehavior : MonoBehaviour
             Debug.Log("player attacked");
             StartCoroutine(HitFlashEffect());
         }
-        else
+        else if(anim.GetBool("isRoll"))
         {
             Debug.Log("hero attacked while rolling");
         }
+        else if(anim.GetBool("isDefen"))
+        {
+            Debug.Log("Tan Fan!");
+            //anim.SetBool("isDefen",false);
+            anim.SetBool("tanfan",true);
+            Invoke("finishTanfan",1f);
+            tanfanFlag=true;
+            aco.playTanfan();
+        }
+    }
+    public void finishTanfan()
+    {
+        anim.SetBool("tanfan",false);
+        anim.SetBool("isDefen",false);
     }
 
     private IEnumerator HitFlashEffect()
     {
         attacked=true;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.15f);
         attacked=false;
     }
 }

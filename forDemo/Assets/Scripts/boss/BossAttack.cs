@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BossAttack : MonoBehaviour
@@ -35,6 +36,12 @@ public class BossAttack : MonoBehaviour
     {
         Debug.Log($"Boss Attack, damage: {damage}");
         if(other.gameObject.CompareTag("Player"))other.gameObject.GetComponent<PlayerBehavior>().takeDamage(damage);
+        if(GameManager.mGM.mHero.GetComponent<PlayerBehavior>().tanfanFlag==true)
+        {
+            GameManager.mGM.mHero.GetComponent<PlayerBehavior>().tanfanFlag=false;
+            theBoss.GetComponent<Boss1>().tanfan();
+
+        }
     }
     //public  void onFrameEnter()
     //{
