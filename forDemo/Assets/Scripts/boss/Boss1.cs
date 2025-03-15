@@ -45,6 +45,7 @@ public partial class Boss1 : MonoBehaviour
     public MoveToTarget flyCompo;
     public GameObject mwall;
     public GameObject FloatPoint;
+    public GameObject mCamera;
     public bool attacked;
     public bool flag;
     public bool isGround;
@@ -111,9 +112,11 @@ public partial class Boss1 : MonoBehaviour
         currmode=mode.FindAndAttack;
         pigCreator=util.findGameObject("PigGene");
         stage=0;
+        mCamera=gm.mcamera;
 
         Debug.Assert(pigCreator!=null);
         Debug.Assert(FloatPoint!=null);
+        Debug.Assert(mCamera!=null);
     }
     public void setPos()
     {
@@ -224,16 +227,18 @@ public partial class Boss1 : MonoBehaviour
         accumDamage+=damage;
         if(currHealth<=0)anim.SetBool("isdead",true);
         StartCoroutine(HitFlashEffect());
-        // for float point 
+        // for float point //
         GameObject e=Instantiate(Resources.Load("Prefabs/DamageAppear") as GameObject);
         e.GetComponent<FloatPointBehavior>().damage=damage;
         e.transform.localPosition=Vector3.zero;
         Vector3 p=transform.localPosition;
         p.x-=(transform.localScale.x/Mathf.Abs(transform.localScale.x))*1f; // according to you flip the character by scale or not
         e.transform.Find("FloatPoint").localPosition=p;
-        
-
         //Instantiate(FloatPoint,transform.localPosition,Quaternion.identity);
+
+        // for camera shake
+        mCamera.GetComponent<CameraShake>().onSignal=true;
+
         if(accumDamage>=100&&currmode==mode.FindAndAttack&&isAttacking==false)
         {
             changeMode();
