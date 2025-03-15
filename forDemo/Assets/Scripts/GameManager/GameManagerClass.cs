@@ -5,12 +5,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     //public int currScene=0;
-    public TextMeshProUGUI bossName;
-    public static GameManager mGM=null;
-    public TextMeshProUGUI statusText=null;
-    public TextMeshProUGUI heroBloodBarValue;
-    public GameObject heroBloodBar;
-    public GameObject heroBloodBarSlot;
+
     public bool gameStart;
     public static bool isGameOver;
     public int sceneId;
@@ -22,13 +17,24 @@ public class GameManager : MonoBehaviour
     public bool isBoss;//according to scene
     public bool isEnterAnim;
     public GameObject mcamera; //自动挂"Main Camera"
-    public TextMeshProUGUI ForBoss;
-    public TextMeshProUGUI ForEnemy;
-    public TextMeshProUGUI Abillity;
-    
+   // public TextMeshProUGUI ForBoss;
+    //public TextMeshProUGUI ForEnemy;
+    //public TextMeshProUGUI Abillity;
     public int enemyNumber=10;
+    public static GameManager mGM;
     // Start is called before the first frame update
 
+    public virtual void Start()
+    {
+        mGM=this;
+        mHero=util.findGameObject("Hero");
+        mcamera=util.findGameObject("Main Camera");
+        Debug.Assert(mGM!=null);
+        Debug.Assert(mHero!=null);
+        Debug.Assert(mcamera!=null);
+        isGameOver=false;
+        gameStart=false;
+    }
 
     public void loseGame()
     {
@@ -78,27 +84,10 @@ public class GameManager : MonoBehaviour
 
         }
     }
-    public void updateHeroBlood()
-    {
-        float currh=mHero.GetComponent<PlayerBehavior>().currHealth;
-        float maxh=mHero.GetComponent<PlayerBehavior>().maxHealth;
-        heroBloodBarValue.text=$"{currh}/{maxh}";
-        Vector3 bs=heroBloodBar.transform.localScale;
-        float currs=5/maxh*currh;
-        bs.x=currs;
-        heroBloodBar.transform.localScale=bs;
-    }
 
-    public void turnHeroBloodBar()
-    {
-        heroBloodBar.GetComponent<RawImage>().enabled=true;
-        heroBloodBarSlot.GetComponent<RawImage>().enabled=true;
-        heroBloodBarValue.enabled=true;
-    }    
     public virtual void startGame()
     {
         gameStart=true;
-        turnHeroBloodBar();
     }
     // Update is called once per frame
 }

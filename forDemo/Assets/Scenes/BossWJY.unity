@@ -6313,54 +6313,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1965711631791501180, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
-      propertyPath: maxX
-      value: 23
-      objectReference: {fileID: 0}
-    - target: {fileID: 1965711631791501180, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
-      propertyPath: minX
-      value: -43
-      objectReference: {fileID: 0}
-    - target: {fileID: 1965711631791501180, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
-      propertyPath: speed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1965711631791501180, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
-      propertyPath: damage
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1965711631791501180, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
-      propertyPath: canSkill2
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1965711631791501180, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
-      propertyPath: maxHealth
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 1965711631791501180, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
-      propertyPath: fireCooldown
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1965711631791501180, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
-      propertyPath: swordCooldown
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1965711631791501180, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
-      propertyPath: fireposOffset.x
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1965711631791501180, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
-      propertyPath: fireposOffset.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377632746332661064, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377632746332661064, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
-      propertyPath: m_TagString
-      value: HeroAttack
-      objectReference: {fileID: 0}
     - target: {fileID: 2818903843097013123, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
       propertyPath: m_LocalPosition.x
       value: -36.05
@@ -6401,14 +6353,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3251487359246774534, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
-      propertyPath: m_Mass
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 3251487359246774534, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
-      propertyPath: m_UseAutoMass
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3752843747519037210, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
       propertyPath: gravm
       value: 
@@ -6417,12 +6361,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hero
       objectReference: {fileID: 0}
-    - target: {fileID: 5067910646800180729, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2390099176534374615, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

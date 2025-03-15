@@ -6,7 +6,7 @@ public class BossAttack : MonoBehaviour
     // Start is called before the first frame update
     public PolygonCollider2D mycollider;
     public GameObject theBoss;
-    public float damage;
+    public float damage; //在Boss端赋值
     public Animator anim;
     void Start()
     {

@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GravitySensor : MonoBehaviour
@@ -8,9 +9,16 @@ public class GravitySensor : MonoBehaviour
     private Rigidbody2D rb; // 物体的Rigidbody2D组件
     private float timer = 0f; // 计时器
     public BoxCollider2D myCollider;
-
     void Start()
     {
+        if(GameManager.mGM.mHero.GetComponent<PlayerBehavior>().canSkill2==false)
+        {
+            this.enabled=false;
+        }
+        else
+        {
+            this.enabled=true;
+        }
         // 获取物体的Rigidbody2D组件
         gravm=SkillGravity.GravityManager;
         myCollider=GetComponent<BoxCollider2D>();

@@ -1,10 +1,17 @@
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 
 public class GameManagerForScene3: GameManager
 {
     public GameObject bossBloodBar;
     public GameObject bossBloodBarSlot;
+    public TextMeshProUGUI bossName;
+    //public static GameManager mGM=null;
+    public TextMeshProUGUI statusText=null;
+    public TextMeshProUGUI heroBloodBarValue;
+    public GameObject heroBloodBar;
+    public GameObject heroBloodBarSlot;
     void Awake() 
     {
         isGameOver=false;
@@ -76,6 +83,25 @@ public class GameManagerForScene3: GameManager
     {
         base.startGame();
         turnOnBossBloodBar();
+        turnHeroBloodBar();
         bossName.enabled=true;
     }
+    public void updateHeroBlood()
+    {
+        float currh=mHero.GetComponent<PlayerBehavior>().currHealth;
+        float maxh=mHero.GetComponent<PlayerBehavior>().maxHealth;
+        heroBloodBarValue.text=$"{currh}/{maxh}";
+        Vector3 bs=heroBloodBar.transform.localScale;
+        float currs=5/maxh*currh;
+        bs.x=currs;
+        heroBloodBar.transform.localScale=bs;
+    }
+
+    public void turnHeroBloodBar()
+    {
+        heroBloodBar.GetComponent<RawImage>().enabled=true;
+        heroBloodBarSlot.GetComponent<RawImage>().enabled=true;
+        heroBloodBarValue.enabled=true;
+    }    
+
 }
