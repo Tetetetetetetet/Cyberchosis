@@ -173,11 +173,6 @@ public partial class Boss1 : MonoBehaviour
                 //flag=true;
                 //}
 
-                if (Input.GetKeyDown(KeyCode.Tilde))
-                {
-                    changeMode();
-                }
-
                 // 攻击闪烁
                 if (attacked)
                 {
@@ -204,9 +199,15 @@ public partial class Boss1 : MonoBehaviour
         //Debug.Log($"random value: {Random.value}");
         if(Input.GetKeyDown(KeyCode.Y))
         {
-            divide();
+            mCamera.GetComponent<CameraShake>().startShakeRoll();
         }
-        if(mHero.GetComponent<Transform>().transform.localPosition.y>-7)
+        if (Input.GetKeyDown(KeyCode.Tilde))
+        {
+            changeMode();
+        }
+
+
+        if (mHero.GetComponent<Transform>().transform.localPosition.y>-7)
         {
             SwordTrap.GetComponent<BulletShootController>().enabled=true;
         }
@@ -227,6 +228,7 @@ public partial class Boss1 : MonoBehaviour
     public void takeDamage(float damage)
     {
         currHealth-=damage;
+        anim.SetTrigger("takeHit");
         if(currmode==mode.FindAndAttack)accumDamage+=damage;
         if(currHealth<=0)anim.SetBool("isdead",true);
         StartCoroutine(HitFlashEffect());
@@ -291,6 +293,10 @@ public partial class Boss1 : MonoBehaviour
             currmode=mode.FindAndAttack;
             return;
         }
+        else if(currmode==mode.stand)
+        {
+            currmode=mode.FindAndAttack;
+        }
         //testing
     }
     public void ableCo1()
@@ -317,5 +323,10 @@ public partial class Boss1 : MonoBehaviour
     {
         ba3.mycollider.enabled=false;
         isAttacking=false;
+    }
+    public void die()
+    {
+        mwall.GetComponent<ShowBehavior>().Showdown();
+        Destroy(this.gameObject);
     }
 }

@@ -119,9 +119,8 @@ public partial class Boss1 : MonoBehaviour
             changeMode();
         }
         CameraShake cs=mCamera.GetComponent<CameraShake>();
-        cs.duration=2;
-        cs.intensity=10;
-        cs.startShake();
+        cs.startShakeRoll();
+        currmode=mode.stand;
         Debug.Assert(mwall!=null);
         mwall.GetComponent<ShowBehavior>().onSignal=true;
         if(mHero.transform.localPosition.x<-11.2f)
@@ -140,6 +139,7 @@ public partial class Boss1 : MonoBehaviour
             mHero.GetComponent<PlayerBehavior>().minX=-8.4f;
             lFiringPos=rFiringPos;
         }
+        Invoke("changeMode",1f);
     }
 
     void phantom()
