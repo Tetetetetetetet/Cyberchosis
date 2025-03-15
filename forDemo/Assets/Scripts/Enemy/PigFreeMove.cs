@@ -44,6 +44,7 @@ public class PigFreeMove : EnemyClass
             {
                 playerBehavior.takeDamage(damage);
             }   
+            Destroy(this.gameObject);
             // if(dirc==true)
             // {
             //     Vector3 p=transform.localPosition;

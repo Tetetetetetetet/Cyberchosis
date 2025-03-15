@@ -266,9 +266,9 @@ public partial class Boss1 : MonoBehaviour
         if(currmode==mode.FindAndAttack)
         {
             //currmode=mode.FlyAndFiring;
-            bool flag=Random.value>0.6f;
+            bool flag=Random.value>0.9f;
             Debug.Log($"change mode flag: {flag}");
-            flag=true;
+            //flag=true;
             if(flag)currmode=mode.FlyAndFiring;
             else currmode=mode.FlyAndPig;
             //if(debugflag)Debug.Log($"change mode, now: {currmode}");
