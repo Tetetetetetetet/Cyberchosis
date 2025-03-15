@@ -69,8 +69,15 @@ public class CameraSupport : MonoBehaviour
         if(gm.gameStart)
         {
             p=transform.localPosition;
-            followHero();
-            p.z=-15f;
+            GameObject e=this.gameObject;
+            CameraShake scrpt=e.GetComponent<CameraShake>();
+            if(scrpt!=null)
+            {
+                float tim=scrpt.tim;
+                Debug.Log(tim);
+                if (tim <= 0)
+                    followHero();
+            }
         }
         p.z=-15f;
         transform.localPosition=p;
