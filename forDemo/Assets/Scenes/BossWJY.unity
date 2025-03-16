@@ -1038,6 +1038,7 @@ MonoBehaviour:
   heroBloodBar: {fileID: 680805334}
   heroBloodBarSlot: {fileID: 418463904}
   pigNum: 0
+  aco: {fileID: 1048210816}
 --- !u!4 &316741777
 Transform:
   m_ObjectHideFlags: 0
@@ -3995,6 +3996,7 @@ MonoBehaviour:
   donggui: {fileID: 8300000, guid: 18c0d4b7d5f198d438ec87e038ed92b3, type: 3}
   attack: {fileID: 8300000, guid: 2b1c29d051bbb7d4192171a4ce27e13a, type: 3}
   tanfan: {fileID: 8300000, guid: a6571edd2b8f8cd41af8faa8a5463916, type: 3}
+  victory: {fileID: 8300000, guid: 48da6363ea24ebd4d837dcd9d8082fd4, type: 3}
 --- !u!82 &1048210817
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7173,6 +7175,10 @@ PrefabInstance:
       propertyPath: aco
       value: 
       objectReference: {fileID: 1048210816}
+    - target: {fileID: 1965711631791501180, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
+      propertyPath: canSkill2
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1965711631791501180, guid: ffb67b854b4a3194a9b0984cd23deade, type: 3}
       propertyPath: maxHealth
       value: 300
