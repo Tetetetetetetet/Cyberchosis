@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Drop : MonoBehaviour
 {
-    public float Rskill1=2;
+    public float Rskill1;
     public float Rskill2;
     public PlayerBehavior player;
 
@@ -22,13 +22,15 @@ public class Drop : MonoBehaviour
     }
     public void DropSkills(){
         float r=Random.value;
+        Debug.Log(r+"Rskill"+player.canSkill1+Rskill1);
         if(!player.canSkill1&&r<Rskill1){
+            Debug.Log("drop skill1");
             GameObject p=Resources.Load<GameObject>("Prefabs/DropThings/Magician");
             Vector3 position=gameObject.transform.position;
             Instantiate(p,position,Quaternion.identity);
             player.canSkill1=true;
         }
-        if(!player.canSkill2&&r<Rskill1&&r>=Rskill2){
+        if(!player.canSkill2&&r<Rskill2&&r>=Rskill1){
             GameObject p=Resources.Load<GameObject>("Prefabs/DropThings/MagicRing");
             Vector3 position=gameObject.transform.position;
             Instantiate(p,position,Quaternion.identity);

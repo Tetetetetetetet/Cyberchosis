@@ -37,7 +37,8 @@ public class HeroSwordBehavior : MonoBehaviour
         }
         if(other.gameObject.CompareTag("Enemy"))
         {
-            other.GetComponent<EnemyBehavior>().takeDamage(damage);
+            Debug.Log("palyer attack");
+            other.GetComponent<EnemyBehacior>().takeDamage(damage);
         }
     }
 }

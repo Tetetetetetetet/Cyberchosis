@@ -42,12 +42,19 @@ public class EnemyBehacior : MonoBehaviour
     {
         patrol();
         if(currHealth<=0){
+            Debug.Log("died");
             anim.SetTrigger("Dead");
             drop.DropSkills();
             Destroy(GetComponent<EnemyHealthBar>().bloodbarInstance);
             Destroy(gameObject);
         }
 
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+     if(collision.gameObject.CompareTag("Ground")){
+        movingRight=!movingRight;
+     }   
     }
     void OnTriggerEnter2D(Collider2D collision)
     {

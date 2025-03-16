@@ -308,6 +308,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 162b3776394d17a45ac95dfe27bcb653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rskill1: 0
-  Rskill2: 0
+  Rskill1: 0.1
+  Rskill2: 0.1
   player: {fileID: 0}
