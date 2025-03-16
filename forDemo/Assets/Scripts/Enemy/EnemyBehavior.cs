@@ -100,6 +100,16 @@ public class EnemyBehacior : MonoBehaviour
     public void takeDamage(float damage){
         anim.SetTrigger("hit");
         currHealth-=damage;
+
+        // for damage float point
+        GameObject e=Instantiate(Resources.Load("Prefabs/DamageAppear") as GameObject);
+        //e.transform.SetParent(transform,false);
+        e.GetComponent<FloatPointBehavior>().damage=damage;
+        Vector3 p=transform.position;
+        e.transform.localPosition=p;
+        //p.x-=(transform.localScale.x/Mathf.Abs(transform.localScale.x))*1f; // according to you flip the character by scale or not
+        //Debug.Log($"p: {p}");
+        //e.transform.Find("FloatPoint").localPosition=Vector3.zero;
     }
 
 }

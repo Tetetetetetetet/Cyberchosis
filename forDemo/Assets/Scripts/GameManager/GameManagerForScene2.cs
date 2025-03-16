@@ -7,14 +7,14 @@ public class GameManagerForScene2 : GameManager
     // Start is called before the first frame update
 
 
- 
-    void Start()
+    public override void Start()
     {
         Debug.Assert(mHero!=null);
         Debug.Assert(mcamera!=null);
         setPos=mHero.transform.localPosition;
         if(isEnterAnim)gameStart=false;
         else gameStart=true;
+        turnHeroBloodBar();
         //if(isBoss)bossName.text="JiaYin.king";
     }
     // Update is called once per frame
@@ -28,6 +28,7 @@ public class GameManagerForScene2 : GameManager
         {
             win();
         }
+        updateHeroBlood();
     }
 
 }
