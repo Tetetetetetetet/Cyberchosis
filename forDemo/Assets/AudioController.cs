@@ -31,27 +31,34 @@ public class AudioController : MonoBehaviour
     IEnumerator PlayAudioSequence()
     {
         // 播放开始音频
+        if(startClip!=null)
+        {
         audioSource1.clip = startClip;
         audioSource1.volume=1f;
         audioSource1.Play();
         yield return new WaitForSeconds(startClip.length);  // 等待音频播放完
-
+        }
         // 播放 BGM
+        if(bgmClip!=null)
+        {
         audioSource1.clip = bgmClip;
         audioSource1.loop = true;  // 设置循环播放
         audioSource1.volume=0.05f;
         audioSource1.Play();
-        
+        }
         // 等待游戏结束 (这里你可以加一个触发条件)
         yield return new WaitUntil(() => GameManager.isGameOver);  // 这里假设 GameManager 里有 isGameOver 标志
 
         // 播放结束音频
-        audioSource1.loop = false;  // 关闭循环播放
-        audioSource1.clip = endClip;
-        audioSource1.volume=1f;
-        audioSource1.Play();
+        if(endClip!=null)
+        {
+            audioSource1.loop = false;  // 关闭循环播放
+            audioSource1.clip = endClip;
+            audioSource1.volume = 1f;
+            audioSource1.Play();
+        }
         yield return new WaitForSeconds(3);
-        SceneManager.LoadScene("StartScene");
+        //SceneManager.LoadScene("StartScene");
     }
     public void playFenzhi()
     {
