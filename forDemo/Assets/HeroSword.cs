@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -33,6 +34,7 @@ public class HeroSwordBehavior : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("asd");
         if(other.gameObject.CompareTag("Boss"))
         {
             Debug.Log("hero attack boss");
@@ -58,5 +60,13 @@ public class HeroSwordBehavior : MonoBehaviour
             aco.playAttack();
         }
 
+    }
+    void OnTriggerStay2D(Collider2D other)
+    {
+         if(other.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("palyer attack");
+            other.GetComponent<EnemyBehacior>().takeDamage(damage);
+        }
     }
 }
