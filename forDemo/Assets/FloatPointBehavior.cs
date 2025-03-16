@@ -15,13 +15,15 @@ public class FloatPointBehavior : MonoBehaviour
         GameObject child=transform.Find("FloatPoint").gameObject;
         txt=child.GetComponent<TextMeshPro>();
         txt.text=damage.ToString();
-        Invoke("destroySelf",0.5f);
+        Invoke("destroySelf",1f);
     }
 
     // Update is called once per frame
     void Update()
     {
         //transform.localPosition=position;
+        //Debug.Log($"fp pos: {transform.Find("FloatPoint").localPosition}");
+        
     }
     public void destroySelf()
     {

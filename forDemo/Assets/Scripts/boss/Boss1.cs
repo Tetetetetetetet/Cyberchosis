@@ -47,7 +47,7 @@ public partial class Boss1 : MonoBehaviour
     public GameObject pigCreator;
     public MoveToTarget flyCompo;
     public GameObject mwall;
-    public GameObject FloatPoint;
+    //public GameObject FloatPoint;
     public GameObject mCamera;
     public GameObject SwordTrap;
     public bool attacked;
@@ -122,7 +122,7 @@ public partial class Boss1 : MonoBehaviour
         lLandPos=new Vector3(-40f,-13f,0);
 
         Debug.Assert(pigCreator!=null);
-        Debug.Assert(FloatPoint!=null);
+        //Debug.Assert(FloatPoint!=null);
         Debug.Assert(mCamera!=null);
         Debug.Assert(SwordTrap!=null);
     }
@@ -240,10 +240,9 @@ public partial class Boss1 : MonoBehaviour
         // for float point //
         GameObject e=Instantiate(Resources.Load("Prefabs/DamageAppear") as GameObject);
         e.GetComponent<FloatPointBehavior>().damage=damage;
-        e.transform.localPosition=Vector3.zero;
         Vector3 p=transform.localPosition;
         p.x-=(transform.localScale.x/Mathf.Abs(transform.localScale.x))*1f; // according to you flip the character by scale or not
-        e.transform.Find("FloatPoint").localPosition=p;
+        e.transform.localPosition=p;
         //Instantiate(FloatPoint,transform.localPosition,Quaternion.identity);
 
         // for camera shake
