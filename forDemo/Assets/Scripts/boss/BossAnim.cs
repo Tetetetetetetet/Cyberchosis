@@ -69,6 +69,21 @@ public partial class Boss1 : MonoBehaviour
     {
 
     }
+    public void attackFinish()
+    {
+        isAttacking=false;
+    }
+    public void tanfan()
+    {
+        currmode=mode.stand;
+        anim.SetBool("attackStop",true);
+        Invoke("tanfanRecover",1f);
+    }
+    public void tanfanRecover()
+    {
+        changeMode();
+        anim.SetBool("attackStop",false);
+    }
 }
  //   private IEnumerator StartAttack1()
     //{

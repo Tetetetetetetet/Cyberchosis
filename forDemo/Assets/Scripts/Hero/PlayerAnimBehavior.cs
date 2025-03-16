@@ -76,7 +76,7 @@ public partial class PlayerBehavior : MonoBehaviour
           if(Input.GetKeyDown(KeySword)&&((Time.time-lastSwordAttackAt)>swordCooldown))
           {
                anim.SetTrigger("SwordAttack");
-               swordCooldown=Time.time;
+               lastSwordAttackAt=Time.time;
                //StartCoroutine(startSwordAttack());
           }
 
@@ -119,7 +119,7 @@ public partial class PlayerBehavior : MonoBehaviour
      }
      void checkFire()
      {
-          if(Input.GetKeyDown(KeyFire)&&(Time.time-lastFireAt)>fireCooldown)
+          if(canSkill1&&Input.GetKeyDown(KeyFire)&&(Time.time-lastFireAt)>fireCooldown)
           {
                anim.SetTrigger("Fire");
                lastFireAt=Time.time;
@@ -135,9 +135,24 @@ public partial class PlayerBehavior : MonoBehaviour
           epos.x+=fireposOffset.x;
           e.transform.localPosition=epos;
           Vector3 dirc=(util.getMousePos()-epos);
+          dirc.z=0;
           e.transform.up=dirc.normalized;
           e.GetComponent<HeroBulletBehavior>().mHero=gameObject.GetComponent<PlayerBehavior>();
           s.x=(gm.Boss.transform.localPosition.x-p.x)/Mathf.Abs(gm.Boss.transform.localPosition.x-p.x)*scale;
+     }
+
+     void defen()
+     {
+          if(Input.GetKeyDown(KeyDefen)&&anim.GetBool("isDefen")==false&&(Time.time-lastDefenAt)>defenCooldown&&attacked==false)
+          {
+               anim.SetBool("isDefen",true);
+               lastDefenAt=Time.time;
+               Invoke("offDefen",0.5f);
+          }
+     }
+     void offDefen()
+     {
+          anim.SetBool("isDefen",false);
      }
      /*
      checkDash(): unfinished, bug实在离谱
@@ -205,7 +220,7 @@ public partial class PlayerBehavior : MonoBehaviour
      void checkRoll()
      {
           float timedis=Mathf.Abs(Time.time-lastRollAt);
-          if(Input.GetKeyDown(KeyCode.LeftAlt)&&(anim.GetBool("isRun")||anim.GetBool("Idle")))
+          if(Input.GetKeyDown(KeyCode.LeftAlt)&&(anim.GetBool("isRun")||anim.GetBool("Idle"))&&isGround&&timedis>rollCooldown)
           {
                Debug.Log("start roll");
                anim.SetBool("isRoll",true);
@@ -251,6 +266,7 @@ public partial class PlayerBehavior : MonoBehaviour
           checkGroundSlam();
           checkThrow();
           checkRoll();
+          defen();
      }
 
 

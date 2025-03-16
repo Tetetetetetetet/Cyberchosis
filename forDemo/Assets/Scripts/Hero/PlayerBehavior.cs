@@ -7,6 +7,7 @@ public partial class PlayerBehavior : MonoBehaviour
     // Start is called before the first frame update
 
     //basis status
+    public AudioController aco;
     public float attackedSpeedX;
     public float attackedSpeedY;
     public float maxHealth;
@@ -15,6 +16,10 @@ public partial class PlayerBehavior : MonoBehaviour
     public float remoteDamage;
     public float swordCooldown;
     public float fireCooldown;
+    public float defenCooldown;
+    public float lastDefenAt;
+    public float minX;
+    public float maxX;
 
     // About Dash
     //public float dashDis;
@@ -64,6 +69,8 @@ public partial class PlayerBehavior : MonoBehaviour
     public bool canSkill1,canSkill2,canSkill3;
     private float lastSwordAttackAt;
     private float lastFireAt;
+    private Color originColor;
+    public bool tanfanFlag;
     void Start()
     {
         currHealth=maxHealth;
@@ -82,10 +89,14 @@ public partial class PlayerBehavior : MonoBehaviour
         lastFireAt=-10;
         lastRollAt=-10;
         lastSwordAttackAt=-10;
+        originColor=sp.color;
+        mHero=this.gameObject;
+        placeMagicSignal=false;
+        tanfanFlag=false;
 
         //key mapping
         KeyJump=KeyCode.W;
-        KeyFire=KeyCode.Mouse1;
+        KeyFire=KeyCode.F;
         KeySword=KeyCode.Mouse0;
         KeyPlaceMagic=KeyCode.V;
         KeyThrow=KeyCode.R;
@@ -94,11 +105,14 @@ public partial class PlayerBehavior : MonoBehaviour
         KeyCrouch=KeyCode.X;
         KeyCombo=KeyCode.Mouse4;
         KeyRoll=KeyCode.LeftAlt;
+        KeyDefen=KeyCode.Mouse1;
+
 
 
         Debug.Assert(gm!=null);
         Debug.Assert(sp!=null);
         Debug.Assert(mySword!=null);
+        Debug.Assert(aco!=null);
 
     }
     // Update is called once per frame
@@ -106,6 +120,7 @@ public partial class PlayerBehavior : MonoBehaviour
     {
         checkChangeScene();
         isGround = touchingGround();
+        anim.SetBool("isGround",isGround);
         p = transform.localPosition;
         s = transform.localScale;
         r = transform.localRotation;
@@ -117,18 +132,24 @@ public partial class PlayerBehavior : MonoBehaviour
         {
             die();
         }
-        if (attacked == false)
+        if (attacked == true)
         {
-            Color color = sp.color;
-            color.a = originA;
+            Color color = originColor;
+            color.a = originA*0.3f;
+            sp.color = color;
+        }
+        else if(anim.GetBool("isRoll"))
+        {
+            Color color=Color.black;
             sp.color = color;
         }
         else
         {
-            Color color = sp.color;
-            color.a *= originA * 0.3f;
-            sp.color = color;
+            sp.color=originColor;
         }
+
+        if(p.x>maxX)p.x=maxX;
+        if(p.x<minX)p.x=minX;   
         transform.localPosition = p;
         //Debug.Log($"final update position: p.y:{p.x}");
         transform.localScale = s;
@@ -177,31 +198,51 @@ public partial class PlayerBehavior : MonoBehaviour
     //}
     public void takeDamage(float damage)
     {
-        Debug.Log($"Hero get damage: {damage}");
-        currHealth-=damage;
-        Vector2 knockbackforce;
-        if(gm.isBoss)
+        if(anim.GetBool("isRoll")==false&&anim.GetBool("isDefen")==false)
         {
-            b=gm.Boss.GetComponent<Boss1>();
-            if(b.transform.localPosition.x>p.x)
+            //Debug.Log($"Hero get damage: {damage}");
+            currHealth -= damage;
+            Vector2 knockbackforce;
+            if (gm.isBoss)
             {
-                knockbackforce=new Vector2(-attackedSpeedX,attackedSpeedY);
+                b = gm.Boss.GetComponent<Boss1>();
+                if (b.transform.localPosition.x > p.x)
+                {
+                    knockbackforce = new Vector2(-attackedSpeedX, attackedSpeedY);
+                }
+                else
+                {
+                    knockbackforce = new Vector2(attackedSpeedX, attackedSpeedY);
+                }
+                myRigid.AddForce(knockbackforce, ForceMode2D.Impulse);
             }
-            else
-            {
-                knockbackforce=new Vector2(attackedSpeedX,attackedSpeedY);
-            }
-            myRigid.AddForce(knockbackforce,ForceMode2D.Impulse);
+            Debug.Log("player attacked");
+            StartCoroutine(HitFlashEffect());
         }
-        Debug.Log("player attacked");
-        attacked=true;
-        StartCoroutine(HitFlashEffect());
+        else if(anim.GetBool("isRoll"))
+        {
+            Debug.Log("hero attacked while rolling");
+        }
+        else if(anim.GetBool("isDefen"))
+        {
+            Debug.Log("Tan Fan!");
+            //anim.SetBool("isDefen",false);
+            anim.SetBool("tanfan",true);
+            Invoke("finishTanfan",1f);
+            tanfanFlag=true;
+            aco.playTanfan();
+        }
+    }
+    public void finishTanfan()
+    {
+        anim.SetBool("tanfan",false);
+        anim.SetBool("isDefen",false);
     }
 
     private IEnumerator HitFlashEffect()
     {
         attacked=true;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.15f);
         attacked=false;
     }
 }

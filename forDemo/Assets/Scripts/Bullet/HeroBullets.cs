@@ -6,21 +6,25 @@ public class HeroBulletBehavior : MonoBehaviour
     public float speed;
     public PlayerBehavior mHero; //生成时自动挂载
     public float damage;
+    private float birthTime;
+    public float lifeTime;
     void Start()
     {
         // 获取主相机
         //mHero=util.findGameObject("Hero").GetComponent<PlayerBehavior>();
         mainCamera = Camera.main;
         damage=mHero.remoteDamage;
+        birthTime=Time.time;
     }
 
     void Update()
     {
         Vector3 p=transform.localPosition;
         // 检查子弹是否在主相机视野外
-        if (IsOutsideCameraView())
+        if ((Time.time-birthTime)>lifeTime)
         {
             Destroy(gameObject);
+            return;
         }
         p+=transform.up*(speed*Time.smoothDeltaTime);
         transform.localPosition=p;

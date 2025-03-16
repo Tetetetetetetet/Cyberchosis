@@ -1,28 +1,26 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public partial class Boss1 : MonoBehaviour
 {
-    public GameManager gm;//接口: 自动接唯一的GameManager对象的GameManager组件
-    public float minDis;
-    public bool debugflag;
-    public GameObject mHero; //接口：自动接Player GameObject
-    public Vector3 firingPos;
-    public Rigidbody2D myRigid; //auto
-    public BoxCollider2D myfeet;//auto
-    public Animator anim;
-    public float walkSpeed;
+    // necessary parameters
     public float maxHealth;
     public float currHealth;
+    public float walkSpeed;
+    public float minDis;
     public float jumpSpeed;
     public float scale;
     public float attackRange;
-    public bool attacked;
-    public bool flag;
-    public bool isGround;
-    private Vector3 mousepos;
-    public MoveToTarget flyCompo;
     public float moveSpeed;
+    public Vector3 rFiringPos;
+    public Vector3 lFiringPos;        
+    public Vector3 rLandPos,lLandPos;
+    public float flyFireDuringTime;
+    public float flyFireCooldown;
+    public float pigDuringTime;
+    public float lastPigAt;
+    public bool isFlyPig;    
     public int timeBeforeAttack;
     public int timeBetweenAttack;
     public int timeDuringAttack;
@@ -31,20 +29,41 @@ public partial class Boss1 : MonoBehaviour
     public float damage3;
     public float attackCoolDown;
     public float attackLastTime;
-    public Vector3 BossPos;
+    public int maxPigTimes;
+    private int pigTimes;
 
-    // for fly and firing
-    public float lastFlyFireTime;
-    public float flyFireDuringTime;
-    public float lastFlyFireFinishTime;
-    public float flyFireCooldown;
-    public bool isFlyFiring;
+    //may use
+    public float gravityScale;    
+
+    // for watching
     public bool isAttacking;
+    public bool debugflag;
+    public GameObject mHero; //接口：自动接Player GameObject
+    public Vector3 firingPos;
+    public Rigidbody2D myRigid; //auto
+    public BoxCollider2D myfeet;//auto
+    public Animator anim;
+    public GameManager gm;//接口: 自动接唯一的GameManager对象的GameManager组件
+    public GameObject pigCreator;
+    public MoveToTarget flyCompo;
+    public GameObject mwall;
+    public GameObject FloatPoint;
+    public GameObject mCamera;
+    public GameObject SwordTrap;
+    public bool attacked;
+    public bool flag;
+    public bool isGround;
+    private Vector3 mousepos;
+    public Vector3 BossPos;
+    public float lastFlyFireTime;
+    public float lastFlyFireFinishTime;
+    public bool isFlyFiring;
     public bool testButton;
     public enum mode{
         stand=0,
         FindAndAttack=1,
         FlyAndFiring=2,
+        FlyAndPig=3,
     }
     public mode currmode;
     public BossAttack ba1;
@@ -55,6 +74,7 @@ public partial class Boss1 : MonoBehaviour
     public BulletShootController fire;
     public float lastChangModeTime;
     public float accumDamage;
+    public int stage;
 
     // Start is called before the first frame update
     void Start()
@@ -66,6 +86,7 @@ public partial class Boss1 : MonoBehaviour
         myfeet=GetComponent<BoxCollider2D>();
         myRigid=GetComponent<Rigidbody2D>();
         myRigid.velocity=new Vector2(0,0);
+        myRigid.gravityScale=gravityScale;
         transform.localScale=new Vector3(-scale,scale,0);
         flag=true;
         ba1=util.findGameObject("BossAttack1").GetComponent<BossAttack>();
@@ -88,11 +109,22 @@ public partial class Boss1 : MonoBehaviour
         attacked=false;
         originA=GetComponent<SpriteRenderer>().color.a;
         currHealth=maxHealth;
-        bulletGene=util.findGameObject("randomFire");
+        bulletGene=util.findGameObject("BossSwordGene");
         bulletGene.GetComponent<BulletShootController>().enabled=false;
         fire=bulletGene.GetComponent<BulletShootController>();
         lastChangModeTime=Time.time;
         currmode=mode.FindAndAttack;
+        pigCreator=util.findGameObject("PigGene");
+        stage=0;
+        mCamera=gm.mcamera;
+        SwordTrap=util.findGameObject("SwordGeneTrap");
+        rLandPos=new Vector3(20f,-13f,0);
+        lLandPos=new Vector3(-40f,-13f,0);
+
+        Debug.Assert(pigCreator!=null);
+        Debug.Assert(FloatPoint!=null);
+        Debug.Assert(mCamera!=null);
+        Debug.Assert(SwordTrap!=null);
     }
     public void setPos()
     {
@@ -103,62 +135,89 @@ public partial class Boss1 : MonoBehaviour
 
     void Update()
     {
-        //always
-        isGround=myRigid.IsTouchingLayers(LayerMask.GetMask("Ground"));
-        jumpTran();
-        mousepos=util.getMousePos();
-        if(gm.gameStart==false)
+        if(stage==0||stage==1)
         {
-            stand();
-        }
+            //always
+            isGround = myRigid.IsTouchingLayers(LayerMask.GetMask("Ground"));
+            jumpTran();
+            mousepos = util.getMousePos();
 
-        if(gm.gameStart)
-        {
-            //debuging
-            //currmode=mode.FindAndAttack;
-
-            //if(debugflag)Debug.Log($"curr mode: {currmode}");
-            //testing
-            if(currmode==mode.FindAndAttack)
-            {
-                FindAndAttack();
-            }
-            if(currmode==mode.stand)
+            if (gm.gameStart == false)
             {
                 stand();
             }
-            if(currmode==mode.FlyAndFiring)
+
+            if (gm.gameStart)
             {
-                flyFiring();
-            }
-           // if(Input.GetKeyDown(KeyCode.Space))
-            //{
+                //debuging
+                //currmode=mode.FindAndAttack;
+
+                //if(debugflag)Debug.Log($"curr mode: {currmode}");
+
+                // 行为模式
+                if (currmode == mode.FindAndAttack)
+                {
+                    FindAndAttack();
+                }
+                else if (currmode == mode.stand)
+                {
+                    stand();
+                }
+                else if (currmode == mode.FlyAndFiring)
+                {
+                    flyFiring();
+                }
+                else if (currmode == mode.FlyAndPig)
+                {
+                    FlyAndPig();
+                }
+
+                // if(Input.GetKeyDown(KeyCode.Space))
+                //{
                 //perfomeOnce();
                 //flag=true;
-            //}
-            if(Input.GetKeyDown(KeyCode.U))
-            {
-                changeMode();
-            }
-            if(attacked)
-            {
-                Color co=GetComponent<SpriteRenderer>().color;
-                co.a*=originA*0.5f;
-                GetComponent<SpriteRenderer>().color=co;
-            }
-            else
-            {
-                Color co=GetComponent<SpriteRenderer>().color;
-                co.a=originA;
-                GetComponent<SpriteRenderer>().color=co;
-            }
-            if((Time.time-lastChangModeTime)>10f)
-            {
-                changeMode();
-                lastChangModeTime=Time.time;
+                //}
+
+                // 攻击闪烁
+                if (attacked)
+                {
+                    Color co = GetComponent<SpriteRenderer>().color;
+                    co.a *= originA * 0.5f;
+                    GetComponent<SpriteRenderer>().color = co;
+                }
+                else
+                {
+                    Color co = GetComponent<SpriteRenderer>().color;
+                    co.a = originA;
+                    GetComponent<SpriteRenderer>().color = co;
+                }
             }
         }
+
+        //testing
+        if(Input.GetKeyDown(KeyCode.Mouse3))
+        {
+            flyTo(mousepos);
+            flyCompo.stay=true;
+            Debug.Log($"mouse pos: {mousepos}");
+        }
+        //Debug.Log($"random value: {Random.value}");
+        if(Input.GetKeyDown(KeyCode.Y))
+        {
+            mCamera.GetComponent<CameraShake>().startShakeRoll();
+        }
+        if (Input.GetKeyDown(KeyCode.Tilde))
+        {
+            changeMode();
+        }
+
+
+        if (mHero.GetComponent<Transform>().transform.localPosition.y>-7)
+        {
+            SwordTrap.GetComponent<BulletShootController>().enabled=true;
+        }
    }
+
    // private void OnTriggerEnter2D(Collider2D other)
     //{
         //Debug.Log("boss1: onTriggerEnter");
@@ -174,12 +233,30 @@ public partial class Boss1 : MonoBehaviour
     public void takeDamage(float damage)
     {
         currHealth-=damage;
+        anim.SetTrigger("takeHit");
+        if(currmode==mode.FindAndAttack)accumDamage+=damage;
         if(currHealth<=0)anim.SetBool("isdead",true);
         StartCoroutine(HitFlashEffect());
-        if(accumDamage>=50&&currmode==mode.FindAndAttack)
+        // for float point //
+        GameObject e=Instantiate(Resources.Load("Prefabs/DamageAppear") as GameObject);
+        e.GetComponent<FloatPointBehavior>().damage=damage;
+        e.transform.localPosition=Vector3.zero;
+        Vector3 p=transform.localPosition;
+        p.x-=(transform.localScale.x/Mathf.Abs(transform.localScale.x))*1f; // according to you flip the character by scale or not
+        e.transform.Find("FloatPoint").localPosition=p;
+        //Instantiate(FloatPoint,transform.localPosition,Quaternion.identity);
+
+        // for camera shake
+        mCamera.GetComponent<CameraShake>().onSignal=true;
+
+        if(accumDamage>=100&&currmode==mode.FindAndAttack&&isAttacking==false)
         {
             changeMode();
             accumDamage=0;
+        }
+        if((currHealth/maxHealth)<0.5f&&stage==0)
+        {
+            divide();
         }
     }
     private IEnumerator HitFlashEffect()
@@ -188,76 +265,66 @@ public partial class Boss1 : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         attacked=false;
     }
-    void FindAndAttack()
-    {
-        Vector3 p=transform.localPosition;
-        Vector3 targetpos=mHero.transform.localPosition;
-        float dis=Mathf.Abs(p.x-targetpos.x);
-        if(dis>minDis)
-        {
-            if(targetpos.x<p.x)
-            {
-                runLeft();
-            }
-            else
-            {
-                runRight();
-            }
-        }
-        else
-        {
-            stand();
-        }
 
-       if(dis<=attackRange)
-        {
-            if(Mathf.Abs(Time.time-attackLastTime)>attackCoolDown)
-            {
-                attack1();
-            }
-            else if(isAttacking==false)
-            {
-                Debug.Log("under attack range, but cool not down");
-            }
-        }
-        
-    }
-    void flyFiring()
-    {
-            if(isFlyFiring==false)
-            {
-                isFlyFiring=true;
-                lastFlyFireTime=Time.time;
-                flyCompo.stay=true;
-            }
-            flyTo(firingPos);
-            //...
-            if((Time.time-lastFlyFireTime)>flyFireDuringTime&&isAttacking==false)
-            {
-                isFlyFiring=false;
-                lastFlyFireFinishTime=Time.time;
-                flyCompo.stay=false;
-                flyCompo.isMoving=false;
-                changeMode();
-            }
-            bulletGene.GetComponent<BulletShootController>().enabled=true;
-    }
     void changeMode()
     {
         if(currmode==mode.FindAndAttack)
         {
             //currmode=mode.FlyAndFiring;
-            currmode=mode.FlyAndFiring;
+            bool flag=Random.value>0.5f;
+            Debug.Log($"change mode flag: {flag}");
+            //flag=true;
+            if(flag)
+            {
+                currmode=mode.FlyAndFiring;
+            }
+            else 
+            {
+                currmode=mode.FlyAndPig;
+                pigTimes=0;
+                abe.playDonggui();
+            }
             //if(debugflag)Debug.Log($"change mode, now: {currmode}");
             return;
         }
         else if(currmode==mode.FlyAndFiring)
         {
+            isFlyFiring = false;
+            lastFlyFireFinishTime = Time.time;
+            flyCompo.stay = false;
+            flyCompo.isMoving = false;
+            //myRigid.gravityScale = gravityScale;
+            fire.enabled = false;
+            myfeet.isTrigger = false;
             currmode=mode.FindAndAttack;
-            flyCompo.isMoving=false;
-            fire.enabled=false;
             //Debug.Log("change mode when Fly&Firing");
+            if(mHero.transform.localPosition.x<-11.2f)
+            {
+                transform.localPosition=rLandPos;
+            }
+            else
+            {
+                transform.localPosition=lLandPos;
+            }
             return;
+        }
+        else if(currmode==mode.FlyAndPig)
+        {
+            finishFlyAndPig();
+            currmode=mode.FindAndAttack;
+            if(mHero.transform.localPosition.x<-11.2f)
+            {
+                transform.localPosition=new Vector3(20f,-13f,0);
+            }
+            else
+            {
+                transform.localPosition=new Vector3(-40f,-13f,0);
+            }
+            return;
+        }
+        else if(currmode==mode.stand)
+        {
+            currmode=mode.FindAndAttack;
         }
         //testing
     }
@@ -285,5 +352,15 @@ public partial class Boss1 : MonoBehaviour
     {
         ba3.mycollider.enabled=false;
         isAttacking=false;
+    }
+    public void die()
+    {
+        mHero.GetComponent<PlayerBehavior>().maxX=23f;
+        mHero.GetComponent<PlayerBehavior>().minX=-43f;
+        mwall.GetComponent<ShowBehavior>().Showdown();
+        this.gameObject.GetComponent<SpriteRenderer>().enabled=false;
+        this.gameObject.SetActive(false);
+        gm.GetComponent<GameManagerForScene3>().bossDie();
+        //Destroy(this.gameObject);
     }
 }

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6940cdda447048efa58605bd546f9920, type: 3}
+  m_Name: Introl Yellow Effect Bullet Impact Explosion 32x32
+  m_EditorClassIdentifier: 
+  Frames:
+  - DelayInMs: 100
+    Sprite: {fileID: 21300000, guid: c1d3e1d69fab4314dbbdb3f32dcac04d, type: 3}
+  - DelayInMs: 100
+    Sprite: {fileID: 21300000, guid: b8eeb77ea9b540045b2dd6cb297c4a8d, type: 3}
+  - DelayInMs: 100
+    Sprite: {fileID: 21300000, guid: ce3f01e8b28e4d74a943a322aee34fe8, type: 3}
+  - DelayInMs: 100
+    Sprite: {fileID: 21300000, guid: e306650305709404a859c5d3f35fb3a7, type: 3}

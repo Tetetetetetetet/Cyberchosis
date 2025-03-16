@@ -3,17 +3,24 @@ using UnityEngine;
 public class BulletBehavior : MonoBehaviour
 {
     private Camera mainCamera; // 主相机
+    private float birthTime;
+    public float lifeTime;
 
     void Start()
     {
         // 获取主相机
         mainCamera = Camera.main;
+        birthTime=Time.time;
     }
 
     void Update()
     {
-
         // 检查子弹是否在主相机视野外
+        if((Time.time-birthTime)>lifeTime)
+        {
+            Destroy(gameObject);
+            return;
+        }
     }
 
     bool IsOutsideCameraView()
@@ -33,8 +40,12 @@ public class BulletBehavior : MonoBehaviour
         {
             // 调用Hero的受伤方法
             other.GetComponent<PlayerBehavior>().takeDamage(6f);
+            Destroy(gameObject);
             // 销毁子弹
         }
-        Destroy(gameObject);
+        if(other.CompareTag("HeroAttack"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

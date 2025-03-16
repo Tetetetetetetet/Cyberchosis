@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1490653358065548908}
   - component: {fileID: 5050857949195430547}
   - component: {fileID: 4210681631622045597}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HeroSwordAttack
-  m_TagString: Player
+  m_TagString: HeroAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,10 +149,9 @@ GameObject:
   - component: {fileID: 3251487359246774534}
   - component: {fileID: 7156370948644123653}
   - component: {fileID: 4024678087990134921}
-  - component: {fileID: 2390099176534374615}
   - component: {fileID: 3752843747519037210}
   - component: {fileID: 5914926465795091812}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hero
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -168,7 +167,7 @@ Transform:
   m_GameObject: {fileID: 5067910646800180729}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -37.8, y: -21.2, z: 0}
+  m_LocalPosition: {x: -36.05, y: -21.44, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -187,19 +186,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce0d404b6efbc904ab694390b016a195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireposOffset: {x: 0.1, y: 1.5}
   attackedSpeedX: 100
   attackedSpeedY: 30
-  maxHealth: 100
+  maxHealth: 300
   currHealth: 100
   damage: 10
   remoteDamage: 10
-  setY: 0
-  noRotate: 0
-  dashDis: 5
-  anim: {fileID: 4024678087990134921}
+  swordCooldown: 0.5
+  fireCooldown: 0.5
+  minX: -43
+  maxX: 23
   upSpeed: 0
   idleStatus: 0
-  speed: 10
+  speed: 15
   skySpeed: 0
   jumpSpeed: 20
   againJumpSpeed: 10
@@ -207,15 +207,13 @@ MonoBehaviour:
   scale: 2.5
   canJump: 1
   duringJump: 0
-  dashCoolDown: 2
-  dashPos: {x: 0, y: 0, z: 0}
   lastRollAt: 0
   rollCooldown: 2
   rollSpeed: 20
   rollDuringTime: 0.5
-  dashStartPos: {x: 0, y: 0, z: 0}
   maxJumpTimes: 2
   leftJumpTimes: 2
+  anim: {fileID: 4024678087990134921}
   myfeet: {fileID: 0}
   timeBeforeAttack: 0.2
   timeAfterAttack: 0.2
@@ -227,10 +225,21 @@ MonoBehaviour:
   gm: {fileID: 0}
   b: {fileID: 0}
   canSkill1: 0
-  canSkill2: 0
+  canSkill2: 1
   canSkill3: 0
   doorm: {fileID: 0}
+  placeMagicSignal: 0
   mousePos: {x: 0, y: 0, z: 0}
+  KeyFire: 0
+  KeyJump: 0
+  KeySword: 0
+  KeyTurnMagic: 0
+  KeyPlaceMagic: 0
+  KeyThrow: 0
+  KeySit: 0
+  KeyCrouch: 0
+  KeyCombo: 0
+  KeyRoll: 0
   currSkill: 0
 --- !u!212 &8254352288886717469
 SpriteRenderer:
@@ -295,8 +304,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 1
-  m_Mass: 4.0625
+  m_UseAutoMass: 0
+  m_Mass: 1000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 8
@@ -377,71 +386,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!60 &2390099176534374615
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5067910646800180729}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 3, y: 2.625}
-    newSize: {x: 0.96, y: 0.84}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 1.21875, y: 0.46875}
-      - {x: 0.96656895, y: 1.0732536}
-      - {x: 0.8056655, y: 1.4085312}
-      - {x: 0.34912682, y: 1.9223824}
-      - {x: 0.09375, y: 2}
-      - {x: -0.4375, y: 1.46875}
-      - {x: -0.53125, y: 1.34375}
-      - {x: -0.53125, y: 1.3125}
-      - {x: -0.5, y: 1.21875}
-      - {x: -0.18489647, y: 1.3322964}
-      - {x: 0.033727646, y: 1.4901714}
-      - {x: 0.44159365, y: 0.88845253}
-      - {x: -0.29372644, y: 0.85287476}
-      - {x: -0.6875, y: 0.90625}
-      - {x: -0.21921825, y: 0.63612556}
-      - {x: -0.4375, y: 0}
-      - {x: 0.32192993, y: 0.4404869}
-      - {x: 0.41791868, y: 0.4056244}
-      - {x: 0.9250231, y: 0.20308113}
-      - {x: 1.1250296, y: 0.12813377}
-  m_UseDelaunayMesh: 0
 --- !u!114 &3752843747519037210
 MonoBehaviour:
   m_ObjectHideFlags: 0
