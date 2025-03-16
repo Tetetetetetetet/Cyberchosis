@@ -67,8 +67,6 @@ public class EnemyBehacior : MonoBehaviour
                 attackTimer=Time.time;
                 anim.SetTrigger("attack");
                 Debug.Log("attack");
-                PlayerBehavior player=collision.gameObject.GetComponent<PlayerBehavior>();
-                player.takeDamage(damage);
             }
         }        
     }
