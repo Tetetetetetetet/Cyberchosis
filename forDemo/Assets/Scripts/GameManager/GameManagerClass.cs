@@ -5,7 +5,9 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     //public int currScene=0;
-
+    public TextMeshProUGUI heroBloodBarValue;
+    public GameObject heroBloodBar;
+    public GameObject heroBloodBarSlot;
     public bool gameStart;
     public static bool isGameOver;
     public int sceneId;
@@ -22,6 +24,7 @@ public class GameManager : MonoBehaviour
     //public TextMeshProUGUI Abillity;
     public int enemyNumber=10;
     public static GameManager mGM;
+    public string nextSceneName;
     // Start is called before the first frame update
 
     public virtual void Awake()
@@ -93,4 +96,24 @@ public class GameManager : MonoBehaviour
         gameStart=true;
     }
     // Update is called once per frame
+    public void updateHeroBlood()
+    {
+        float currh=mHero.GetComponent<PlayerBehavior>().currHealth;
+        float maxh=mHero.GetComponent<PlayerBehavior>().maxHealth;
+        heroBloodBarValue.text=$"{currh}/{maxh}";
+        Vector3 bs=heroBloodBar.transform.localScale;
+        float currs=5/maxh*currh;
+        bs.x=currs;
+        heroBloodBar.transform.localScale=bs;
+    }
+    public void turnHeroBloodBar()
+    {
+        heroBloodBar.GetComponent<RawImage>().enabled=true;
+        heroBloodBarSlot.GetComponent<RawImage>().enabled=true;
+        heroBloodBarValue.enabled=true;
+    }    
+    public void nextScene()
+    {
+        SceneManager.LoadScene(nextSceneName);
+    }
 }

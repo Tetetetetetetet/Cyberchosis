@@ -3,18 +3,19 @@ using UnityEngine;
 public class Begin : MonoBehaviour
 {
     // Start is called before the first frame update
+    public Vector3 position;
     void Start()
     {
 
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
-    public void firstattack(){
+    public void firstattack()
+    {
         GameObject cell=GameObject.Find("cell");
         GameObject Enemy = Resources.Load<GameObject>("Prefabs/Character/Enemy1");
         EnemyBehacior e = Enemy.GetComponent<EnemyBehacior>();
@@ -23,7 +24,7 @@ public class Begin : MonoBehaviour
         b.canvas=GameObject.Find("Dialogue UI");
         Enemy.transform.localScale = new Vector3(5f, 5f,0);
         Destroy(cell);
-        Vector3 position = new Vector3(6f, -4f, 0); // 实例化位置
+        //Vector3 position = new Vector3(6f, -4f, 0); // 实例化位置
         Instantiate(Enemy, position, Quaternion.identity);
 
     }

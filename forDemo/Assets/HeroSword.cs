@@ -51,6 +51,7 @@ public class HeroSwordBehavior : MonoBehaviour
         {
             Debug.Log("palyer attack");
             other.GetComponent<EnemyBehacior>().takeDamage(damage);
+            aco.playAttack();
         }
         else if(other.GetComponent<EnemyClass>()!=null)
         {
