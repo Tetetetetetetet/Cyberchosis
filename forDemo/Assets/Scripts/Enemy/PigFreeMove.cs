@@ -45,6 +45,10 @@ public class PigFreeMove : EnemyClass
             {
                 playerBehavior.takeDamage(damage);
             }   
+            GameObject e=Instantiate(Resources.Load("Prefabs/smokel")as GameObject);
+            Vector3 p=transform.localPosition;
+            p.y+=1;
+            e.transform.localPosition=p;
             MakeDestroy();
             // if(dirc==true)
             // {

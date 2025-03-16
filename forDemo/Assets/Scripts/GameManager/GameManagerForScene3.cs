@@ -13,6 +13,7 @@ public class GameManagerForScene3: GameManager
     public GameObject heroBloodBar;
     public GameObject heroBloodBarSlot;
     public int pigNum;
+    public AudioController aco;
     public override void Awake() 
     {
         isGameOver=false;
@@ -45,6 +46,7 @@ public class GameManagerForScene3: GameManager
         if(isBoss)bossName.text="JiaYin.king";
         Debug.Assert(bossBloodBar!=null);
         Debug.Assert(bossBloodBarSlot!=null);
+        Debug.Assert(aco!=null);
     }
     void Update()
     {
@@ -72,6 +74,12 @@ public class GameManagerForScene3: GameManager
     {        
         float currh=Boss.GetComponent<Boss1>().currHealth;
         float maxh=Boss.GetComponent<Boss1>().maxHealth;
+        if(currh<=0)
+        {
+            bossBloodBar.SetActive(false);
+            bossBloodBarSlot.SetActive(false);
+            bossName.enabled=false;
+        }
         Vector3 bs=bossBloodBar.transform.localScale;
         float currs=10/maxh*currh;
         bs.x=currs;
@@ -106,5 +114,9 @@ public class GameManagerForScene3: GameManager
         heroBloodBarSlot.GetComponent<RawImage>().enabled=true;
         heroBloodBarValue.enabled=true;
     }    
+    public void bossDie()
+    {
+        aco.playVictory();
+    }
 
 }

@@ -14,6 +14,7 @@ public class AudioController : MonoBehaviour
     public AudioClip donggui;
     public AudioClip attack;
     public AudioClip tanfan;
+    public AudioClip victory;
 
     void Start()
     {
@@ -80,6 +81,13 @@ public class AudioController : MonoBehaviour
         audioSource3.clip=tanfan;
         audioSource3.volume=1f;
         audioSource3.Play();
+    }
+    public void playVictory()
+    {
+        audioSource1.loop=true;
+        audioSource1.clip=victory;
+        audioSource1.volume=1f;
+        audioSource1.Play();
     }
 
 }

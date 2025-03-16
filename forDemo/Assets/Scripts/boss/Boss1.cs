@@ -15,6 +15,7 @@ public partial class Boss1 : MonoBehaviour
     public float moveSpeed;
     public Vector3 rFiringPos;
     public Vector3 lFiringPos;        
+    public Vector3 rLandPos,lLandPos;
     public float flyFireDuringTime;
     public float flyFireCooldown;
     public float pigDuringTime;
@@ -117,6 +118,8 @@ public partial class Boss1 : MonoBehaviour
         stage=0;
         mCamera=gm.mcamera;
         SwordTrap=util.findGameObject("SwordGeneTrap");
+        rLandPos=new Vector3(20f,-13f,0);
+        lLandPos=new Vector3(-40f,-13f,0);
 
         Debug.Assert(pigCreator!=null);
         Debug.Assert(FloatPoint!=null);
@@ -297,11 +300,11 @@ public partial class Boss1 : MonoBehaviour
             //Debug.Log("change mode when Fly&Firing");
             if(mHero.transform.localPosition.x<-11.2f)
             {
-                transform.localPosition=new Vector3(20f,-13f,0);
+                transform.localPosition=rLandPos;
             }
             else
             {
-                transform.localPosition=new Vector3(-40f,-13f,0);
+                transform.localPosition=lLandPos;
             }
             return;
         }
@@ -309,6 +312,14 @@ public partial class Boss1 : MonoBehaviour
         {
             finishFlyAndPig();
             currmode=mode.FindAndAttack;
+            if(mHero.transform.localPosition.x<-11.2f)
+            {
+                transform.localPosition=new Vector3(20f,-13f,0);
+            }
+            else
+            {
+                transform.localPosition=new Vector3(-40f,-13f,0);
+            }
             return;
         }
         else if(currmode==mode.stand)
@@ -344,8 +355,12 @@ public partial class Boss1 : MonoBehaviour
     }
     public void die()
     {
+        mHero.GetComponent<PlayerBehavior>().maxX=23f;
+        mHero.GetComponent<PlayerBehavior>().minX=-43f;
         mwall.GetComponent<ShowBehavior>().Showdown();
         this.gameObject.GetComponent<SpriteRenderer>().enabled=false;
+        this.gameObject.SetActive(false);
+        gm.GetComponent<GameManagerForScene3>().bossDie();
         //Destroy(this.gameObject);
     }
 }

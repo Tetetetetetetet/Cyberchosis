@@ -119,7 +119,7 @@ public partial class PlayerBehavior : MonoBehaviour
      }
      void checkFire()
      {
-          if(Input.GetKeyDown(KeyFire)&&(Time.time-lastFireAt)>fireCooldown)
+          if(canSkill1&&Input.GetKeyDown(KeyFire)&&(Time.time-lastFireAt)>fireCooldown)
           {
                anim.SetTrigger("Fire");
                lastFireAt=Time.time;

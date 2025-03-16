@@ -137,6 +137,7 @@ public AudioController abe;
             p.x=-36f;
             transform.localPosition=p;
             rFiringPos=lFiringPos;
+            rLandPos=lLandPos;
             Vector3 piggenePos=pigCreator.transform.localPosition;
             piggenePos.x=-14f;
             pigCreator.transform.localPosition=piggenePos;
@@ -144,6 +145,7 @@ public AudioController abe;
         }
         else
         {
+            lLandPos=rLandPos;
             Vector3 p=transform.localPosition;
             p.x=16f;
             transform.localPosition=p;
